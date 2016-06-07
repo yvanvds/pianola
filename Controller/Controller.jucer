@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="BGJ8WI" name="Controller" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.Controller" includeBinaryInAppConfig="1"
+              jucerVersion="4.2.1">
+  <MAINGROUP id="Iu5jLN" name="Controller">
+    <GROUP id="{3DF32F99-F5C7-ACF6-8E97-6BB1B133C898}" name="resources">
+      <FILE id="Zat0NI" name="led_off.png" compile="0" resource="1" file="Resources/led_off.png"/>
+      <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
+    </GROUP>
+    <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
+      <FILE id="QdqZlG" name="Defines.h" compile="0" resource="0" file="Source/Defines.h"/>
+      <FILE id="PpCP9L" name="LogBox.cpp" compile="1" resource="0" file="Source/LogBox.cpp"/>
+      <FILE id="Fnk8Wr" name="LogBox.h" compile="0" resource="0" file="Source/LogBox.h"/>
+      <FILE id="bEiuLF" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="oT5nuZ" name="Meccanoid.cpp" compile="1" resource="0" file="Source/Meccanoid.cpp"/>
+      <FILE id="LHV8Fo" name="Meccanoid.h" compile="0" resource="0" file="Source/Meccanoid.h"/>
+      <FILE id="ReJqlA" name="MonitorWindow.cpp" compile="1" resource="0"
+            file="Source/MonitorWindow.cpp"/>
+      <FILE id="EkS69r" name="MonitorWindow.h" compile="0" resource="0" file="Source/MonitorWindow.h"/>
+      <FILE id="ymp0dM" name="Network.cpp" compile="1" resource="0" file="Source/Network.cpp"/>
+      <FILE id="a6UMaa" name="Network.h" compile="0" resource="0" file="Source/Network.h"/>
+      <FILE id="uhLIEN" name="Robot.cpp" compile="1" resource="0" file="Source/Robot.cpp"/>
+      <FILE id="LtW15L" name="Robot.h" compile="0" resource="0" file="Source/Robot.h"/>
+      <FILE id="lcTl4V" name="test.cpp" compile="1" resource="0" file="Source/test.cpp"/>
+      <FILE id="vx5ygz" name="test.h" compile="0" resource="0" file="Source/test.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Controller"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Controller"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2015 targetFolder="Builds/VisualStudio2015">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="Controller"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="Controller"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_osc" path="../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2015>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>
