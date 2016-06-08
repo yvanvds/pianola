@@ -44,12 +44,12 @@ MonitorWindow::MonitorWindow()
   toggleConnectButton->addListener(this);
   detailsGroup->addAndMakeVisible(toggleConnectButton);
 
-  ipLabel->setText("Address & Port", dontSendNotification);
+  ipLabel->setText("Address", dontSendNotification);
   detailsGroup->addAndMakeVisible(ipLabel);
 
   ipAddressText->setReadOnly(true);
   ipAddressText->setCaretVisible(false);
-  ipAddressText->setText("0.0.0.0:0000");
+  setIpAddress();
   detailsGroup->addAndMakeVisible(ipAddressText);
 
   copyIpButton->setButtonText("Copy");
@@ -73,8 +73,8 @@ MonitorWindow::~MonitorWindow() {
 void MonitorWindow::resized() {
   detailsGroup       ->setBounds( 10, 10, 370, 60);
   toggleConnectButton->setBounds( 10, 20,  70, 30);
-  ipLabel            ->setBounds( 90, 20,  90, 30);
-  ipAddressText      ->setBounds(190, 20, 100, 30);
+  ipLabel            ->setBounds( 90, 20,  50, 30);
+  ipAddressText      ->setBounds(150, 20, 140, 30);
   copyIpButton       ->setBounds(300, 20,  50, 30);
   
   logGroup->setBounds(10, 80, 370, 400);
@@ -91,8 +91,9 @@ void MonitorWindow::buttonClicked(Button * b) {
       network->connect();
       if (!network->isConnected()) {
         // connect failed
-        toggleConnectButton->setToggleState(false, juce::NotificationType::dontSendNotification);
+        toggleConnectButton->setToggleState(false, juce::NotificationType::dontSendNotification);       
       }
+      setIpAddress();
     }
     else {
       // disconnect from OSC udp port
@@ -104,6 +105,25 @@ void MonitorWindow::buttonClicked(Button * b) {
     }
     
   }
+
+  if (b == copyIpButton) {
+    SystemClipboard::copyTextToClipboard(ipAddressText->getText());
+  }
+}
+
+void MonitorWindow::setIpAddress() {
+  Array<IPAddress> addr;
+  IPAddress::findAllAddresses(addr);
+  for (int i = 0; i < addr.size(); i++) {
+    // show first address which is not localhost
+    if (addr[i].address[0] != 127) {
+      String s = addr[i].toString();
+      s += ":" + String(OSC_PORT);
+      ipAddressText->setText(s);
+      return;
+    }
+  }
+  ipAddressText->setText("0.0.0.0");
 }
 
 void MonitorWindow::paint(Graphics & g) {

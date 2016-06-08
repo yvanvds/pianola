@@ -27,6 +27,7 @@ public:
 private:
   void buttonClicked(Button * b) override;
   void resized      (          ) override;
+  void setIpAddress();
 
   // environment
   ScopedPointer<GroupComponent> detailsGroup       ;

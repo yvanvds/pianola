@@ -29,8 +29,10 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Controller"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Controller"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Controller"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Controller"
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../JUCE/modules"/>
