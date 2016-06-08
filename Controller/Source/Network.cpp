@@ -128,17 +128,22 @@ void Network::timerCallback() {
 
     IDENTITY i = toIdentity(name);
     if (isValid(i)) {
+      // acknowledge request
+      if (udpSocket->waitUntilReady(false, 5) == 1) {
+        udpSocket->write(udpSender, udpPort, "acknowledged", sizeof("acknowledged"));
+      }
+
       // TODO change condition when other robots are decided upon
       if (i < I_ALL) {
         if (robots[i] == nullptr) {
           robots[i] = new Meccanoid;
           robots[i]->setIp(udpSender).setName(name);
-          ToLog("Meccanoid " + name + " detected with address " + udpSender);
+          ToLog("Meccanoid " + name + " detected with address " + udpSender);         
         }
         else {
           if (robots[i]->getIp().compareIgnoreCase(udpSender) != 0) {
             robots[i]->setIp(udpSender);
-            ToLog("Assigned new ip " + udpSender + " to " + name);
+            ToLog("Assigned new ip " + udpSender + " to " + name);           
           }
         }
         
