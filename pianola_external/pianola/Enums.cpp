@@ -1,9 +1,7 @@
 #include "Enums.h"
 #include <ctype.h>
 
-IDENTITY toIdentity(const char * str) {
-  juce::String s(str);
-
+IDENTITY toIdentity(const juce::String & s) {
   if (s.compareIgnoreCase("none"  ) == 0) return I_NONE  ;
   if (s.compareIgnoreCase("igor"  ) == 0) return I_IGOR  ;
   if (s.compareIgnoreCase("george") == 0) return I_GEORGE;
@@ -25,9 +23,7 @@ bool isValid(IDENTITY i) {
   return (i != I_NONE && i != I_INVALID);
 }
 
-ACTION toAction(const char * str) {
-  juce::String s(str);
-
+ACTION toAction(const juce::String & s) {
   if (s.compareIgnoreCase("none"     ) == 0) return A_NONE     ;
   if (s.compareIgnoreCase("servo1"   ) == 0) return A_SERVO1   ;
   if (s.compareIgnoreCase("servo2"   ) == 0) return A_SERVO2   ;

@@ -59,7 +59,7 @@ void Network::oscMessageReceived(const OSCMessage & message) {
   if (tokens[0] != PROJECT) goto unhandled;
 
   // second tokens should be identity
-  IDENTITY i = toIdentity(tokens[1].toRawUTF8());
+  IDENTITY i = toIdentity(tokens[1]);
   if (!isValid(i)) goto unhandled;
 
   // if robot is online, let it take care of the message
@@ -126,7 +126,7 @@ void Network::timerCallback() {
       name += udpBuffer[i];
     }
 
-    IDENTITY i = toIdentity(name.toRawUTF8());
+    IDENTITY i = toIdentity(name);
     if (isValid(i)) {
       // TODO change condition when other robots are decided upon
       if (i < I_ALL) {

@@ -22,7 +22,7 @@ enum IDENTITY {
   I_NUM    , // indicates the active number of identities used
 };
 
-IDENTITY toIdentity(const char * str);
+IDENTITY toIdentity(const juce::String & s);
 juce::String toString(IDENTITY);
 bool isValid(IDENTITY i);
 
@@ -41,5 +41,5 @@ enum ACTION {
   A_IDLE     ,
 };
 
-ACTION toAction(const char * str);
+ACTION toAction(const juce::String & s);
 juce::String toString(ACTION);
