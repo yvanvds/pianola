@@ -1,5 +1,17 @@
 #pragma once
+
+/*
+This enum file is shared between de pianola max external and
+the controller application.
+*/
+
+#ifdef JUCE_APP_VERSION 
+// This is the controller applicatioin
+#include "JuceHeader.h"
+#else
+// This is the pianola max external
 #include "juce_core.h"
+#endif
 
 enum IDENTITY {
   I_NONE   ,
@@ -7,35 +19,27 @@ enum IDENTITY {
   I_IGOR   ,
   I_GEORGE ,
   I_ALL    ,
+  I_NUM    , // indicates the active number of identities used
 };
 
 IDENTITY toIdentity(const char * str);
 juce::String toString(IDENTITY);
 bool isValid(IDENTITY i);
 
-enum ROBOT_PART {
-  RP_NONE     ,
-  RP_INVALID  ,
-  RP_SERVO1   ,
-  RP_SERVO2   ,
-  RP_SERVO3   ,
-  RP_SERVO4   ,
-  RP_SERVO5   ,
-  RP_SERVO6   ,
-  RP_SERVO7   ,
-  RP_SERVO8   ,
-  RP_BEHAVIOUR, // combination of parts
+enum ACTION {
+  A_NONE     ,
+  A_INVALID  ,
+  A_SERVO1   ,
+  A_SERVO2   ,
+  A_SERVO3   ,
+  A_SERVO4   ,
+  A_SERVO5   ,
+  A_SERVO6   ,
+  A_SERVO7   ,
+  A_SERVO8   ,
+  A_NOD      ,
+  A_IDLE     ,
 };
 
-ROBOT_PART toRobotPart(const char * str);
-juce::String toString(ROBOT_PART);
-
-enum BEHAVIOUR {
-  B_NONE   ,
-  B_INVALID,
-  B_NOD    ,
-  B_IDLE   ,
-};
-
-BEHAVIOUR toBehaviour(const char * str);
-juce::String toString(BEHAVIOUR);
+ACTION toAction(const char * str);
+juce::String toString(ACTION);

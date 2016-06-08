@@ -15,7 +15,7 @@
 
 class Meccanoid : public Robot {
 public:
-  virtual void handleMessage(const OSCMessage & message);
+  virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message);
 };
 
 

@@ -13,15 +13,7 @@
 #include "Defines.h"
 #include "MonitorWindow.h"
 
-void Meccanoid::handleMessage(const OSCMessage & message) {
-  String partial = message.getAddressPattern().toString().fromFirstOccurrenceOf(name + "/", false, true);
-  String action = partial.upToFirstOccurrenceOf("/", false, true);
-
-  if (action.compareIgnoreCase("behaviour") == 0) {
-    // Handle behaviours here
-  }
-  else {
-    // direct instruction
-    ToLog("message handled on " + name + "with action " + action);
-  }
+void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & message) {
+  // we already have tested there are 3 tokens or more
+  ToLog("message handled on " + name + "with action " + tokens[2]);
 }

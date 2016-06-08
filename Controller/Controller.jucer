@@ -10,6 +10,8 @@
     </GROUP>
     <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
       <FILE id="QdqZlG" name="Defines.h" compile="0" resource="0" file="Source/Defines.h"/>
+      <FILE id="wHkoPT" name="Enums.cpp" compile="1" resource="0" file="../pianola_external/pianola/Enums.cpp"/>
+      <FILE id="EH9xOf" name="Enums.h" compile="0" resource="0" file="../pianola_external/pianola/Enums.h"/>
       <FILE id="PpCP9L" name="LogBox.cpp" compile="1" resource="0" file="Source/LogBox.cpp"/>
       <FILE id="Fnk8Wr" name="LogBox.h" compile="0" resource="0" file="Source/LogBox.h"/>
       <FILE id="bEiuLF" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>

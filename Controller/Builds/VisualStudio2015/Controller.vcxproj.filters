@@ -364,6 +364,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\pianola_external\pianola\Enums.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\LogBox.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
@@ -2098,6 +2101,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Defines.h">
+      <Filter>Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\pianola_external\pianola\Enums.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\LogBox.h">

@@ -28,8 +28,7 @@ void Network::sendTest() {
 
 void Network::send(p_send * obj, int i) {
   juce::String s = PROJECTNAME;
-  s += "/" + toString(obj->id) + "/" + toString(obj->part);
-  if (obj->part == RP_BEHAVIOUR) s += "/" + toString(obj->behaviour);
+  s += "/" + toString(obj->id) + "/" + toString(obj->action);
   if (!sender->send(s, i)) {
     object_post(NULL, "Unable to send OSC int message");
   }
@@ -37,8 +36,7 @@ void Network::send(p_send * obj, int i) {
 
 void Network::send(p_send * obj, float f) {
   juce::String s = PROJECTNAME;
-  s += "/" + toString(obj->id) + "/" + toString(obj->part);
-  if (obj->part == RP_BEHAVIOUR) s += "/" + toString(obj->behaviour);
+  s += "/" + toString(obj->id) + "/" + toString(obj->action);
   if (!sender->send(s, f)) {
     object_post(NULL, "Unable to send OSC float message");
   }

@@ -14,6 +14,7 @@
 #include "JuceHeader.h"
 #include "Robot.h"
 #include "Meccanoid.h"
+#include "../../pianola_external/pianola/Enums.h"
 
 const int OSC_PORT = 34567;
 const int UDP_PORT = 3456;
@@ -52,7 +53,7 @@ private:
   int    udpPort  ;
 
   // robots
-  HashMap<String, Robot*> robots;
+  Robot * robots[I_NUM];
 
   // for visual feedback
   MonitorWindow * monitorWindow;

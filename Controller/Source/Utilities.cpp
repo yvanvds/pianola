@@ -15,7 +15,7 @@ void OSCTokenize(Array<String> & tokens, const String & string) {
   if (!string.length()) return;
 
   String token;
-  for (int i = 0; i < string.length(); i++) {
+  for (int i = 1; i < string.length(); i++) {
     if (string[i] == '/') {
       tokens.add(token);
       token.clear();

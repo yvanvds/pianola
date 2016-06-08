@@ -34,7 +34,7 @@ void LogBox::addMessage(const String & message) {
 
 void LogBox::addMessage(const OSCMessage & message, int level) {
   list.add(getIndentationString(level)
-    + "- osc mesage, address = '"
+    + "- osc message, address = '"
     + message.getAddressPattern().toString()
     + "', "
     + String(message.size())

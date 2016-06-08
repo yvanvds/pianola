@@ -9,10 +9,9 @@
 #include "Network.h"
 
 CREATESTRUCT(
-  IDENTITY   id       ;
-  ROBOT_PART part     ;
-  BEHAVIOUR  behaviour;
-  bool valid;
+  IDENTITY   id    ;
+  ACTION     action;
+  bool       valid ;
 );
 
 void * CLASSMETHOD(New  )(t_symbol * s, long argc, t_atom * argv);

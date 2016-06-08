@@ -11,6 +11,7 @@
 #include "Network.h"
 #include "MonitorWindow.h"
 #include "Defines.h"
+#include "Utilities.h"
 
 Network::Network(MonitorWindow * monitorWindow)
   : oscReceiver(new OSCReceiver)
@@ -19,6 +20,9 @@ Network::Network(MonitorWindow * monitorWindow)
   , connected(false)
 {
   
+  // setup pointer structure for robots
+  for (int i = 0; i < I_NUM; i++) robots[i] = nullptr;
+
   // setup osc
   oscReceiver->addListener(this);
   oscReceiver->registerFormatErrorHandler(
@@ -36,39 +40,41 @@ Network::Network(MonitorWindow * monitorWindow)
 Network::~Network() {
   stopTimer();
 
-  // empty hashMap
-  for (HashMap<String, Robot*>::Iterator i(robots); i.next();) {
-    delete i.getValue();
+  // empty robot array
+  for (int i = 0; i < I_NUM; i++) {
+    delete robots[i];
   }
-  robots.clear();
 
   udpSocket->shutdown();
   oscReceiver->disconnect();
 }
 
 void Network::oscMessageReceived(const OSCMessage & message) {
-  // only interested if message starts with project name
-  String address = message.getAddressPattern().toString();
-  if (!address.startsWithIgnoreCase(PROJECT)) {
-    return;
-  }
+  // tokenize addressPattern
+  Array<String> tokens;
+  OSCTokenize(tokens, message.getAddressPattern().toString());
 
-  // drop project part from address
-  // TODO: implement faster algorithm
-  address = address.fromFirstOccurrenceOf(PROJECT, false, true);
-  String robot = address.fromFirstOccurrenceOf("/", false, true);
-  robot = robot.upToFirstOccurrenceOf("/", false, true);
+  // all AddressPatterns should at least be 3 parts, first is project name
+  if (tokens.size() < 3) goto unhandled; // important!!! (robot handleMessage depends on this check)
+  if (tokens[0] != PROJECT) goto unhandled;
 
-  // find robot with this ID
-  if (robots.contains(robot)) {
-    robots[robot]->handleMessage(message);
+  // second tokens should be identity
+  IDENTITY i = toIdentity(tokens[1].toRawUTF8());
+  if (!isValid(i)) goto unhandled;
+
+  // if robot is online, let it take care of the message
+  if (robots[i] != nullptr) {
+    robots[i]->handleMessage(tokens, message);
   }
   else {
-    monitorWindow->getLog()->addMessage(
-      "Unhandled message for " + message.getAddressPattern().toString()
-    );
+    ToLog("Message for offline robot: ");
+    ToLog(message);
   }
+  return;
 
+unhandled:
+  ToLog("Unhandled message:");
+  ToLog(message);
   
 }
 
@@ -78,7 +84,7 @@ void Network::oscBundleReceived(const OSCBundle & bundle) {
 
 void Network::connect() {
   if (oscReceiver->connect(OSC_PORT)) {
-    monitorWindow->getLog()->addMessage(String("OSC listening on port ") + String(OSC_PORT));
+    ToLog(String("OSC listening on port ") + String(OSC_PORT));
     connected = true;
   }
   else {
@@ -88,7 +94,7 @@ void Network::connect() {
 
 void Network::disconnect() {
   if (oscReceiver->disconnect()) {
-    monitorWindow->getLog()->addMessage(String("OSC disconnected from port ") + String(OSC_PORT));
+    ToLog(String("OSC disconnected from port ") + String(OSC_PORT));
     connected = false;
   }
   else {
@@ -97,7 +103,7 @@ void Network::disconnect() {
 }
 
 void Network::handleConnectError() {
-  monitorWindow->getLog()->addMessage(
+  ToLog(
     "Error: OSC could not connect to port "
     + String(OSC_PORT)
     + ". Perhaps another controller instance is running?"
@@ -105,9 +111,7 @@ void Network::handleConnectError() {
 }
 
 void Network::handleDisconnectError() {
-  monitorWindow->getLog()->addMessage(
-    String("Error: OSC could not disconnect from port ") + String(OSC_PORT)
-  );
+  ToLog(String("Error: OSC could not disconnect from port ") + String(OSC_PORT));
 }
 
 bool Network::isConnected() {
@@ -122,23 +126,25 @@ void Network::timerCallback() {
       name += udpBuffer[i];
     }
 
-    if (robots.contains(name)) {
-      if (robots[name]->getIp().compareIgnoreCase(udpSender) != 0) {
-        robots[name]->setIp(udpSender);
-        monitorWindow->getLog()->addMessage(
-          "Assigned new ip " + udpSender + " to " + name
-        );
+    IDENTITY i = toIdentity(name.toRawUTF8());
+    if (isValid(i)) {
+      // TODO change condition when other robots are decided upon
+      if (i < I_ALL) {
+        if (robots[i] == nullptr) {
+          robots[i] = new Meccanoid;
+          robots[i]->setIp(udpSender).setName(name);
+          ToLog("Meccanoid " + name + " detected with address " + udpSender);
+        }
+        else {
+          if (robots[i]->getIp().compareIgnoreCase(udpSender) != 0) {
+            robots[i]->setIp(udpSender);
+            ToLog("Assigned new ip " + udpSender + " to " + name);
+          }
+        }
+        
       }
     }
-    else {
-      // TODO: not all robots will be meccanoids!
-      Meccanoid * m = new Meccanoid;
-      m->setName(name).setIp(udpSender);
-      robots.set(name, m);
-      monitorWindow->getLog()->addMessage(
-        "Meccanoid " + name + " detected with address " + udpSender
-      );
-    }
+
 
   }
 }

@@ -13,7 +13,7 @@
 
 #include "JuceHeader.h"
 
-const String PROJECT = "/pianola";
+const String PROJECT = "pianola";
 
 
 

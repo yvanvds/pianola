@@ -18,7 +18,7 @@ public:
   String getName(); Robot & setName(const String & value);
   String getIp  (); Robot & setIp  (const String & value);
 
-  virtual void handleMessage(const OSCMessage & message) = 0;
+  virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message) = 0;
 
 protected:
   String name;

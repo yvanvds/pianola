@@ -25,53 +25,37 @@ bool isValid(IDENTITY i) {
   return (i != I_NONE && i != I_INVALID);
 }
 
-ROBOT_PART toRobotPart(const char * str) {
+ACTION toAction(const char * str) {
   juce::String s(str);
 
-  if (s.compareIgnoreCase("none"     ) == 0) return RP_NONE     ;
-  if (s.compareIgnoreCase("servo1"   ) == 0) return RP_SERVO1   ;
-  if (s.compareIgnoreCase("servo2"   ) == 0) return RP_SERVO2   ;
-  if (s.compareIgnoreCase("servo3"   ) == 0) return RP_SERVO3   ;
-  if (s.compareIgnoreCase("servo4"   ) == 0) return RP_SERVO4   ;
-  if (s.compareIgnoreCase("servo5"   ) == 0) return RP_SERVO5   ;
-  if (s.compareIgnoreCase("servo6"   ) == 0) return RP_SERVO6   ;
-  if (s.compareIgnoreCase("servo7"   ) == 0) return RP_SERVO7   ;
-  if (s.compareIgnoreCase("servo8"   ) == 0) return RP_SERVO8   ;
-  if (s.compareIgnoreCase("behaviour") == 0) return RP_BEHAVIOUR;
-
-  return RP_INVALID;
+  if (s.compareIgnoreCase("none"     ) == 0) return A_NONE     ;
+  if (s.compareIgnoreCase("servo1"   ) == 0) return A_SERVO1   ;
+  if (s.compareIgnoreCase("servo2"   ) == 0) return A_SERVO2   ;
+  if (s.compareIgnoreCase("servo3"   ) == 0) return A_SERVO3   ;
+  if (s.compareIgnoreCase("servo4"   ) == 0) return A_SERVO4   ;
+  if (s.compareIgnoreCase("servo5"   ) == 0) return A_SERVO5   ;
+  if (s.compareIgnoreCase("servo6"   ) == 0) return A_SERVO6   ;
+  if (s.compareIgnoreCase("servo7"   ) == 0) return A_SERVO7   ;
+  if (s.compareIgnoreCase("servo8"   ) == 0) return A_SERVO8   ;
+  if (s.compareIgnoreCase("nod"      ) == 0) return A_NOD      ;
+  if (s.compareIgnoreCase("idle"     ) == 0) return A_IDLE     ;
+  return A_INVALID;
 }
 
-juce::String toString(ROBOT_PART p) {
-  switch (p) {
-    case RP_NONE  : return "none"  ;
-    case RP_SERVO1: return "servo1";
-    case RP_SERVO2: return "servo2";
-    case RP_SERVO3: return "servo3";
-    case RP_SERVO4: return "servo4";
-    case RP_SERVO5: return "servo5";
-    case RP_SERVO6: return "servo6";
-    case RP_SERVO7: return "servo7";
-    case RP_SERVO8: return "servo8";
+juce::String toString(ACTION a) {
+  switch (a) {
+    case A_NONE  : return "none"  ;
+    case A_SERVO1: return "servo1";
+    case A_SERVO2: return "servo2";
+    case A_SERVO3: return "servo3";
+    case A_SERVO4: return "servo4";
+    case A_SERVO5: return "servo5";
+    case A_SERVO6: return "servo6";
+    case A_SERVO7: return "servo7";
+    case A_SERVO8: return "servo8";
+    case A_NOD   : return "nod"   ;
+    case A_IDLE  : return "idle"  ;
     default       : return juce::String();
   }
 }
 
-BEHAVIOUR toBehaviour(const char * str) {
-  juce::String s(str);
-
-  if (s.compareIgnoreCase("none") == 0) return B_NONE;
-  if (s.compareIgnoreCase("nod" ) == 0) return B_NOD ;
-  if (s.compareIgnoreCase("idle") == 0) return B_IDLE;
-
-  return B_INVALID;
-}
-
-juce::String toString(BEHAVIOUR b) {
-  switch (b) {
-    case B_NONE: return "none";
-    case B_NOD : return "nod" ;
-    case B_IDLE: return "idle";
-    default    : return juce::String();
-  }
-}
