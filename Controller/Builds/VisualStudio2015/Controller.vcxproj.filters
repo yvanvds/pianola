@@ -385,6 +385,9 @@
     <ClCompile Include="..\..\Source\test.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Utilities.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClCompile>
@@ -2113,6 +2116,9 @@
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\test.h">
+      <Filter>Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utilities.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h">

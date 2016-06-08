@@ -24,6 +24,8 @@
       <FILE id="LtW15L" name="Robot.h" compile="0" resource="0" file="Source/Robot.h"/>
       <FILE id="lcTl4V" name="test.cpp" compile="1" resource="0" file="Source/test.cpp"/>
       <FILE id="vx5ygz" name="test.h" compile="0" resource="0" file="Source/test.h"/>
+      <FILE id="D1dAfW" name="Utilities.cpp" compile="1" resource="0" file="Source/Utilities.cpp"/>
+      <FILE id="v3FoSV" name="Utilities.h" compile="0" resource="0" file="Source/Utilities.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
