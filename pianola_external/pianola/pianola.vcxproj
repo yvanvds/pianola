@@ -144,9 +144,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\JUCE\modules\juce_core\juce_core.cpp" />
-    <ClCompile Include="..\..\..\JUCE\modules\juce_events\juce_events.cpp" />
-    <ClCompile Include="..\..\..\JUCE\modules\juce_osc\juce_osc.cpp" />
+    <ClCompile Include="..\..\JUCE\modules\juce_core\juce_core.cpp" />
+    <ClCompile Include="..\..\JUCE\modules\juce_events\juce_events.cpp" />
+    <ClCompile Include="..\..\JUCE\modules\juce_osc\juce_osc.cpp" />
     <ClCompile Include="dllmain_win.c" />
     <ClCompile Include="Enums.cpp" />
     <ClCompile Include="main.cpp" />

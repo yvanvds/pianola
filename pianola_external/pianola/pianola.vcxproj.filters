@@ -27,15 +27,6 @@
     <ClCompile Include="Network.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\JUCE\modules\juce_core\juce_core.cpp">
-      <Filter>JUCE</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\JUCE\modules\juce_osc\juce_osc.cpp">
-      <Filter>JUCE</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\JUCE\modules\juce_events\juce_events.cpp">
-      <Filter>JUCE</Filter>
-    </ClCompile>
     <ClCompile Include="Enums.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -44,6 +35,15 @@
     </ClCompile>
     <ClCompile Include="p_receive.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JUCE\modules\juce_core\juce_core.cpp">
+      <Filter>JUCE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JUCE\modules\juce_events\juce_events.cpp">
+      <Filter>JUCE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JUCE\modules\juce_osc\juce_osc.cpp">
+      <Filter>JUCE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
