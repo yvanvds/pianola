@@ -1,4 +1,6 @@
 from Connector import ConnectorClass
+from OSCServer import OSCServerClass
+
 import time
 
 robotName = "igor"
@@ -11,6 +13,8 @@ connector = ConnectorClass()
 
 connector.connect(robotName)
 
+server = OSCServerClass(robotName, 34567)
+server.run()
 
 
 

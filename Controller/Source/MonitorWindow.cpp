@@ -10,6 +10,7 @@
 
 #include "MonitorWindow.h"
 #include "Network.h"
+#include "Defines.h"
 
 // global ptr to window
 MonitorWindow * WindowPtr = nullptr;

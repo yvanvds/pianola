@@ -16,10 +16,11 @@ class ConnectorClass:
     self.connected = False
 
   def connect(self, id):
-    self.announce(id)
-    time.sleep(1)
-    self.waitForAcknowledge()
-    time.sleep(1)
+    while self.isConnected() == False:
+      self.announce(id)
+      time.sleep(1)
+      self.waitForAcknowledge()
+      time.sleep(1)
     print("Connected to Controller!")
 
   def announce(self, id):

@@ -13,10 +13,12 @@
 
 #include "JuceHeader.h"
 
-class Robot {
+class Robot : OSCSender {
 public:
   String getName(); Robot & setName(const String & value);
   String getIp  (); Robot & setIp  (const String & value);
+  
+  bool send(const OSCMessage & message);
 
   virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message) = 0;
 

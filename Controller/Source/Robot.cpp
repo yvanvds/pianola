@@ -9,6 +9,8 @@
 */
 
 #include "Robot.h"
+#include "Defines.h"
+
 
 String Robot::getName() {
   return name;
@@ -25,5 +27,11 @@ Robot & Robot::setName(const String & value) {
 
 Robot & Robot::setIp(const String & value) {
   ipAddress = value;
+  disconnect();
+  connect(ipAddress, OSC_PORT);
   return *this;
+}
+
+bool Robot::send(const OSCMessage & message) {
+  return OSCSender::send(message);
 }
