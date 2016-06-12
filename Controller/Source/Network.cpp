@@ -15,7 +15,9 @@
 
 Network::Network(MonitorWindow * monitorWindow)
   : oscReceiver(new OSCReceiver)
-  , udpSocket(new DatagramSocket)
+  , udpSendSocket(new DatagramSocket)
+  , udpRecvSocket(new DatagramSocket)
+  , multicastTimer(5)
   , monitorWindow(monitorWindow)
   , connected(false)
 {
@@ -33,7 +35,11 @@ Network::Network(MonitorWindow * monitorWindow)
   );
 
   // setup udp (for discovering robots on network)
-  udpSocket->bindToPort(UDP_PORT);
+  udpSendSocket->setEnablePortReuse(UDP_PORT);
+  udpSendSocket->bindToPort(UDP_PORT);
+  udpSendSocket->joinMulticast(MULTICAST);
+
+  udpRecvSocket->bindToPort(UDP_PORT + 1);
   startTimer(1000);
 }
 
@@ -45,8 +51,13 @@ Network::~Network() {
     delete robots[i];
   }
 
-  udpSocket->shutdown();
+  udpSendSocket->shutdown();
+  udpRecvSocket->shutdown();
   oscReceiver->disconnect();
+}
+
+Robot * Network::getRobot(IDENTITY i) {
+  return robots[i];
 }
 
 void Network::oscMessageReceived(const OSCMessage & message) {
@@ -118,8 +129,27 @@ bool Network::isConnected() {
   return connected;
 }
 
+void Network::requestIdentify() {
+  if (udpSendSocket->waitUntilReady(false, 5) == 1) {
+    udpSendSocket->write(MULTICAST, UDP_PORT, "identify", sizeof("identify"));
+  }
+}
+
 void Network::timerCallback() {
-  int bytesRead = udpSocket->read(&udpBuffer, 1024, false, udpSender, udpPort);
+  for (int i = 0; i < I_NUM; i++) {
+    if (robots[i] != nullptr) {
+      robots[i]->update();
+    }
+  }
+  // request client discovery on multicast address every 30 seconds
+  multicastTimer--;
+  if (multicastTimer == 0) {
+    multicastTimer = 15;
+    requestIdentify();
+  }
+
+
+  int bytesRead = udpRecvSocket->read(&udpBuffer, 1024, false, udpSender, udpPort);
   if (bytesRead > 0) {
     String name;
     for (int i = 0; i < bytesRead; i++) {
@@ -128,19 +158,15 @@ void Network::timerCallback() {
 
     IDENTITY i = toIdentity(name);
     if (isValid(i)) {
-      // acknowledge request
-      if (udpSocket->waitUntilReady(false, 5) == 1) {
-        udpSocket->write(udpSender, udpPort, "acknowledged", sizeof("acknowledged"));
-      }
-
       // TODO change condition when other robots are decided upon
       if (i < I_ALL) {
         if (robots[i] == nullptr) {
           robots[i] = new Meccanoid;
-          robots[i]->setIp(udpSender).setName(name);
+          robots[i]->setIp(udpSender).setName(name).resetLastSeen();
           ToLog("Meccanoid " + name + " detected with address " + udpSender);         
         }
         else {
+          robots[i]->resetLastSeen();
           if (robots[i]->getIp().compareIgnoreCase(udpSender) != 0) {
             robots[i]->setIp(udpSender);
             ToLog("Assigned new ip " + udpSender + " to " + name);           
@@ -152,4 +178,6 @@ void Network::timerCallback() {
 
 
   }
+
+  WindowPtr->updateRobotGui();
 }

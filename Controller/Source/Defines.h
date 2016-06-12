@@ -16,6 +16,7 @@
 const String PROJECT = "pianola";
 const int OSC_PORT = 34567;
 const int UDP_PORT = 3456;
+const String MULTICAST = "239.255.42.99";
 
 
 #endif  // DEFINES_H_INCLUDED

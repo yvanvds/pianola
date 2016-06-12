@@ -11,6 +11,10 @@
 #include "Robot.h"
 #include "Defines.h"
 
+Robot::Robot() {
+  connected = false;
+  lastSeen = 60;
+}
 
 String Robot::getName() {
   return name;
@@ -35,3 +39,14 @@ Robot & Robot::setIp(const String & value) {
 bool Robot::send(const OSCMessage & message) {
   return OSCSender::send(message);
 }
+
+Robot & Robot::update() {
+  lastSeen++;
+  return *this;
+}
+
+Robot & Robot::resetLastSeen() {
+  lastSeen = 0;
+  return *this;
+}
+

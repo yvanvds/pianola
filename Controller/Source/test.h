@@ -61,6 +61,7 @@ private:
     ScopedPointer<TextButton> textButton;
     ScopedPointer<ImageButton> imageButton;
     ScopedPointer<ToggleButton> toggleButton;
+    ScopedPointer<Drawable> drawable1;
 
 
     //==============================================================================

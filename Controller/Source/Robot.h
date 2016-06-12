@@ -15,9 +15,16 @@
 
 class Robot : OSCSender {
 public:
+  Robot();
+
+  
   String getName(); Robot & setName(const String & value);
   String getIp  (); Robot & setIp  (const String & value);
   
+  Robot & resetLastSeen();
+  int getLastSeen() { return lastSeen; }
+  Robot & update();
+  bool isConnected() { return lastSeen < 30; }
   bool send(const OSCMessage & message);
 
   virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message) = 0;
@@ -25,6 +32,8 @@ public:
 protected:
   String name;
   String ipAddress;
+  bool connected;
+  int lastSeen;
 };
 
 

@@ -2,20 +2,30 @@ from Connector import ConnectorClass
 from OSCServer import OSCServerClass
 
 import time
+import threading
 
 robotName = "igor"
-connector = ConnectorClass()
+connector = ConnectorClass(robotName)
+oscServer = OSCServerClass(robotName, 34567)
 
-""" Setup connection and announce self,
-    then wait for Controller app to acknowledge
-    our request
-"""
+# Start thread on multicast group to 
+# send our identity to the Controller
 
-connector.connect(robotName)
+class myThread(threading.Thread):
+  def __init__(self, threadID, name):
+    threading.Thread.__init__(self)
+    self.threadID = threadID
+    self.name = name
 
-server = OSCServerClass(robotName, 34567)
-server.run()
+  def run(self):
+    print("Starting " + self.name + "\n")
+    connector.checkMulticast()
 
+idThread = myThread(1, "UDP Listener Thread")
+idThread.start()
+
+# Run osc Server until app shutdown
+oscServer.run()
 
 
 

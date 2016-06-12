@@ -382,6 +382,9 @@
     <ClCompile Include="..\..\Source\Network.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\outputBox.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Robot.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
@@ -2116,6 +2119,9 @@
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Network.h">
+      <Filter>Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\outputBox.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Robot.h">
@@ -3944,6 +3950,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\meccanoid.png">
+      <Filter>Controller\resources</Filter>
+    </None>
     <None Include="..\..\Resources\led_off.png">
       <Filter>Controller\resources</Filter>
     </None>

@@ -33,8 +33,10 @@ MonitorWindow::MonitorWindow()
   , ipAddressText      (new TextEditor    )
   , copyIpButton       (new TextButton    )
   , logGroup           (new GroupComponent)
-  , logBox             (new LogBox        )
-  , network            (new Network(this) )
+  , logBox             (new LogBox             )
+  , igor               (new OutputBox(I_IGOR  ))
+  , george             (new OutputBox(I_GEORGE))
+  , network            (new Network  (this    ))
 {
  
   // environment
@@ -61,10 +63,18 @@ MonitorWindow::MonitorWindow()
   addAndMakeVisible(logGroup);
   logGroup->addAndMakeVisible(logBox);
 
+  // outputs
+  addAndMakeVisible(igor);
+  addAndMakeVisible(george);
 
-  setSize(700, 500);
+
+  setSize(720, 500);
 
   WindowPtr = this;
+}
+
+Robot * MonitorWindow::getRobot(IDENTITY i) {
+  return network->getRobot(i);
 }
 
 MonitorWindow::~MonitorWindow() {
@@ -79,7 +89,10 @@ void MonitorWindow::resized() {
   copyIpButton       ->setBounds(300, 20,  50, 30);
   
   logGroup->setBounds(10, 80, 370, 400);
-  logBox->setBounds(10, 20, 350, 370);
+  logBox  ->setBounds(10, 20, 350, 370);
+
+  igor  ->setBounds(400, 10, 300, 60);
+  george->setBounds(400, 80, 300, 60);
 }
 
 void MonitorWindow::buttonClicked(Button * b) {
@@ -133,4 +146,9 @@ void MonitorWindow::paint(Graphics & g) {
 
 LogBox * MonitorWindow::getLog() {
   return logBox.get();
+}
+
+void MonitorWindow::updateRobotGui() {
+  igor->update();
+  george->update();
 }

@@ -5,6 +5,7 @@
               jucerVersion="4.2.1">
   <MAINGROUP id="Iu5jLN" name="Controller">
     <GROUP id="{3DF32F99-F5C7-ACF6-8E97-6BB1B133C898}" name="resources">
+      <FILE id="O041HK" name="meccanoid.png" compile="0" resource="1" file="Resources/meccanoid.png"/>
       <FILE id="Zat0NI" name="led_off.png" compile="0" resource="1" file="Resources/led_off.png"/>
       <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
     </GROUP>
@@ -22,6 +23,8 @@
       <FILE id="EkS69r" name="MonitorWindow.h" compile="0" resource="0" file="Source/MonitorWindow.h"/>
       <FILE id="ymp0dM" name="Network.cpp" compile="1" resource="0" file="Source/Network.cpp"/>
       <FILE id="a6UMaa" name="Network.h" compile="0" resource="0" file="Source/Network.h"/>
+      <FILE id="IiDu9P" name="outputBox.cpp" compile="1" resource="0" file="Source/outputBox.cpp"/>
+      <FILE id="nxdVr1" name="outputBox.h" compile="0" resource="0" file="Source/outputBox.h"/>
       <FILE id="uhLIEN" name="Robot.cpp" compile="1" resource="0" file="Source/Robot.cpp"/>
       <FILE id="LtW15L" name="Robot.h" compile="0" resource="0" file="Source/Robot.h"/>
       <FILE id="lcTl4V" name="test.cpp" compile="1" resource="0" file="Source/test.cpp"/>

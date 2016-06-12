@@ -29,7 +29,9 @@ public:
   void oscMessageReceived(const OSCMessage & message) override;
   void oscBundleReceived (const OSCBundle  & bundle ) override;
 
+  void requestIdentify();
 
+  Robot * getRobot(IDENTITY i);
 
   void connect   ();
   void disconnect();
@@ -48,7 +50,9 @@ private:
   bool connected;
 
   // upd socket for client discovery
-  ScopedPointer<DatagramSocket> udpSocket;
+  ScopedPointer<DatagramSocket> udpSendSocket;
+  ScopedPointer<DatagramSocket> udpRecvSocket;
+  int multicastTimer;
   char   udpBuffer[1024];
   String udpSender;
   int    udpPort  ;

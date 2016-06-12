@@ -55,6 +55,7 @@ test::test ()
     addAndMakeVisible (toggleButton = new ToggleButton ("new toggle button"));
     toggleButton->addListener (this);
 
+    drawable1 = Drawable::createFromImageData (BinaryData::meccanoid_png, BinaryData::meccanoid_pngSize);
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -75,6 +76,7 @@ test::~test()
     textButton = nullptr;
     imageButton = nullptr;
     toggleButton = nullptr;
+    drawable1 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -88,6 +90,12 @@ void test::paint (Graphics& g)
     //[/UserPrePaint]
 
     g.fillAll (Colours::white);
+
+    g.setColour (Colours::black);
+    jassert (drawable1 != 0);
+    if (drawable1 != 0)
+        drawable1->drawWithin (g, Rectangle<float> (124, 148, 100, 100),
+                               RectanglePlacement::centred, 1.000f);
 
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
@@ -150,7 +158,10 @@ BEGIN_JUCER_METADATA
                  constructorParams="" variableInitialisers="" snapPixels="8" snapActive="1"
                  snapShown="1" overlayOpacity="0.330" fixedSize="0" initialWidth="600"
                  initialHeight="400">
-  <BACKGROUND backgroundColour="ffffffff"/>
+  <BACKGROUND backgroundColour="ffffffff">
+    <IMAGE pos="124 148 100 100" resource="BinaryData::meccanoid_png" opacity="1"
+           mode="1"/>
+  </BACKGROUND>
   <TEXTEDITOR name="new text editor" id="a4c1fc3f10c8a7e1" memberName="textEditor"
               virtualName="" explicitFocusOrder="0" pos="56 24 150 24" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"

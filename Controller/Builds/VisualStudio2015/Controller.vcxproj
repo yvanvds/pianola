@@ -135,6 +135,7 @@
     <ClCompile Include="..\..\Source\Meccanoid.cpp"/>
     <ClCompile Include="..\..\Source\MonitorWindow.cpp"/>
     <ClCompile Include="..\..\Source\Network.cpp"/>
+    <ClCompile Include="..\..\Source\outputBox.cpp"/>
     <ClCompile Include="..\..\Source\Robot.cpp"/>
     <ClCompile Include="..\..\Source\test.cpp"/>
     <ClCompile Include="..\..\Source\Utilities.cpp"/>
@@ -1709,6 +1710,7 @@
     <ClInclude Include="..\..\Source\Meccanoid.h"/>
     <ClInclude Include="..\..\Source\MonitorWindow.h"/>
     <ClInclude Include="..\..\Source\Network.h"/>
+    <ClInclude Include="..\..\Source\outputBox.h"/>
     <ClInclude Include="..\..\Source\Robot.h"/>
     <ClInclude Include="..\..\Source\test.h"/>
     <ClInclude Include="..\..\Source\Utilities.h"/>
@@ -2319,6 +2321,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\meccanoid.png"/>
     <None Include="..\..\Resources\led_off.png"/>
     <None Include="..\..\Resources\led_on.png"/>
     <None Include="..\..\..\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>

@@ -14,12 +14,16 @@
 #include "JuceHeader.h"
 #include "LogBox.h"
 #include "Network.h"
+#include "outputBox.h"
 
 class MonitorWindow : public Component, private Button::Listener {
 public:
 
   MonitorWindow();
  ~MonitorWindow();
+
+  Robot * getRobot(IDENTITY i);
+  void updateRobotGui();
 
   virtual void paint(Graphics& g);
   LogBox * getLog();
@@ -39,6 +43,10 @@ private:
   // log
   ScopedPointer<GroupComponent> logGroup;
   ScopedPointer<LogBox        > logBox  ;
+
+  // outputs
+  ScopedPointer<OutputBox> igor  ;
+  ScopedPointer<OutputBox> george;
 
   // network
   ScopedPointer<Network> network;
