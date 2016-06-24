@@ -11,6 +11,7 @@
 #include "MonitorWindow.h"
 #include "Network.h"
 #include "Defines.h"
+#include "MuteLookAndFeel.h"
 
 // global ptr to window
 MonitorWindow * WindowPtr = nullptr;
@@ -69,6 +70,8 @@ MonitorWindow::MonitorWindow()
 
 
   setSize(720, 500);
+  mlaf = new MuteLookAndFeel();
+  this->setLookAndFeel(mlaf);
 
   WindowPtr = this;
 }
@@ -141,7 +144,7 @@ void MonitorWindow::setIpAddress() {
 }
 
 void MonitorWindow::paint(Graphics & g) {
-  g.fillAll(Colours::white);
+  g.fillAll(Colours::black);
 }
 
 LogBox * MonitorWindow::getLog() {

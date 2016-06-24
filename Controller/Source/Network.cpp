@@ -35,7 +35,7 @@ Network::Network(MonitorWindow * monitorWindow)
   );
 
   // setup udp (for discovering robots on network)
-  udpSendSocket->setEnablePortReuse(UDP_PORT);
+  udpSendSocket->setEnablePortReuse(true);
   udpSendSocket->bindToPort(UDP_PORT);
   udpSendSocket->joinMulticast(MULTICAST);
 

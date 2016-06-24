@@ -15,7 +15,7 @@
 #include "Robot.h"
 #include "../../pianola_external/pianola/Enums.h"
 
-class OutputBox : public Component, private AsyncUpdater {
+class OutputBox : public Component, private AsyncUpdater, public ButtonListener {
 public:
   OutputBox(IDENTITY i);
 
@@ -24,11 +24,13 @@ public:
 
   void update();
 
-  void handleAsyncUpdate() override;
+  void buttonClicked    (Button * buttonThatWasClicked) override;
+  void handleAsyncUpdate(                             ) override;
 
 private:
   ScopedPointer<Drawable> image;
   ScopedPointer<Label> name;
+  ScopedPointer<ImageButton> initButton;
 
   IDENTITY identity;
   

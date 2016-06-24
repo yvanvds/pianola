@@ -49,7 +49,7 @@ test::test ()
     imageButton->addListener (this);
 
     imageButton->setImages (false, true, true,
-                            ImageCache::getFromMemory (BinaryData::led_off_png, BinaryData::led_off_pngSize), 1.000f, Colour (0x00000000),
+                            ImageCache::getFromMemory (BinaryData::led_off_png, BinaryData::led_off_pngSize), 1.000f, Colour (0xffce3838),
                             ImageCache::getFromMemory (BinaryData::led_on_png, BinaryData::led_on_pngSize), 1.000f, Colour (0x00000000),
                             ImageCache::getFromMemory (BinaryData::led_on_png, BinaryData::led_on_pngSize), 1.000f, Colour (0x00000000));
     addAndMakeVisible (toggleButton = new ToggleButton ("new toggle button"));
@@ -108,7 +108,7 @@ void test::resized()
 
     textEditor->setBounds (56, 24, 150, 24);
     textButton->setBounds (224, 24, 150, 24);
-    imageButton->setBounds (216, 136, 40, 40);
+    imageButton->setBounds (248, 152, 40, 40);
     toggleButton->setBounds (224, 64, 150, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
@@ -171,9 +171,9 @@ BEGIN_JUCER_METADATA
               buttonText="new button" connectedEdges="0" needsCallback="1"
               radioGroupId="0"/>
   <IMAGEBUTTON name="new button2" id="c3b1cff7837accc2" memberName="imageButton"
-               virtualName="" explicitFocusOrder="0" pos="216 136 40 40" buttonText="new button2"
+               virtualName="" explicitFocusOrder="0" pos="248 152 40 40" buttonText="new button2"
                connectedEdges="0" needsCallback="1" radioGroupId="0" keepProportions="1"
-               resourceNormal="BinaryData::led_off_png" opacityNormal="1" colourNormal="0"
+               resourceNormal="BinaryData::led_off_png" opacityNormal="1" colourNormal="ffce3838"
                resourceOver="BinaryData::led_on_png" opacityOver="1" colourOver="0"
                resourceDown="BinaryData::led_on_png" opacityDown="1" colourDown="0"/>
   <TOGGLEBUTTON name="new toggle button" id="99832484a7940f4c" memberName="toggleButton"

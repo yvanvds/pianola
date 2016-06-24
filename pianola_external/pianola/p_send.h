@@ -9,12 +9,9 @@
 #include "Network.h"
 
 CREATESTRUCT(
-  IDENTITY   id    ;
-  ACTION     action;
-  bool       valid ;
+  t_symbol * id0;
+  t_symbol * id1;
 );
 
 void * CLASSMETHOD(New  )(t_symbol * s, long argc, t_atom * argv);
-void   CLASSMETHOD(Int  )(IMPORT_T, long  n);
-void   CLASSMETHOD(Float)(IMPORT_T, float f);
-void   CLASSMETHOD(Bang )(IMPORT_T         );
+void   CLASSMETHOD(Joint)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);

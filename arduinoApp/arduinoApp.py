@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from Connector import ConnectorClass
 from OSCServer import OSCServerClass
 

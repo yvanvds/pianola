@@ -25,9 +25,7 @@ void C74_EXPORT ext_main(void * r) {
     #define ClassName p_send
     SETUP("p-send", CLASSMETHOD(New), NULL);
 
-    class_addmethod(CLASS, (method)CLASSMETHOD(Int), "int", A_LONG, 0);
-    class_addmethod(CLASS, (method)CLASSMETHOD(Float), "float", A_FLOAT, 0);
-    class_addmethod(CLASS, (method)CLASSMETHOD(Bang), "bang", 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(Joint), "joint", A_GIMME, 0);
 
     REGISTER_BOX;
   }

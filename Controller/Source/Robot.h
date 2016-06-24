@@ -34,6 +34,7 @@ protected:
   String ipAddress;
   bool connected;
   int lastSeen;
+
 };
 
 

@@ -129,14 +129,17 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ConfigFile.cpp"/>
     <ClCompile Include="..\..\..\pianola_external\pianola\Enums.cpp"/>
     <ClCompile Include="..\..\Source\LogBox.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\Meccanoid.cpp"/>
     <ClCompile Include="..\..\Source\MonitorWindow.cpp"/>
+    <ClCompile Include="..\..\Source\MuteLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\Network.cpp"/>
     <ClCompile Include="..\..\Source\outputBox.cpp"/>
     <ClCompile Include="..\..\Source\Robot.cpp"/>
+    <ClCompile Include="..\..\Source\RobotConfigWindow.cpp"/>
     <ClCompile Include="..\..\Source\test.cpp"/>
     <ClCompile Include="..\..\Source\Utilities.cpp"/>
     <ClCompile Include="..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1704,14 +1707,17 @@
     <ClCompile Include="..\..\JuceLibraryCode\juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\ConfigFile.h"/>
     <ClInclude Include="..\..\Source\Defines.h"/>
     <ClInclude Include="..\..\..\pianola_external\pianola\Enums.h"/>
     <ClInclude Include="..\..\Source\LogBox.h"/>
     <ClInclude Include="..\..\Source\Meccanoid.h"/>
     <ClInclude Include="..\..\Source\MonitorWindow.h"/>
+    <ClInclude Include="..\..\Source\MuteLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\Network.h"/>
     <ClInclude Include="..\..\Source\outputBox.h"/>
     <ClInclude Include="..\..\Source\Robot.h"/>
+    <ClInclude Include="..\..\Source\RobotConfigWindow.h"/>
     <ClInclude Include="..\..\Source\test.h"/>
     <ClInclude Include="..\..\Source\Utilities.h"/>
     <ClInclude Include="..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>
@@ -2321,6 +2327,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\cog.png"/>
     <None Include="..\..\Resources\meccanoid.png"/>
     <None Include="..\..\Resources\led_off.png"/>
     <None Include="..\..\Resources\led_on.png"/>

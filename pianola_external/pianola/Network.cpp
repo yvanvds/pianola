@@ -4,6 +4,7 @@
 
 #undef post
 #include "juce_osc.h"
+#include "juce_core.h"
 
 Network N;
 
@@ -17,28 +18,15 @@ Network::~Network() {
   delete sender;
 }
 
-void Network::sendTest() {
-  if (!sender->send("/pianola/test", 32.f)) {
-    object_post(NULL, "Unable to send OSC test message");
-  }
-  else {
-    object_post(NULL, "Test Message sent. (/pianola/test)");
-  }
-}
-
-void Network::send(p_send * obj, int i) {
+void Network::sendJoint(p_send * obj, int joint, int pos, int duration) {
   juce::String s = PROJECTNAME;
-  s += "/" + toString(obj->id) + "/" + toString(obj->action);
-  if (!sender->send(s, i)) {
-    object_post(NULL, "Unable to send OSC int message");
+  s += "/";
+  s += obj->id0->s_name;
+  s += "/";
+  s += obj->id1->s_name;
+  s += "/joint";
+
+  if(!sender->send(s, joint, pos, duration)) {
+    object_post(NULL, "Unable to send OSC message");
   }
 }
-
-void Network::send(p_send * obj, float f) {
-  juce::String s = PROJECTNAME;
-  s += "/" + toString(obj->id) + "/" + toString(obj->action);
-  if (!sender->send(s, f)) {
-    object_post(NULL, "Unable to send OSC float message");
-  }
-}
-

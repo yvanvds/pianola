@@ -15,6 +15,7 @@
 #include "LogBox.h"
 #include "Network.h"
 #include "outputBox.h"
+#include "MuteLookAndFeel.h"
 
 class MonitorWindow : public Component, private Button::Listener {
 public:
@@ -27,6 +28,8 @@ public:
 
   virtual void paint(Graphics& g);
   LogBox * getLog();
+
+  MuteLookAndFeel * getLookAndFeel() { return mlaf.get(); }
 
 private:
   void buttonClicked(Button * b) override;
@@ -50,6 +53,9 @@ private:
 
   // network
   ScopedPointer<Network> network;
+
+  // looks
+  ScopedPointer<MuteLookAndFeel> mlaf;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MonitorWindow);
 };

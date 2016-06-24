@@ -2,14 +2,12 @@ import socket
 import struct
 from Messages import Message
 
-from pythonosc import osc_message_builder, udp_client
 import time
 
 class ConnectorClass:
   """description of class"""
 
   def __init__(self, id):
-    self.ip = socket.gethostbyname(socket.gethostname())
     self.id = id
     self.recvsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
     self.recvsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -21,13 +19,14 @@ class ConnectorClass:
 
   def checkMulticast(self):
     while True:
+      time.sleep(1)
       try:
         data, self.addr = self.recvsock.recvfrom(64)
         stringdata = data.decode('ASCII')
         if stringdata == "identify\x00": 
-          self.sendsock.sendto(bytes(self.id, 'ASCII'), (self.addr[0], 3457))
-      except:
-          pass
+          self.sendsock.sendto(self.id.encode('ASCII'), (self.addr[0], 3457))
+      except socket.error as message:
+          print(message)
 
   def getAddress(self):
     return self.addr

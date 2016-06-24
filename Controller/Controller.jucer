@@ -5,11 +5,14 @@
               jucerVersion="4.2.1">
   <MAINGROUP id="Iu5jLN" name="Controller">
     <GROUP id="{3DF32F99-F5C7-ACF6-8E97-6BB1B133C898}" name="resources">
+      <FILE id="JyDq8z" name="cog.png" compile="0" resource="1" file="Resources/cog.png"/>
       <FILE id="O041HK" name="meccanoid.png" compile="0" resource="1" file="Resources/meccanoid.png"/>
       <FILE id="Zat0NI" name="led_off.png" compile="0" resource="1" file="Resources/led_off.png"/>
       <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
     </GROUP>
     <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
+      <FILE id="FVnhjo" name="ConfigFile.cpp" compile="1" resource="0" file="Source/ConfigFile.cpp"/>
+      <FILE id="jTHhwQ" name="ConfigFile.h" compile="0" resource="0" file="Source/ConfigFile.h"/>
       <FILE id="QdqZlG" name="Defines.h" compile="0" resource="0" file="Source/Defines.h"/>
       <FILE id="wHkoPT" name="Enums.cpp" compile="1" resource="0" file="../pianola_external/pianola/Enums.cpp"/>
       <FILE id="EH9xOf" name="Enums.h" compile="0" resource="0" file="../pianola_external/pianola/Enums.h"/>
@@ -21,12 +24,20 @@
       <FILE id="ReJqlA" name="MonitorWindow.cpp" compile="1" resource="0"
             file="Source/MonitorWindow.cpp"/>
       <FILE id="EkS69r" name="MonitorWindow.h" compile="0" resource="0" file="Source/MonitorWindow.h"/>
+      <FILE id="eJgQwS" name="MuteLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/MuteLookAndFeel.cpp"/>
+      <FILE id="feDbjC" name="MuteLookAndFeel.h" compile="0" resource="0"
+            file="Source/MuteLookAndFeel.h"/>
       <FILE id="ymp0dM" name="Network.cpp" compile="1" resource="0" file="Source/Network.cpp"/>
       <FILE id="a6UMaa" name="Network.h" compile="0" resource="0" file="Source/Network.h"/>
       <FILE id="IiDu9P" name="outputBox.cpp" compile="1" resource="0" file="Source/outputBox.cpp"/>
       <FILE id="nxdVr1" name="outputBox.h" compile="0" resource="0" file="Source/outputBox.h"/>
       <FILE id="uhLIEN" name="Robot.cpp" compile="1" resource="0" file="Source/Robot.cpp"/>
       <FILE id="LtW15L" name="Robot.h" compile="0" resource="0" file="Source/Robot.h"/>
+      <FILE id="eOpbZx" name="RobotConfigWindow.cpp" compile="1" resource="0"
+            file="Source/RobotConfigWindow.cpp"/>
+      <FILE id="zkVtLt" name="RobotConfigWindow.h" compile="0" resource="0"
+            file="Source/RobotConfigWindow.h"/>
       <FILE id="lcTl4V" name="test.cpp" compile="1" resource="0" file="Source/test.cpp"/>
       <FILE id="vx5ygz" name="test.h" compile="0" resource="0" file="Source/test.h"/>
       <FILE id="D1dAfW" name="Utilities.cpp" compile="1" resource="0" file="Source/Utilities.cpp"/>

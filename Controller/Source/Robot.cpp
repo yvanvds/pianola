@@ -10,6 +10,7 @@
 
 #include "Robot.h"
 #include "Defines.h"
+#include "JuceHeader.h"
 
 Robot::Robot() {
   connected = false;
@@ -49,4 +50,3 @@ Robot & Robot::resetLastSeen() {
   lastSeen = 0;
   return *this;
 }
-

@@ -1,60 +1,82 @@
 #include "p_send.h"
+#include "juce_core.h"
 
 CREATECLASSPTR;
 
 void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom * argv) {
   DECLARE_T;
-  T->id     = I_NONE;
-  T->action = A_NONE;
-  T->valid  = true  ;
+  T->id0 = gensym("");
+  T->id1 = gensym("");
+
+  if (argc < 1) {
+    object_post((t_object *)T, "Please specify a robot");
+  }
 
   // first argument should be the destination robot
   if (argc > 0) {
     if ((argv)->a_type == A_SYM) {
-      T->id = toIdentity(atom_getsym(argv)->s_name);
+      T->id0 = atom_getsym(argv);
     }
-    else T->id = I_INVALID;
-
-    if (T->id == I_INVALID) {
+    else {
       object_post((t_object *)T, "First argument (identity) is invalid");
-      T->valid = false;
     }
   }
 
   // second argument sets the destination robot part
   if (argc > 1) {
     if ((argv + 1)->a_type == A_SYM) {
-      T->action = toAction(atom_getsym(argv + 1)->s_name);
+      T->id1 = atom_getsym(argv + 1);
     }
-    else T->action = A_INVALID;
-
-    if (T->action == A_INVALID) {
-      object_post((t_object *)T, "Second argument (part) is invalid");
-      T->valid = false;
+    else {
+      object_post((t_object *)T, "Second argument (pin name) is invalid");
     }
   }
 
   return T;
 }
 
-void CLASSMETHOD(Int)(IMPORT_T, long n) {
-  if (T->valid) {
-    N.send(T, n);
+
+void CLASSMETHOD(Joint)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
+  if (T->id0 == gensym("")) {
+    object_post((t_object *)T, "Please specify a robot.");
+  }
+
+  if (T->id1 == gensym("")) {
+    object_post((t_object *)T, "No body part is specified.");
+  }
+
+  if (argc != 3) {
+    post("Joint messages must have 3 arguments: joint [0-3], position [24-232] and duration(millis).");
+    return;
+  }
+  
+  int joint    = 0;
+  int position = 0;
+  int duration = 0;
+  
+  if (atom_gettype(argv) == A_LONG) {
+    joint = (int)atom_getlong(argv);
   }
   else {
-    object_post((t_object *)T, "Failed to send int on invalid object");
+    post("First argument is not an integer.");
+    return;
   }
-}
 
-void CLASSMETHOD(Float)(IMPORT_T, float f) {
-  if (T->valid) {
-    N.send(T, f);
+  if (atom_gettype(argv + 1) == A_LONG) {
+    position = (int)atom_getlong(argv + 1);
   }
   else {
-    object_post((t_object *)T, "Failed to send float on invalid object");
+    post("Second argument is not an integer.");
+    return;
   }
-}
+  
+  if (atom_gettype(argv + 2) == A_LONG) {
+    duration = (int)atom_getlong(argv + 2);
+  }
+  else {
+    post("Third argument is not an integer.");
+    return;
+  }
 
-void CLASSMETHOD(Bang)(IMPORT_T) {
-  N.sendTest();
+  N.sendJoint(T, joint, position, duration);
 }

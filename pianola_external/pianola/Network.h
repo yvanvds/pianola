@@ -12,10 +12,7 @@ public:
   Network();
   ~Network();
 
-  void sendTest();
-
-  void send(p_send * obj, int i);
-  void send(p_send * obj, float f);
+  void sendJoint(p_send * obj, int joint, int pos, int duration);
 
 private:
   juce::OSCSender * sender;

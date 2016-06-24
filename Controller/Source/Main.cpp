@@ -30,13 +30,14 @@ public:
         // This method is where you should put your application's initialisation code..
 
         mainWindow = new MainWindow (getApplicationName());
+        
     }
 
     void shutdown() override
     {
-        // Add your application's shutdown code here..
+      // Add your application's shutdown code here..
 
-        mainWindow = nullptr; // (deletes our window)
+      mainWindow = nullptr; // (deletes our window)
     }
 
     //==============================================================================
@@ -63,12 +64,12 @@ public:
     {
     public:
         MainWindow (String name)  : DocumentWindow (name,
-                                                    Colours::lightgrey,
+                                                    Colour(0x0b, 0x09, 0x29),
                                                     DocumentWindow::allButtons)
         {
-            setUsingNativeTitleBar (true);
+            setUsingNativeTitleBar (false);
             setContentOwned (new MonitorWindow(), true);
-
+            setResizable(true, true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
         }
