@@ -38,6 +38,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\binary\</OutDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Controller</TargetName>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Controller</TargetName>
@@ -133,13 +134,13 @@
     <ClCompile Include="..\..\..\pianola_external\pianola\Enums.cpp"/>
     <ClCompile Include="..\..\Source\LogBox.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
+    <ClCompile Include="..\..\Source\MeccaBox.cpp"/>
     <ClCompile Include="..\..\Source\Meccanoid.cpp"/>
     <ClCompile Include="..\..\Source\MonitorWindow.cpp"/>
     <ClCompile Include="..\..\Source\MuteLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\Network.cpp"/>
-    <ClCompile Include="..\..\Source\outputBox.cpp"/>
     <ClCompile Include="..\..\Source\Robot.cpp"/>
-    <ClCompile Include="..\..\Source\RobotConfigWindow.cpp"/>
+    <ClCompile Include="..\..\Source\Robots.cpp"/>
     <ClCompile Include="..\..\Source\test.cpp"/>
     <ClCompile Include="..\..\Source\Utilities.cpp"/>
     <ClCompile Include="..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1711,13 +1712,13 @@
     <ClInclude Include="..\..\Source\Defines.h"/>
     <ClInclude Include="..\..\..\pianola_external\pianola\Enums.h"/>
     <ClInclude Include="..\..\Source\LogBox.h"/>
+    <ClInclude Include="..\..\Source\MeccaBox.h"/>
     <ClInclude Include="..\..\Source\Meccanoid.h"/>
     <ClInclude Include="..\..\Source\MonitorWindow.h"/>
     <ClInclude Include="..\..\Source\MuteLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\Network.h"/>
-    <ClInclude Include="..\..\Source\outputBox.h"/>
     <ClInclude Include="..\..\Source\Robot.h"/>
-    <ClInclude Include="..\..\Source\RobotConfigWindow.h"/>
+    <ClInclude Include="..\..\Source\Robots.h"/>
     <ClInclude Include="..\..\Source\test.h"/>
     <ClInclude Include="..\..\Source\Utilities.h"/>
     <ClInclude Include="..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

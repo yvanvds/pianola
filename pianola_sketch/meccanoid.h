@@ -17,27 +17,25 @@ enum CommandResponse : byte {
   CR_None
 };
 
+
 class MeccanoidClass
 {
 public:
   MeccanoidClass();
   
-  void init(byte pin);
-	void update();
-  void actionBreak(); // break long running commands
-  void setLedColor(byte pin);
-  void setMotorPos(byte pin);
-  void setServoColor(byte pin);
+  void initIfNeeded(byte pin);
+	void update      (        );
+  void actionBreak (        ); 
+  void setHeadColor (byte r  , byte g    , byte b    , byte f   );
+  void setServoPos  (byte pin, byte servo, byte pos  , byte time);
+  void setServoColor(byte pin, byte servo, byte color           );
 
 private:
-  static const byte lowestDigitalPin  = 2 ;
-  static const byte highestDigitalPin = 13;
-  static const byte lowestAnalogPin   = 0 ;
-  static const byte highestAnalogPin  = 5 ;
+  static const byte _lowestPin  = 2 ;
+  static const byte _highestPin = 13;
 
-  digitalPinClass digitalPin[highestDigitalPin + 1];
-  pinClass        analogPin [highestAnalogPin  + 1];
-
+  pinClass * _pin[_highestPin + 1];
+  pinClass * _pinWithHead;
 };
 
 extern MeccanoidClass Meccanoid;

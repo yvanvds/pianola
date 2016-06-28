@@ -12,6 +12,7 @@
 #include "Network.h"
 #include "Defines.h"
 #include "MuteLookAndFeel.h"
+#include "Robots.h"
 
 // global ptr to window
 MonitorWindow * WindowPtr = nullptr;
@@ -34,11 +35,10 @@ MonitorWindow::MonitorWindow()
   , ipAddressText      (new TextEditor    )
   , copyIpButton       (new TextButton    )
   , logGroup           (new GroupComponent)
-  , logBox             (new LogBox             )
-  , igor               (new OutputBox(I_IGOR  ))
-  , george             (new OutputBox(I_GEORGE))
-  , network            (new Network  (this    ))
+  , logBox             (new LogBox        )
 {
+
+  network = new Network(this);
  
   // environment
   detailsGroup->setText("Environment");  
@@ -64,11 +64,6 @@ MonitorWindow::MonitorWindow()
   addAndMakeVisible(logGroup);
   logGroup->addAndMakeVisible(logBox);
 
-  // outputs
-  addAndMakeVisible(igor);
-  addAndMakeVisible(george);
-
-
   setSize(720, 500);
   mlaf = new MuteLookAndFeel();
   this->setLookAndFeel(mlaf);
@@ -76,9 +71,19 @@ MonitorWindow::MonitorWindow()
   WindowPtr = this;
 }
 
-Robot * MonitorWindow::getRobot(IDENTITY i) {
-  return network->getRobot(i);
+void MonitorWindow::addRobotBoxes() {
+  // meccanoids
+  int offset = 10;
+
+  for (int i = 0; i < Robots().countMeccanoids(); i++) {
+    Meccanoid * m = Robots().getMeccanoid(i);
+    MeccaBox * box = meccanoids.add(new MeccaBox(m));
+    addAndMakeVisible(box);
+    box->setBounds(400, offset, 300, 60);
+    offset += 70;
+  }
 }
+
 
 MonitorWindow::~MonitorWindow() {
   WindowPtr = nullptr;
@@ -93,9 +98,7 @@ void MonitorWindow::resized() {
   
   logGroup->setBounds(10, 80, 370, 400);
   logBox  ->setBounds(10, 20, 350, 370);
-
-  igor  ->setBounds(400, 10, 300, 60);
-  george->setBounds(400, 80, 300, 60);
+  
 }
 
 void MonitorWindow::buttonClicked(Button * b) {
@@ -152,6 +155,7 @@ LogBox * MonitorWindow::getLog() {
 }
 
 void MonitorWindow::updateRobotGui() {
-  igor->update();
-  george->update();
+  for (int i = 0; i < meccanoids.size(); i++) {
+    meccanoids[i]->update();
+  }
 }

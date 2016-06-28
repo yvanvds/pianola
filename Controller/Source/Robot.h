@@ -24,7 +24,7 @@ public:
   Robot & resetLastSeen();
   int getLastSeen() { return lastSeen; }
   Robot & update();
-  bool isConnected() { return lastSeen < 30; }
+  bool isConnected() { return connected; }
   bool send(const OSCMessage & message);
 
   virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message) = 0;

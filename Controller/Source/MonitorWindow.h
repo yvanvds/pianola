@@ -14,7 +14,7 @@
 #include "JuceHeader.h"
 #include "LogBox.h"
 #include "Network.h"
-#include "outputBox.h"
+#include "MeccaBox.h"
 #include "MuteLookAndFeel.h"
 
 class MonitorWindow : public Component, private Button::Listener {
@@ -23,7 +23,7 @@ public:
   MonitorWindow();
  ~MonitorWindow();
 
-  Robot * getRobot(IDENTITY i);
+ void addRobotBoxes();
   void updateRobotGui();
 
   virtual void paint(Graphics& g);
@@ -48,8 +48,7 @@ private:
   ScopedPointer<LogBox        > logBox  ;
 
   // outputs
-  ScopedPointer<OutputBox> igor  ;
-  ScopedPointer<OutputBox> george;
+  OwnedArray<MeccaBox> meccanoids;
 
   // network
   ScopedPointer<Network> network;

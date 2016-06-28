@@ -12,6 +12,7 @@
 #include "MonitorWindow.h"
 #include "Defines.h"
 #include "Utilities.h"
+#include "Robots.h"
 
 Network::Network(MonitorWindow * monitorWindow)
   : oscReceiver(new OSCReceiver)
@@ -21,9 +22,6 @@ Network::Network(MonitorWindow * monitorWindow)
   , monitorWindow(monitorWindow)
   , connected(false)
 {
-  
-  // setup pointer structure for robots
-  for (int i = 0; i < I_NUM; i++) robots[i] = nullptr;
 
   // setup osc
   oscReceiver->addListener(this);
@@ -46,18 +44,9 @@ Network::Network(MonitorWindow * monitorWindow)
 Network::~Network() {
   stopTimer();
 
-  // empty robot array
-  for (int i = 0; i < I_NUM; i++) {
-    delete robots[i];
-  }
-
   udpSendSocket->shutdown();
   udpRecvSocket->shutdown();
   oscReceiver->disconnect();
-}
-
-Robot * Network::getRobot(IDENTITY i) {
-  return robots[i];
 }
 
 void Network::oscMessageReceived(const OSCMessage & message) {
@@ -69,17 +58,14 @@ void Network::oscMessageReceived(const OSCMessage & message) {
   if (tokens.size() < 3) goto unhandled; // important!!! (robot handleMessage depends on this check)
   if (tokens[0] != PROJECT) goto unhandled;
 
-  // second tokens should be identity
-  IDENTITY i = toIdentity(tokens[1]);
-  if (!isValid(i)) goto unhandled;
+  Meccanoid * m = Robots().getMeccanoid(tokens[1]);
 
-  // if robot is online, let it take care of the message
-  if (robots[i] != nullptr) {
-    robots[i]->handleMessage(tokens, message);
+  // if this is a meccanoid, let it take care of the message
+  if (m != nullptr) {
+    m->handleMessage(tokens, message);
   }
   else {
-    ToLog("Message for offline robot: ");
-    ToLog(message);
+    goto unhandled;
   }
   return;
 
@@ -136,18 +122,14 @@ void Network::requestIdentify() {
 }
 
 void Network::timerCallback() {
-  for (int i = 0; i < I_NUM; i++) {
-    if (robots[i] != nullptr) {
-      robots[i]->update();
-    }
-  }
+  Robots().update();
+  
   // request client discovery on multicast address every 30 seconds
   multicastTimer--;
   if (multicastTimer == 0) {
     multicastTimer = 15;
     requestIdentify();
   }
-
 
   int bytesRead = udpRecvSocket->read(&udpBuffer, 1024, false, udpSender, udpPort);
   if (bytesRead > 0) {
@@ -156,27 +138,16 @@ void Network::timerCallback() {
       name += udpBuffer[i];
     }
 
-    IDENTITY i = toIdentity(name);
-    if (isValid(i)) {
-      // TODO change condition when other robots are decided upon
-      if (i < I_ALL) {
-        if (robots[i] == nullptr) {
-          robots[i] = new Meccanoid;
-          robots[i]->setIp(udpSender).setName(name).resetLastSeen();
-          ToLog("Meccanoid " + name + " detected with address " + udpSender);         
-        }
-        else {
-          robots[i]->resetLastSeen();
-          if (robots[i]->getIp().compareIgnoreCase(udpSender) != 0) {
-            robots[i]->setIp(udpSender);
-            ToLog("Assigned new ip " + udpSender + " to " + name);           
-          }
-        }
-        
+    Meccanoid * m = Robots().getMeccanoid(name);
+
+    if (m != nullptr) {
+      m->resetLastSeen();
+      if (m->getIp() != udpSender) {
+        m->setIp(udpSender);
+        m->initialize();
       }
+      
     }
-
-
   }
 
   WindowPtr->updateRobotGui();

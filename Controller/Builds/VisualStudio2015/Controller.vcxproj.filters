@@ -376,6 +376,9 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\MeccaBox.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Meccanoid.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
@@ -388,13 +391,10 @@
     <ClCompile Include="..\..\Source\Network.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\outputBox.cpp">
-      <Filter>Controller\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Robot.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\RobotConfigWindow.cpp">
+    <ClCompile Include="..\..\Source\Robots.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\test.cpp">
@@ -2124,6 +2124,9 @@
     <ClInclude Include="..\..\Source\LogBox.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\MeccaBox.h">
+      <Filter>Controller\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Meccanoid.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
@@ -2136,13 +2139,10 @@
     <ClInclude Include="..\..\Source\Network.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\outputBox.h">
-      <Filter>Controller\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Robot.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\RobotConfigWindow.h">
+    <ClInclude Include="..\..\Source\Robots.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\test.h">

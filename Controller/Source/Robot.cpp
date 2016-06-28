@@ -33,16 +33,18 @@ Robot & Robot::setName(const String & value) {
 Robot & Robot::setIp(const String & value) {
   ipAddress = value;
   disconnect();
-  connect(ipAddress, OSC_PORT);
+  connected = connect(ipAddress, OSC_PORT);
   return *this;
 }
 
 bool Robot::send(const OSCMessage & message) {
-  return OSCSender::send(message);
+  if(connected) return OSCSender::send(message);
+  return false;
 }
 
 Robot & Robot::update() {
   lastSeen++;
+  connected =  (lastSeen < 30);
   return *this;
 }
 

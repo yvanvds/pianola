@@ -22,11 +22,35 @@ void Network::sendJoint(p_send * obj, int joint, int pos, int duration) {
   juce::String s = PROJECTNAME;
   s += "/";
   s += obj->id0->s_name;
-  s += "/";
+  s += "/pinMove/";
   s += obj->id1->s_name;
-  s += "/joint";
 
   if(!sender->send(s, joint, pos, duration)) {
     object_post(NULL, "Unable to send OSC message");
   }
 }
+
+void Network::sendServoLight(p_send * obj, int joint, int color) {
+  juce::String s = PROJECTNAME;
+  s += "/";
+  s += obj->id0->s_name;
+  s += "/pinLight/";
+  s += obj->id1->s_name;
+
+  if (!sender->send(s, joint, color)) {
+    object_post(NULL, "Unable to send OSC message");
+  }
+}
+
+void Network::sendHeadLight(p_send * obj, int r, int g, int b, int f) {
+  juce::String s = PROJECTNAME;
+  s += "/";
+  s += obj->id0->s_name;
+  s += "/headLight/";
+  s += obj->id1->s_name;
+
+  if (!sender->send(s, r, g, b, f)) {
+    object_post(NULL, "Unable to send OSC message");
+  }
+}
+

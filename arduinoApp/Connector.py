@@ -4,9 +4,9 @@ from Messages import Message
 
 import time
 
-class ConnectorClass:
-  """description of class"""
+#######################################################
 
+class ConnectorClass:
   def __init__(self, id):
     self.id = id
     self.recvsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -16,6 +16,8 @@ class ConnectorClass:
     self.recvsock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
 
     self.sendsock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+########################################################
 
   def checkMulticast(self):
     while True:
@@ -27,6 +29,8 @@ class ConnectorClass:
           self.sendsock.sendto(self.id.encode('ASCII'), (self.addr[0], 3457))
       except socket.error as message:
           print(message)
+
+########################################################
 
   def getAddress(self):
     return self.addr

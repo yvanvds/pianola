@@ -14,5 +14,4 @@
 
 
 
-
 #endif  // CONFIGFILE_H_INCLUDED

@@ -23,48 +23,41 @@ class pinClass {
 public:
   pinClass();
   
-  void setID(byte ID) { this->ID = ID; }
-  bool update();
+  void init  (byte ID);
+  void update(       );
 
-protected:
-  PinSetup setup;
-  byte ID;
-  
-  // latch
-  bool          latchTriggered        ;
-  unsigned long latchDebounceStartTime;
-};
-
-class digitalPinClass : public pinClass {
-public:
-  digitalPinClass();
-
-  void init();
-  void update();
-
-  byte getMotorPos(byte pos);
+  byte getMotorPos  (byte servo                                  ) const;
+  void setServoColor(byte servo, byte color                      );
+  void setServoPos  (byte servo, byte pos  , byte time           );
+  void setHeadColor (byte r    , byte g    , byte b   , byte f   );
+  bool hasHeadLight () const { return _hasHeadLight; }
   void actionBreak  ();
-  void setLedColor  ();
-  void setMotorPos  ();
-  void setServoColor();
 
 private:
-  byte communicate(byte pos);
+  byte communicate(byte pos) const;
 
-  static void sendByte        (byte pin, byte data);
-  static byte recvByte        (byte pin           );
-  
+  static void sendByte(byte pin, byte data);
+  static byte recvByte(byte pin           );
 
   // state
-  byte currentValue[4];
-  byte startValue  [4];
-  byte endValue    [4];
+  byte _currentValue[4];
+  byte _startValue  [4];
+  byte _endValue    [4];
 
-  unsigned int  duration [4];
-  unsigned long startTime[4];
+  unsigned int  _duration [4];
+  unsigned long _startTime[4];
 
-  byte data[4];
-  byte type[4];
+  byte _data[4];
+  byte _type[4];
+
+  bool _hasHeadLight;
+
+  PinSetup _setup;
+  byte     _ID   ;
+
+  // latch
+  bool          _latchTriggered        ;
+  unsigned long _latchDebounceStartTime;
 };
 
 #endif

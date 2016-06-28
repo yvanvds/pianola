@@ -6,6 +6,9 @@ class fakeBridge:
     def put(self, key, value):
       print(key + ": " + value)
 
+    def get(self, key):
+      return ""
+
 
       
 

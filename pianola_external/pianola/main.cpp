@@ -25,7 +25,9 @@ void C74_EXPORT ext_main(void * r) {
     #define ClassName p_send
     SETUP("p-send", CLASSMETHOD(New), NULL);
 
-    class_addmethod(CLASS, (method)CLASSMETHOD(Joint), "joint", A_GIMME, 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(Joint    ), "joint"    , A_GIMME, 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(Light    ), "light"    , A_GIMME, 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(HeadLight), "headlight", A_GIMME, 0);
 
     REGISTER_BOX;
   }

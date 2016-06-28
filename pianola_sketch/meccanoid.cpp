@@ -5,52 +5,51 @@
 #include "meccanoid.h"
 
 MeccanoidClass::MeccanoidClass() {
-  for (byte pin = 0; pin <= highestDigitalPin; pin++) {
-    digitalPin[pin].setID(pin);
+  for (byte pin = 0; pin <= _highestPin; pin++) {
+    _pin[pin] = nullptr;
   }
-
-  for (byte pin = 0; pin <= highestAnalogPin; pin++) {
-    analogPin[pin].setID(pin);
-  }
+  _pinWithHead = nullptr;
 }
 
-void MeccanoidClass::init(byte pin) {
-  if (pin >= lowestDigitalPin && pin <= highestDigitalPin) {
-    digitalPin[pin].init();
+void MeccanoidClass::initIfNeeded(byte pin) {
+  if (pin >= _lowestPin && pin <= _highestPin) {
+    if (_pin[pin] == nullptr) {
+      _pin[pin] = new pinClass;
+      _pin[pin]->init(pin);
+      if (_pin[pin]->hasHeadLight()) {
+        _pinWithHead = _pin[pin];
+      }
+    } 
   }
 }
 
 void MeccanoidClass::update() {
-  for (byte pin = lowestDigitalPin; pin <= highestDigitalPin; pin++) {
-    digitalPin[pin].update();
-  }
-
-  for (byte pin = lowestAnalogPin; pin <= highestAnalogPin; pin++) {
-    analogPin[pin].update();
+  for (byte pin = _lowestPin; pin <= _highestPin; pin++) {
+    if (_pin[pin] != nullptr) {
+      _pin[pin]->update();
+    }
   }
 }
 
 void MeccanoidClass::actionBreak() {
-  for (byte pin = lowestDigitalPin; pin <= highestDigitalPin; pin++) {
-    digitalPin[pin].actionBreak();
+  for (byte pin = _lowestPin; pin <= _highestPin; pin++) {
+    if (_pin[pin] != nullptr) _pin[pin]->actionBreak();
   }
 }
 
-void MeccanoidClass::setLedColor(byte pin) {
-  if (pin >= lowestDigitalPin && pin <= highestDigitalPin) {
-    digitalPin[pin].setLedColor();
+void MeccanoidClass::setServoColor(byte pin, byte servo, byte color) {
+  if (pin >= _lowestPin && pin <= _highestPin) {
+    if (_pin[pin] != nullptr) _pin[pin]->setServoColor(servo, color);
   }
 }
 
-void MeccanoidClass::setServoColor(byte pin) {
-  if (pin >= lowestDigitalPin && pin <= highestDigitalPin) {
-    digitalPin[pin].setServoColor();
-  }
+void MeccanoidClass::setHeadColor(byte r, byte g, byte b, byte f) {
+  if (_pinWithHead != nullptr) _pinWithHead->setHeadColor(r, g, b, f);
 }
 
-void MeccanoidClass::setMotorPos(byte pin) {
-  if (pin >= lowestDigitalPin && pin <= highestDigitalPin) {
-    digitalPin[pin].setMotorPos();
+void MeccanoidClass::setServoPos(byte pin, byte servo, byte pos, byte time) {
+  if (pin >= _lowestPin && pin <= _highestPin) {
+    if (_pin[pin] != nullptr) _pin[pin]->setServoPos(servo, pos, time);
   }
 }
 

@@ -7,62 +7,65 @@ from MeccaBridge import MeccaBridge
 def handle_timeout(self):
     self.timed_out = True
 
-class OSCServerClass:
+########################################################################
 
+class OSCServerClass:
   def __init__(self, id, port):
     self.robot = id
 
     self.bridge = MeccaBridge()
 
-    self.server = OSCServer((socket.gethostbyname(socket.gethostname()), port))
+    #self.server = OSCServer((socket.gethostbyname(socket.gethostname()), port))
+    self.server = OSCServer(("192.168.1.142", port))
     self.server.timeout = 0
     self.active = True
     self.server.handle_timeout = types.MethodType(handle_timeout, self.server)
 
-    self.server.addMsgHandler("/" + self.robot + "/servo1", self.servo1Handler)
-    self.server.addMsgHandler("/" + self.robot + "/servo2", self.servo2Handler)
-    self.server.addMsgHandler("/" + self.robot + "/servo3", self.servo3Handler)
-    self.server.addMsgHandler("/" + self.robot + "/servo4", self.servo4Handler)
-    self.server.addMsgHandler("/" + self.robot + "/servo5", self.servo5Handler)
-    self.server.addMsgHandler("/" + self.robot + "/servo6", self.servo6Handler)
-    self.server.addMsgHandler("/" + self.robot + "/servo7", self.servo7Handler)
-    self.server.addMsgHandler("/" + self.robot + "/servo8", self.servo8Handler)
+    self.server.addMsgHandler("/" + self.robot + "/pinMove"  , self.pinMoveHandler  )
+    self.server.addMsgHandler("/" + self.robot + "/pinLight" , self.pinLightHandler )
+    self.server.addMsgHandler("/" + self.robot + "/init"     , self.initHandler     )
+    self.server.addMsgHandler("/" + self.robot + "/headLight", self.headLightHandler)
 
-    self.server.addMsgHandler("/" + self.robot + "/init", self.initHandler)
+    self.gotMessage = False
     
+#######################################################################
+
   def run(self):
     print("serving on {}".format(self.server.server_address))
     self.server.running = True
     while self.server.running:
-      self.server.handle_request()
-      time.sleep(0.001);
+      while True:
+        self.server.handle_request()
+        if not self.gotMessage:
+          break
+        self.gotMessage = False
 
-  def servo1Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(0, 0, args[0], 100)
+      self.bridge.sendMessages()
+      time.sleep(0.01);
 
-  def servo2Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(0, 1, args[0], 100)
+######################################################################
 
-  def servo3Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(0, 2, args[0], 100)
+  def pinMoveHandler(self, path, tags, args, source):
+    #print(path + "\n")
+    #print ', '.join(map(str, args))
+    self.bridge.sendServoPosition(args[0], args[1], args[2], args[3])
+    self.gotMessage = True
+ 
+######################################################################    
+       
+  def pinLightHandler(self, path, tags, args, source):
+    self.bridge.sendPinLight(args[0], args[1], args[2])
+    self.gotMessage = True
 
-  def servo4Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(1, 0, args[0], 100)
-
-  def servo5Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(1, 1, args[0], 100)
-
-  def servo6Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(1, 2, args[0], 100)
-
-  def servo7Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(2, 0, args[0], 100)
-
-  def servo8Handler(self, path, tags, args, source):
-    self.bridge.sendServoPosition(2, 1, args[0], 100)
+######################################################################
 
   def initHandler(self, path, tags, args, source):
-    self.bridge.sendInit()
+    self.bridge.sendInit(args[0], args[1])
+    self.gotMessage = True
 
+######################################################################
 
+  def headLightHandler(self, path, targs, args, source):
+    self.bridge.sendHeadLight(args[0], args[1], args[2], args[3])
+    self.gotMessage = True
 

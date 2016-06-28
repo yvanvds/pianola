@@ -19,6 +19,8 @@
       <FILE id="PpCP9L" name="LogBox.cpp" compile="1" resource="0" file="Source/LogBox.cpp"/>
       <FILE id="Fnk8Wr" name="LogBox.h" compile="0" resource="0" file="Source/LogBox.h"/>
       <FILE id="bEiuLF" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="QWrJDD" name="MeccaBox.cpp" compile="1" resource="0" file="Source/MeccaBox.cpp"/>
+      <FILE id="Ck0a4O" name="MeccaBox.h" compile="0" resource="0" file="Source/MeccaBox.h"/>
       <FILE id="oT5nuZ" name="Meccanoid.cpp" compile="1" resource="0" file="Source/Meccanoid.cpp"/>
       <FILE id="LHV8Fo" name="Meccanoid.h" compile="0" resource="0" file="Source/Meccanoid.h"/>
       <FILE id="ReJqlA" name="MonitorWindow.cpp" compile="1" resource="0"
@@ -30,14 +32,10 @@
             file="Source/MuteLookAndFeel.h"/>
       <FILE id="ymp0dM" name="Network.cpp" compile="1" resource="0" file="Source/Network.cpp"/>
       <FILE id="a6UMaa" name="Network.h" compile="0" resource="0" file="Source/Network.h"/>
-      <FILE id="IiDu9P" name="outputBox.cpp" compile="1" resource="0" file="Source/outputBox.cpp"/>
-      <FILE id="nxdVr1" name="outputBox.h" compile="0" resource="0" file="Source/outputBox.h"/>
       <FILE id="uhLIEN" name="Robot.cpp" compile="1" resource="0" file="Source/Robot.cpp"/>
       <FILE id="LtW15L" name="Robot.h" compile="0" resource="0" file="Source/Robot.h"/>
-      <FILE id="eOpbZx" name="RobotConfigWindow.cpp" compile="1" resource="0"
-            file="Source/RobotConfigWindow.cpp"/>
-      <FILE id="zkVtLt" name="RobotConfigWindow.h" compile="0" resource="0"
-            file="Source/RobotConfigWindow.h"/>
+      <FILE id="GHQgJD" name="Robots.cpp" compile="1" resource="0" file="Source/Robots.cpp"/>
+      <FILE id="gDzAGu" name="Robots.h" compile="0" resource="0" file="Source/Robots.h"/>
       <FILE id="lcTl4V" name="test.cpp" compile="1" resource="0" file="Source/test.cpp"/>
       <FILE id="vx5ygz" name="test.h" compile="0" resource="0" file="Source/test.h"/>
       <FILE id="D1dAfW" name="Utilities.cpp" compile="1" resource="0" file="Source/Utilities.cpp"/>
@@ -72,7 +70,7 @@
     <VS2015 targetFolder="Builds/VisualStudio2015">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="Controller"/>
+                       isDebug="1" optimisation="1" targetName="Controller" binaryPath="binary"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="0" optimisation="3" targetName="Controller"/>
       </CONFIGURATIONS>

@@ -12,7 +12,6 @@
 #define NETWORK_H_INCLUDED
 
 #include "JuceHeader.h"
-#include "Robot.h"
 #include "Meccanoid.h"
 #include "../../pianola_external/pianola/Enums.h"
 
@@ -30,8 +29,6 @@ public:
   void oscBundleReceived (const OSCBundle  & bundle ) override;
 
   void requestIdentify();
-
-  Robot * getRobot(IDENTITY i);
 
   void connect   ();
   void disconnect();
@@ -56,9 +53,6 @@ private:
   char   udpBuffer[1024];
   String udpSender;
   int    udpPort  ;
-
-  // robots
-  Robot * robots[I_NUM];
 
   // for visual feedback
   MonitorWindow * monitorWindow;

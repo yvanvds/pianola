@@ -12,7 +12,9 @@ public:
   Network();
   ~Network();
 
-  void sendJoint(p_send * obj, int joint, int pos, int duration);
+  void sendJoint     (p_send * obj, int joint, int pos  , int time       );
+  void sendServoLight(p_send * obj, int joint, int color                 );
+  void sendHeadLight (p_send * obj, int r    , int g    , int b   , int f);
 
 private:
   juce::OSCSender * sender;

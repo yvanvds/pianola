@@ -13,5 +13,7 @@ CREATESTRUCT(
   t_symbol * id1;
 );
 
-void * CLASSMETHOD(New  )(t_symbol * s, long argc, t_atom * argv);
-void   CLASSMETHOD(Joint)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
+void * CLASSMETHOD(New      )(          t_symbol * s, long argc, t_atom *argv);
+void   CLASSMETHOD(Joint    )(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
+void   CLASSMETHOD(Light    )(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
+void   CLASSMETHOD(HeadLight)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);

@@ -12,15 +12,25 @@
 #define MECCANOID_H_INCLUDED
 
 #include "Robot.h"
+#include "JuceHeader.h"
 
 class Meccanoid : public Robot {
 public:
+  Meccanoid();
+
   virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message);
 
-private:
-  void forwardMessage(const OSCMessage & message, const String & action);
+  void initialize();
 
-  
+  bool           getPinStatus(int pin); Meccanoid & setPinStatus(int pin, bool           status);
+  const String & getPinName  (int pin); Meccanoid & setPinName  (int pin, const String & name  );
+  int            getPin(const String & name); // uses offset!!!
+
+private:
+
+  bool pinStatus[13];
+  String pinName[13];
+
 };
 
 

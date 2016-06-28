@@ -68,7 +68,9 @@ public:
                                                     DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (false);
-            setContentOwned (new MonitorWindow(), true);
+            MonitorWindow * window = new MonitorWindow();
+            window->addRobotBoxes();
+            setContentOwned (window, true);
             setResizable(true, true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);

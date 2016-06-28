@@ -1,0 +1,9 @@
+<pianola>
+	<meccanoids>
+		<igor>
+			<pin name="left"  id="2" />
+			<pin name="head"  id="3" />
+			<pin name="right" id="4" />
+		</igor>
+	</meccanoids>
+</pianola>

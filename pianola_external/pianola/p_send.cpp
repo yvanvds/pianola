@@ -71,7 +71,7 @@ void CLASSMETHOD(Joint)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
   }
   
   if (atom_gettype(argv + 2) == A_LONG) {
-    duration = (int)atom_getlong(argv + 2);
+    duration = (int)atom_getlong(argv + 2) / 100;
   }
   else {
     post("Third argument is not an integer.");
@@ -79,4 +79,88 @@ void CLASSMETHOD(Joint)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
   }
 
   N.sendJoint(T, joint, position, duration);
+}
+
+void CLASSMETHOD(Light)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
+  if (T->id0 == gensym("")) {
+    object_post((t_object *)T, "Please specify a robot.");
+  }
+
+  if (T->id1 == gensym("")) {
+    object_post((t_object *)T, "No body part is specified.");
+  }
+
+  if (argc != 2) {
+    post("Light messages must have 2 arguments: joint [0-3] and color [0-7]");
+    return;
+  }
+
+  int joint = 0;
+  int color = 0;
+
+  if (atom_gettype(argv) == A_LONG) {
+    joint = (int)atom_getlong(argv);
+  }
+  else {
+    post("First argument is not an integer.");
+    return;
+  }
+
+  if (atom_gettype(argv + 1) == A_LONG) {
+    color = (int)atom_getlong(argv + 1);
+  }
+  else {
+    post("Second argument is not an integer.");
+    return;
+  }
+
+  N.sendServoLight(T, joint, color);
+}
+
+void CLASSMETHOD(HeadLight)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
+  if (T->id0 == gensym("")) {
+    object_post((t_object *)T, "Please specify a robot.");
+  }
+
+  if (argc != 4) {
+    post("HeadLight messages must have 4 arguments: r g b f");
+    return;
+  }
+
+  int r, g, b, f;
+  r=g=b=f=0;
+
+  if (atom_gettype(argv) == A_LONG) {
+    r = (int)atom_getlong(argv);
+  }
+  else {
+    post("First argument is not an integer.");
+    return;
+  }
+
+  if (atom_gettype(argv + 1) == A_LONG) {
+    g = (int)atom_getlong(argv + 1);
+  }
+  else {
+    post("Second argument is not an integer.");
+    return;
+  }
+
+  if (atom_gettype(argv + 2) == A_LONG) {
+    b = (int)atom_getlong(argv + 2);
+  }
+  else {
+    post("Third argument is not an integer.");
+    return;
+  }
+
+  if (atom_gettype(argv + 3) == A_LONG) {
+    f = (int)atom_getlong(argv + 3);
+  }
+  else {
+    post("Second argument is not an integer.");
+    return;
+  }
+
+  N.sendHeadLight(T, r, g, b, f);
 }
