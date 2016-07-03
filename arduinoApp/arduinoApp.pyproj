@@ -39,6 +39,9 @@
     <Compile Include="Messages.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="setup.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OSCServer.py">
       <SubType>Code</SubType>
     </Compile>

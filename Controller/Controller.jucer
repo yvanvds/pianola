@@ -11,8 +11,6 @@
       <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
     </GROUP>
     <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
-      <FILE id="FVnhjo" name="ConfigFile.cpp" compile="1" resource="0" file="Source/ConfigFile.cpp"/>
-      <FILE id="jTHhwQ" name="ConfigFile.h" compile="0" resource="0" file="Source/ConfigFile.h"/>
       <FILE id="QdqZlG" name="Defines.h" compile="0" resource="0" file="Source/Defines.h"/>
       <FILE id="wHkoPT" name="Enums.cpp" compile="1" resource="0" file="../pianola_external/pianola/Enums.cpp"/>
       <FILE id="EH9xOf" name="Enums.h" compile="0" resource="0" file="../pianola_external/pianola/Enums.h"/>
@@ -32,6 +30,10 @@
             file="Source/MuteLookAndFeel.h"/>
       <FILE id="ymp0dM" name="Network.cpp" compile="1" resource="0" file="Source/Network.cpp"/>
       <FILE id="a6UMaa" name="Network.h" compile="0" resource="0" file="Source/Network.h"/>
+      <FILE id="LoL2io" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
+      <FILE id="jSEfRR" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
+      <FILE id="JIwi5G" name="Poses.cpp" compile="1" resource="0" file="Source/Poses.cpp"/>
+      <FILE id="DVVQYh" name="Poses.h" compile="0" resource="0" file="Source/Poses.h"/>
       <FILE id="uhLIEN" name="Robot.cpp" compile="1" resource="0" file="Source/Robot.cpp"/>
       <FILE id="LtW15L" name="Robot.h" compile="0" resource="0" file="Source/Robot.h"/>
       <FILE id="GHQgJD" name="Robots.cpp" compile="1" resource="0" file="Source/Robots.cpp"/>

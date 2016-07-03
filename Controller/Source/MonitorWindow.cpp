@@ -39,6 +39,7 @@ MonitorWindow::MonitorWindow()
 {
 
   network = new Network(this);
+  
  
   // environment
   detailsGroup->setText("Environment");  
@@ -47,7 +48,7 @@ MonitorWindow::MonitorWindow()
   toggleConnectButton->setButtonText("On/Off");
   toggleConnectButton->addListener(this);
   detailsGroup->addAndMakeVisible(toggleConnectButton);
-
+  toggleConnectButton->setToggleState(true, NotificationType::dontSendNotification);
   ipLabel->setText("Address", dontSendNotification);
   detailsGroup->addAndMakeVisible(ipLabel);
 
@@ -69,6 +70,9 @@ MonitorWindow::MonitorWindow()
   this->setLookAndFeel(mlaf);
 
   WindowPtr = this;
+
+  network->connect();
+  setIpAddress();
 }
 
 void MonitorWindow::addRobotBoxes() {
@@ -147,7 +151,7 @@ void MonitorWindow::setIpAddress() {
 }
 
 void MonitorWindow::paint(Graphics & g) {
-  g.fillAll(Colours::black);
+  g.fillAll(Colour(50, 50, 50));
 }
 
 LogBox * MonitorWindow::getLog() {

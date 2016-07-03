@@ -62,6 +62,10 @@ void robots::loadMeccanoids(XmlElement * content) {
   }
 }
 
+void robots::loadPoses(XmlElement * content) {
+
+}
+
 Meccanoid * robots::addMeccanoid(const String & name) {
   Meccanoid * m = meccanoids.add(new Meccanoid());
   m->setName(name);

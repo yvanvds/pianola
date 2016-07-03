@@ -164,3 +164,35 @@ void CLASSMETHOD(HeadLight)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
 
   N.sendHeadLight(T, r, g, b, f);
 }
+
+void CLASSMETHOD(Pose)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
+  if (T->id0 == gensym("")) {
+    object_post((t_object *)T, "Please specify a robot.");
+  }
+
+  if (argc < 2) {
+    post("Pose messages must have a name(symbol) and optionally a duration(int)");
+    return;
+  }
+
+  const char * pose;
+  int duration = 0;
+
+  if (atom_gettype(argv) == A_SYM) {
+    pose = atom_getsym(argv)->s_name;
+  }
+  else {
+    post("First argument is not a symbol.");
+    return;
+  }
+
+  if (argc > 1 && atom_gettype(argv + 1) == A_LONG) {
+    duration = (int)atom_getlong(argv + 1) / 100;
+  }
+  else {
+    duration = 1;
+  }
+
+
+  N.sendPose(T, pose, duration);
+}

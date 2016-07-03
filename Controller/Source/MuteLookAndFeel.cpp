@@ -13,9 +13,14 @@
 MuteLookAndFeel::MuteLookAndFeel() {
   setColour(Label::textColourId, Colours::white);
   setColour(juce::ToggleButton::textColourId, Colours::white);
-  setColour(DocumentWindow::backgroundColourId, Colours::black);
+  //setColour(Component::Colourid)
+  // setColour(DocumentWindow::backgroundColourId, Colour(50,50,50));
   setColour(GroupComponent::outlineColourId, Colours::deepskyblue);
   setColour(GroupComponent::textColourId, Colours::deepskyblue);
+
+  ledOff = Drawable::createFromImageData(BinaryData::led_off_png, BinaryData::led_off_pngSize);
+  ledOn = Drawable::createFromImageData(BinaryData::led_on_png, BinaryData::led_on_pngSize);
+
 }
 
 void MuteLookAndFeel::drawRoundThumb(Graphics& g, const float x, const float y,
@@ -76,11 +81,39 @@ void MuteLookAndFeel::drawButtonBackground(Graphics& g, Button& button, const Co
 
     if (!button.getToggleState())
     {
-      g.setColour(outlineColour);
-      g.strokePath(outline, PathStrokeType(lineThickness));
+      //g.setColour(outlineColour);
+      //g.strokePath(outline, PathStrokeType(lineThickness));
     }
   }
 }
+
+void MuteLookAndFeel::drawToggleButton(Graphics & g, ToggleButton & button, bool isMouseOverButton, bool isButtonDown) {
+
+
+  float fontSize = jmin(15.0f, button.getHeight() * 0.75f);
+  const float tickWidth = fontSize * 1.1f;
+
+  drawTickBox(g, button, 4.0f, (button.getHeight() - tickWidth) * 0.5f,
+    tickWidth, tickWidth,
+    button.getToggleState(),
+    button.isEnabled(),
+    isMouseOverButton,
+    isButtonDown);
+
+  g.setColour(button.findColour(ToggleButton::textColourId));
+  g.setFont(fontSize);
+
+  if (!button.isEnabled())
+    g.setOpacity(0.5f);
+
+  const int textX = (int)tickWidth + 14;
+
+  g.drawFittedText(button.getButtonText(),
+    textX, 0,
+    button.getWidth() - textX - 2, button.getHeight(),
+    Justification::centredLeft, 10);
+}
+
 
 void MuteLookAndFeel::drawTickBox(Graphics& g, Component& component,
   float x, float y, float w, float h,
@@ -89,24 +122,29 @@ void MuteLookAndFeel::drawTickBox(Graphics& g, Component& component,
   bool isMouseOverButton,
   bool isButtonDown)
 {
-  const float boxSize = w * 0.7f;
+//  const float boxSize = w * 0.7f;
 
-  bool isDownOrDragging = component.isEnabled() && (component.isMouseOverOrDragging() || component.isMouseButtonDown());
-  const Colour colour(component.findColour(TextButton::buttonColourId).withMultipliedSaturation((component.hasKeyboardFocus(false) || isDownOrDragging) ? 1.3f : 0.9f)
-    .withMultipliedAlpha(component.isEnabled() ? 1.0f : 0.7f));
+//  bool isDownOrDragging = component.isEnabled() && (component.isMouseOverOrDragging() || component.isMouseButtonDown());
+//  const Colour colour(component.findColour(TextButton::buttonColourId).withMultipliedSaturation((component.hasKeyboardFocus(false) || isDownOrDragging) ? 1.3f : 0.9f)
+//    .withMultipliedAlpha(component.isEnabled() ? 1.0f : 0.7f));
 
-  drawRoundThumb(g, x, y + (h - boxSize) * 0.5f, boxSize, colour,
-    isEnabled ? ((isButtonDown || isMouseOverButton) ? 1.1f : 0.5f) : 0.3f);
+//  drawRoundThumb(g, x, y + (h - boxSize) * 0.5f, boxSize, colour,
+//    isEnabled ? ((isButtonDown || isMouseOverButton) ? 1.1f : 0.5f) : 0.3f);
 
   if (ticked)
   {
-    const Path tick(LookAndFeel_V2::getTickShape(6.0f));
-    g.setColour(isEnabled ? findColour(TextButton::buttonOnColourId) : Colours::grey);
+ //   const Path tick(LookAndFeel_V2::getTickShape(6.0f));
+ //   g.setColour(isEnabled ? findColour(TextButton::buttonOnColourId) : Colours::grey);
 
-    const float scale = 9.0f;
-    const AffineTransform trans(AffineTransform::scale(w / scale, h / scale)
-      .translated(x - 2.5f, y + 1.0f));
-    g.fillPath(tick, trans);
+//    const float scale = 9.0f;
+//    const AffineTransform trans(AffineTransform::scale(w / scale, h / scale)
+//      .translated(x - 2.5f, y + 1.0f));
+ //   g.fillPath(tick, trans);
+    ledOn->drawWithin(g, Rectangle<float>(1, 3, w * 1.5, h * 1.5), RectanglePlacement::centred, 1.f);
+  }
+
+  else {
+    ledOff->drawWithin(g, Rectangle<float>(1, 3, w * 1.5, h * 1.5), RectanglePlacement::centred, 1.f);
   }
 }
 

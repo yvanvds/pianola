@@ -62,7 +62,7 @@ class MeccaBridge:
       self.message[MB.PIN_ID2] = pinID
     elif pinNr == 3:
       self.pin3 = pinID
-      self.message[MB.PIN_ID2] = pinID
+      self.message[MB.PIN_ID3] = pinID
 
 ###########################################################
 

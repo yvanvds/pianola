@@ -11,6 +11,7 @@
 #include "Robot.h"
 #include "Defines.h"
 #include "JuceHeader.h"
+#include "MonitorWindow.h"
 
 Robot::Robot() {
   connected = false;
@@ -38,6 +39,7 @@ Robot & Robot::setIp(const String & value) {
 }
 
 bool Robot::send(const OSCMessage & message) {
+  ToLog(message);
   if(connected) return OSCSender::send(message);
   return false;
 }

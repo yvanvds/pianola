@@ -54,3 +54,13 @@ void Network::sendHeadLight(p_send * obj, int r, int g, int b, int f) {
   }
 }
 
+void Network::sendPose(p_send * obj, const char * pose, int time) {
+  juce::String s = PROJECTNAME;
+  s += "/";
+  s += obj->id0->s_name;
+  s += "/pose";
+
+  if (!sender->send(s, juce::String(pose), time)) {
+    object_post(NULL, "Unable to send OSC message");
+  }
+}

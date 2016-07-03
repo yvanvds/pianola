@@ -14,22 +14,23 @@ BridgeControllerClass::BridgeControllerClass()
 }
 
 void BridgeControllerClass::start() {
+  delay(20000);
   Bridge.begin();
   Bridge.put(MESSAGE, newMessages);
   Serial.println("Bridge Started.");
 
   // start python script  
-  //p.begin("/mnt/sda/runScript");
-  //p.addParameter("&");
-  //p.runAsynchronously();
-  //Serial.println("Yun script started.");
+  p.begin("/mnt/sda/runScript");
+  p.addParameter("&");
+  p.runAsynchronously();
+  Serial.println("Yun script started.");
 }
 
 void BridgeControllerClass::update() {
   // forward script output to serial monitor
-  //while(p.available() > 0) {
-  //  Serial.print(p.read());
-  //}
+  while(p.available() > 0) {
+    Serial.print(p.read());
+  }
 
   Bridge.get(MESSAGE, newMessages, MB_NUM);
   

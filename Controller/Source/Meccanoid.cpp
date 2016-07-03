@@ -12,6 +12,7 @@
 #include "JuceHeader.h"
 #include "Defines.h"
 #include "MonitorWindow.h"
+#include "Poses.h"
 
 Meccanoid::Meccanoid() {
   for (int i = 0; i < 13; i++) {
@@ -79,6 +80,14 @@ void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & m
       out.addInt32(message[i].getInt32());
     }
     send(out);
+  }
+  else if (tokens[2] == "pose") {
+    if (message.size() > 1) {
+      String pose = message[0].getString();
+      int time = message[1].getInt32();
+
+      Poses().sendPoseToRobot(pose, time, *this);
+    }
   }
 }
 

@@ -28,6 +28,7 @@ void C74_EXPORT ext_main(void * r) {
     class_addmethod(CLASS, (method)CLASSMETHOD(Joint    ), "joint"    , A_GIMME, 0);
     class_addmethod(CLASS, (method)CLASSMETHOD(Light    ), "light"    , A_GIMME, 0);
     class_addmethod(CLASS, (method)CLASSMETHOD(HeadLight), "headlight", A_GIMME, 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(Pose     ), "pose"     , A_GIMME, 0);
 
     REGISTER_BOX;
   }

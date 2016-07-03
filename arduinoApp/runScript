@@ -1,0 +1,2 @@
+#!/bin/ash
+/mnt/sda/arduinoApp.py &

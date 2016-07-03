@@ -10,13 +10,12 @@ def handle_timeout(self):
 ########################################################################
 
 class OSCServerClass:
-  def __init__(self, id, port):
+  def __init__(self, id, ip, port):
     self.robot = id
 
     self.bridge = MeccaBridge()
 
-    #self.server = OSCServer((socket.gethostbyname(socket.gethostname()), port))
-    self.server = OSCServer(("192.168.1.142", port))
+    self.server = OSCServer((ip, port))
     self.server.timeout = 0
     self.active = True
     self.server.handle_timeout = types.MethodType(handle_timeout, self.server)

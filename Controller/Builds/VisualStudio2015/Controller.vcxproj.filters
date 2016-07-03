@@ -364,9 +364,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\ConfigFile.cpp">
-      <Filter>Controller\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\pianola_external\pianola\Enums.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
@@ -389,6 +386,12 @@
       <Filter>Controller\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Network.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Pose.cpp">
+      <Filter>Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Poses.cpp">
       <Filter>Controller\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Robot.cpp">
@@ -2112,9 +2115,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\ConfigFile.h">
-      <Filter>Controller\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Defines.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
@@ -2137,6 +2137,12 @@
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Network.h">
+      <Filter>Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Pose.h">
+      <Filter>Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Poses.h">
       <Filter>Controller\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Robot.h">

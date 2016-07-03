@@ -14,6 +14,7 @@
 #include "JuceHeader.h"
 
 struct MuteLookAndFeel : public LookAndFeel_V3 {
+public:
   MuteLookAndFeel();
 
 
@@ -29,6 +30,8 @@ struct MuteLookAndFeel : public LookAndFeel_V3 {
     bool isEnabled,
     bool isMouseOverButton,
     bool isButtonDown) override;
+
+  void drawToggleButton(Graphics &, ToggleButton &, bool isMouseOverbutton, bool isButtonDown);
 
   void drawLinearSliderThumb(Graphics& g, int x, int y, int width, int height,
     float sliderPos, float minSliderPos, float maxSliderPos,
@@ -46,6 +49,10 @@ struct MuteLookAndFeel : public LookAndFeel_V3 {
 
   void drawRotarySlider(Graphics& g, int x, int y, int width, int height, float sliderPos,
     float rotaryStartAngle, float rotaryEndAngle, Slider& slider) override;
+
+private:
+  ScopedPointer<Drawable> ledOff;
+  ScopedPointer<Drawable> ledOn;
 };
 
 

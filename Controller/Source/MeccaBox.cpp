@@ -16,6 +16,7 @@
 MeccaBox::MeccaBox(Meccanoid * ptr)
   : image(nullptr)
   , nameLabel(new Label)
+  , ipLabel(new Label)
   , initButton(nullptr)
   , meccaPtr(ptr)
 {
@@ -23,6 +24,9 @@ MeccaBox::MeccaBox(Meccanoid * ptr)
 
   nameLabel->setText(ptr->getName(), dontSendNotification);
   this->addAndMakeVisible(nameLabel);
+
+  ipLabel->setText(String("IP: ") + ptr->getIp(), dontSendNotification);
+  this->addAndMakeVisible(ipLabel);
 
   initButton = new ImageButton("init");
   initButton->setImages(false, true, true,
@@ -37,15 +41,16 @@ MeccaBox::MeccaBox(Meccanoid * ptr)
 
 void MeccaBox::resized() {
   nameLabel->setBounds(60, 5, 200, 40);
+  ipLabel->setBounds(60, 25, 200, 40);
   initButton->setBounds(275, 5, 20, 20);
 }
 
 void MeccaBox::paint(Graphics & g) {
   if (meccaPtr == nullptr || !meccaPtr->isConnected()) {
-    g.fillAll(Colours::indianred);
+    g.fillAll(Colour(60, 0, 0));
   }
   else {
-    g.fillAll(Colours::lightgreen);
+    g.fillAll(Colour(0,60,0));
  }
   
   if (image.get() != nullptr) {
@@ -60,6 +65,7 @@ void MeccaBox::handleAsyncUpdate() {
 void MeccaBox::update() {
   int lastSeen = meccaPtr->getLastSeen();
   nameLabel->setText(meccaPtr->getName() + " (" + String(lastSeen) + ")", dontSendNotification);
+  ipLabel->setText(String("IP: ") + meccaPtr->getIp(), dontSendNotification);
   triggerAsyncUpdate();
 }
 

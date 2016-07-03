@@ -27,6 +27,7 @@ public:
 
 private:
   void loadMeccanoids(XmlElement * content);
+  void loadPoses     (XmlElement * content);  
 
   OwnedArray<Meccanoid> meccanoids;
 };
