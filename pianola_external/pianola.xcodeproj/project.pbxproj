@@ -1,0 +1,233 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C9BADB11D29AE3F00CD83A8 /* defines.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C9BADA61D29AE3F00CD83A8 /* defines.h */; };
+		3C9BADB21D29AE3F00CD83A8 /* dllmain_win.c in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BADA71D29AE3F00CD83A8 /* dllmain_win.c */; };
+		3C9BADB31D29AE3F00CD83A8 /* Enums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BADA81D29AE3F00CD83A8 /* Enums.cpp */; };
+		3C9BADB41D29AE3F00CD83A8 /* Enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C9BADA91D29AE3F00CD83A8 /* Enums.h */; };
+		3C9BADB51D29AE3F00CD83A8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BADAA1D29AE3F00CD83A8 /* main.cpp */; };
+		3C9BADB61D29AE3F00CD83A8 /* Network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BADAB1D29AE3F00CD83A8 /* Network.cpp */; };
+		3C9BADB71D29AE3F00CD83A8 /* Network.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C9BADAC1D29AE3F00CD83A8 /* Network.h */; };
+		3C9BADB81D29AE3F00CD83A8 /* p_receive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BADAD1D29AE3F00CD83A8 /* p_receive.cpp */; };
+		3C9BADB91D29AE3F00CD83A8 /* p_receive.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C9BADAE1D29AE3F00CD83A8 /* p_receive.h */; };
+		3C9BADBA1D29AE3F00CD83A8 /* p_send.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BADAF1D29AE3F00CD83A8 /* p_send.cpp */; };
+		3C9BADBB1D29AE3F00CD83A8 /* p_send.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C9BADB01D29AE3F00CD83A8 /* p_send.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2FBBEAE508F335360078DB84 /* .bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = .bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C9BADA41D29AE2F00CD83A8 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = maxmspsdk.xcconfig; sourceTree = "<group>"; };
+		3C9BADA61D29AE3F00CD83A8 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = pianola/defines.h; sourceTree = "<group>"; };
+		3C9BADA71D29AE3F00CD83A8 /* dllmain_win.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dllmain_win.c; path = pianola/dllmain_win.c; sourceTree = "<group>"; };
+		3C9BADA81D29AE3F00CD83A8 /* Enums.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enums.cpp; path = pianola/Enums.cpp; sourceTree = "<group>"; };
+		3C9BADA91D29AE3F00CD83A8 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enums.h; path = pianola/Enums.h; sourceTree = "<group>"; };
+		3C9BADAA1D29AE3F00CD83A8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = pianola/main.cpp; sourceTree = "<group>"; };
+		3C9BADAB1D29AE3F00CD83A8 /* Network.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Network.cpp; path = pianola/Network.cpp; sourceTree = "<group>"; };
+		3C9BADAC1D29AE3F00CD83A8 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Network.h; path = pianola/Network.h; sourceTree = "<group>"; };
+		3C9BADAD1D29AE3F00CD83A8 /* p_receive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = p_receive.cpp; path = pianola/p_receive.cpp; sourceTree = "<group>"; };
+		3C9BADAE1D29AE3F00CD83A8 /* p_receive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = p_receive.h; path = pianola/p_receive.h; sourceTree = "<group>"; };
+		3C9BADAF1D29AE3F00CD83A8 /* p_send.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = p_send.cpp; path = pianola/p_send.cpp; sourceTree = "<group>"; };
+		3C9BADB01D29AE3F00CD83A8 /* p_send.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = p_send.h; path = pianola/p_send.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FBBEADC08F335360078DB84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* iterator */ = {
+			isa = PBXGroup;
+			children = (
+				3C9BADA61D29AE3F00CD83A8 /* defines.h */,
+				3C9BADA71D29AE3F00CD83A8 /* dllmain_win.c */,
+				3C9BADA81D29AE3F00CD83A8 /* Enums.cpp */,
+				3C9BADA91D29AE3F00CD83A8 /* Enums.h */,
+				3C9BADAA1D29AE3F00CD83A8 /* main.cpp */,
+				3C9BADAB1D29AE3F00CD83A8 /* Network.cpp */,
+				3C9BADAC1D29AE3F00CD83A8 /* Network.h */,
+				3C9BADAD1D29AE3F00CD83A8 /* p_receive.cpp */,
+				3C9BADAE1D29AE3F00CD83A8 /* p_receive.h */,
+				3C9BADAF1D29AE3F00CD83A8 /* p_send.cpp */,
+				3C9BADB01D29AE3F00CD83A8 /* p_send.h */,
+				3C9BADA41D29AE2F00CD83A8 /* maxmspsdk.xcconfig */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = iterator;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FBBEAE508F335360078DB84 /* .bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2FBBEAD708F335360078DB84 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C9BADBB1D29AE3F00CD83A8 /* p_send.h in Headers */,
+				3C9BADB11D29AE3F00CD83A8 /* defines.h in Headers */,
+				3C9BADB71D29AE3F00CD83A8 /* Network.h in Headers */,
+				3C9BADB41D29AE3F00CD83A8 /* Enums.h in Headers */,
+				3C9BADB91D29AE3F00CD83A8 /* p_receive.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2FBBEAD608F335360078DB84 /* max-external */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */;
+			buildPhases = (
+				2FBBEAD708F335360078DB84 /* Headers */,
+				2FBBEAD808F335360078DB84 /* Resources */,
+				2FBBEADA08F335360078DB84 /* Sources */,
+				2FBBEADC08F335360078DB84 /* Frameworks */,
+				2FBBEADF08F335360078DB84 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "max-external";
+			productName = iterator;
+			productReference = 2FBBEAE508F335360078DB84 /* .bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+			};
+			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "pianola" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* iterator */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FBBEAD608F335360078DB84 /* max-external */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FBBEAD808F335360078DB84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		2FBBEADF08F335360078DB84 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FBBEADA08F335360078DB84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C9BADB81D29AE3F00CD83A8 /* p_receive.cpp in Sources */,
+				3C9BADB31D29AE3F00CD83A8 /* Enums.cpp in Sources */,
+				3C9BADBA1D29AE3F00CD83A8 /* p_send.cpp in Sources */,
+				3C9BADB21D29AE3F00CD83A8 /* dllmain_win.c in Sources */,
+				3C9BADB61D29AE3F00CD83A8 /* Network.cpp in Sources */,
+				3C9BADB51D29AE3F00CD83A8 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2FBBEAD008F335010078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Development;
+		};
+		2FBBEAD108F335010078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		2FBBEAE108F335360078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_LDFLAGS = "$(C74_SYM_LINKER_FLAGS)";
+			};
+			name = Development;
+		};
+		2FBBEAE208F335360078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				OTHER_LDFLAGS = "$(C74_SYM_LINKER_FLAGS)";
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "pianola" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAD008F335010078DB84 /* Development */,
+				2FBBEAD108F335010078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAE108F335360078DB84 /* Development */,
+				2FBBEAE208F335360078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

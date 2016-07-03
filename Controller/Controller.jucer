@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="BGJ8WI" name="Controller" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.yourcompany.Controller" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.1">
+              jucerVersion="4.2.2">
   <MAINGROUP id="Iu5jLN" name="Controller">
     <GROUP id="{3DF32F99-F5C7-ACF6-8E97-6BB1B133C898}" name="resources">
       <FILE id="JyDq8z" name="cog.png" compile="0" resource="1" file="Resources/cog.png"/>

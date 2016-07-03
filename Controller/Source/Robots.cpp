@@ -17,13 +17,16 @@ robots & Robots() {
 }
 
 robots::robots() {
-  XmlDocument doc(File::getCurrentWorkingDirectory().getChildFile("config.xml"));
+    File config = File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+    config = config.getParentDirectory();
+    config = config.getChildFile("config.xml");
+    XmlDocument doc(config);
   ScopedPointer<XmlElement> xml(doc.getDocumentElement());
 
   if (xml == nullptr) {
     AlertWindow::showMessageBoxAsync(AlertWindow::WarningIcon
         , "Warning"
-        , "No config.xml file present"
+        , "Missing file: " + config.getFullPathName()
     );
     return;
   }

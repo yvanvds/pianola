@@ -53,12 +53,13 @@ void Network::oscMessageReceived(const OSCMessage & message) {
   // tokenize addressPattern
   Array<String> tokens;
   OSCTokenize(tokens, message.getAddressPattern().toString());
+  Meccanoid * m = nullptr;
 
   // all AddressPatterns should at least be 3 parts, first is project name
   if (tokens.size() < 3) goto unhandled; // important!!! (robot handleMessage depends on this check)
   if (tokens[0] != PROJECT) goto unhandled;
 
-  Meccanoid * m = Robots().getMeccanoid(tokens[1]);
+  m = Robots().getMeccanoid(tokens[1]);
 
   // if this is a meccanoid, let it take care of the message
   if (m != nullptr) {

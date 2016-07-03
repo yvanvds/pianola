@@ -16,7 +16,10 @@ poses & Poses() {
 }
 
 poses::poses() {
-  XmlDocument doc(File::getCurrentWorkingDirectory().getChildFile("config.xml"));
+  File config = File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+  config = config.getParentDirectory();
+  config = config.getChildFile("config.xml");
+  XmlDocument doc(config);
   ScopedPointer<XmlElement> xml(doc.getDocumentElement());
 
   if (xml == nullptr) {
