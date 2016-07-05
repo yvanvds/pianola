@@ -26,7 +26,7 @@ public:
  void addRobotBoxes();
   void updateRobotGui();
 
-  virtual void paint(Graphics& g);
+  virtual void paint(Graphics& g) override;
   LogBox * getLog();
 
   MuteLookAndFeel * getLookAndFeel() { return mlaf.get(); }

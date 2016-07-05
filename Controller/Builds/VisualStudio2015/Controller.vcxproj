@@ -130,7 +130,6 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\pianola_external\pianola\Enums.cpp"/>
     <ClCompile Include="..\..\Source\LogBox.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\MeccaBox.cpp"/>
@@ -1710,7 +1709,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Defines.h"/>
-    <ClInclude Include="..\..\..\pianola_external\pianola\Enums.h"/>
     <ClInclude Include="..\..\Source\LogBox.h"/>
     <ClInclude Include="..\..\Source\MeccaBox.h"/>
     <ClInclude Include="..\..\Source\Meccanoid.h"/>

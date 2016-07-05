@@ -13,7 +13,7 @@
 
 #include "JuceHeader.h"
 #include "Meccanoid.h"
-#include "../../pianola_external/pianola/Enums.h"
+
 
 
 

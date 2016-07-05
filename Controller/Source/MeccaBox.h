@@ -13,14 +13,14 @@
 
 #include "JuceHeader.h"
 #include "Meccanoid.h"
-#include "../../pianola_external/pianola/Enums.h"
+
 
 class MeccaBox : public Component, private AsyncUpdater, public ButtonListener {
 public:
   MeccaBox(Meccanoid * ptr);
 
-  virtual void resized();
-  virtual void paint(Graphics & g);
+  virtual void resized() override;
+  virtual void paint(Graphics & g) override;
 
   void update();
 

@@ -31,7 +31,7 @@ public:
     bool isMouseOverButton,
     bool isButtonDown) override;
 
-  void drawToggleButton(Graphics &, ToggleButton &, bool isMouseOverbutton, bool isButtonDown);
+  void drawToggleButton(Graphics &, ToggleButton &, bool isMouseOverbutton, bool isButtonDown) override;
 
   void drawLinearSliderThumb(Graphics& g, int x, int y, int width, int height,
     float sliderPos, float minSliderPos, float maxSliderPos,
