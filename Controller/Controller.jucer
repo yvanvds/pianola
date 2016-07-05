@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="BGJ8WI" name="Controller" projectType="guiapp" version="1.0.0"
-              bundleIdentifier="com.yourcompany.Controller" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.2">
-  <MAINGROUP id="Iu5jLN" name="Controller">
+<JUCERPROJECT id="BGJ8WI" name="Pianola Controller" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.mute.Controller" includeBinaryInAppConfig="1"
+              jucerVersion="4.2.3" companyName="Mute" companyWebsite="www.mutecode.com"
+              companyEmail="info@mutecode.com">
+  <MAINGROUP id="Iu5jLN" name="Pianola Controller">
     <GROUP id="{3DF32F99-F5C7-ACF6-8E97-6BB1B133C898}" name="resources">
       <FILE id="JyDq8z" name="cog.png" compile="0" resource="1" file="Resources/cog.png"/>
       <FILE id="O041HK" name="meccanoid.png" compile="0" resource="1" file="Resources/meccanoid.png"/>
@@ -67,12 +68,12 @@
         <MODULEPATH id="juce_osc" path="../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2015 targetFolder="Builds/VisualStudio2015">
+    <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="O041HK" bigIcon="O041HK">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="Controller" binaryPath="binary"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="Controller"/>
+                       isDebug="0" optimisation="3" targetName="Controller" binaryPath="binary"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../JUCE/modules"/>

@@ -13,9 +13,10 @@ BEGIN
   BEGIN
     BLOCK "040904E4"
     BEGIN
-      VALUE "FileDescription",  "Controller\0"
+      VALUE "CompanyName",  "Mute\0"
+      VALUE "FileDescription",  "Pianola Controller\0"
       VALUE "FileVersion",  "1.0.0\0"
-      VALUE "ProductName",  "Controller\0"
+      VALUE "ProductName",  "Pianola Controller\0"
       VALUE "ProductVersion",  "1.0.0\0"
     END
   END
@@ -27,3 +28,6 @@ BEGIN
 END
 
 #endif
+
+IDI_ICON1 ICON DISCARDABLE "icon.ico"
+IDI_ICON2 ICON DISCARDABLE "icon.ico"
