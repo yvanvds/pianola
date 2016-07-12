@@ -15,7 +15,8 @@
 
 const String PROJECT = "pianola";
 const int OSC_PORT = 34567;
-const int UDP_PORT = 3456;
+const int MULTICAST_PORT = 3456;
+const int MESSAGE_PORT = 3457;
 const String MULTICAST = "239.255.42.99";
 
 

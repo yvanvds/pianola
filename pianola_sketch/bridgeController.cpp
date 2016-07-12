@@ -14,7 +14,11 @@ BridgeControllerClass::BridgeControllerClass()
 }
 
 void BridgeControllerClass::start() {
-  delay(20000);
+  for(byte i = 0; i < 6; i++) {
+    delay(5000);
+    Serial.println("Waiting for bridge: " + String(30 - 5*i));
+  }
+  
   Bridge.begin();
   Bridge.put(MESSAGE, newMessages);
   Serial.println("Bridge Started.");
@@ -27,15 +31,16 @@ void BridgeControllerClass::start() {
 }
 
 void BridgeControllerClass::update() {
+  int startTime = millis();
   // forward script output to serial monitor
-  while(p.available() > 0) {
-    Serial.print(p.read());
-  }
-
+  //while(p.available() > 0) {
+  //  Serial.print(p.read());
+  //}
   Bridge.get(MESSAGE, newMessages, MB_NUM);
   
   // different value means there is a new message
   if (newMessages[MB_CHANGE] != oldMessages[MB_CHANGE]) {
+    
     // print message for debug
     //for(byte i = 0; i < MB_NUM; i++) {
     //  Serial.print(String((unsigned char)newMessages[i]) + ",");
@@ -148,15 +153,17 @@ void BridgeControllerClass::update() {
     /////////////////////
     // head light
     /////////////////////
-    if ( newMessages[MB_LIGHT_R] != oldMessages[MB_LIGHT_R]
+    /*if ( newMessages[MB_LIGHT_R] != oldMessages[MB_LIGHT_R]
       || newMessages[MB_LIGHT_G] != oldMessages[MB_LIGHT_G]
       || newMessages[MB_LIGHT_B] != oldMessages[MB_LIGHT_B]
       || newMessages[MB_LIGHT_F] != oldMessages[MB_LIGHT_F]
       ) {
       Meccanoid.setHeadColor(newMessages[MB_LIGHT_R], newMessages[MB_LIGHT_G], newMessages[MB_LIGHT_B], newMessages[MB_LIGHT_F]);
-    }
+    }*/
 
     strcpy(oldMessages, newMessages);
+    int duration = millis() - startTime;
+    Serial.println("time for update: " + String(duration));
   }
 }
 

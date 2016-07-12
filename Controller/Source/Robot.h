@@ -25,7 +25,10 @@ public:
   int getLastSeen() { return lastSeen; }
   Robot & update();
   bool isConnected() { return connected; }
+  
+  void assignSocket(DatagramSocket * socket);
   bool send(const OSCMessage & message);
+  bool send(const void * sourceBuffer, int buffersize); // sends over udp socket
 
   virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message) = 0;
 
@@ -34,7 +37,7 @@ protected:
   String ipAddress;
   bool connected;
   int lastSeen;
-
+  DatagramSocket * socket;
 };
 
 

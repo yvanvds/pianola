@@ -14,6 +14,7 @@
 #include "MonitorWindow.h"
 
 Robot::Robot() {
+  socket = nullptr;
   connected = false;
   lastSeen = 60;
 }
@@ -38,9 +39,23 @@ Robot & Robot::setIp(const String & value) {
   return *this;
 }
 
+void Robot::assignSocket(DatagramSocket * socket)
+{
+  this->socket = socket;
+}
+
 bool Robot::send(const OSCMessage & message) {
   ToLog(message);
   if(connected) return OSCSender::send(message);
+  return false;
+}
+
+bool Robot::send(const void * sourceBuffer, int buffersize)
+{
+  if (socket != nullptr) {
+    socket->write(ipAddress, MESSAGE_PORT, sourceBuffer, buffersize);
+    return true;
+  }
   return false;
 }
 

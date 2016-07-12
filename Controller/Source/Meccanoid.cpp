@@ -13,6 +13,7 @@
 #include "Defines.h"
 #include "MonitorWindow.h"
 #include "Poses.h"
+#include "../../Shared/Messages.h"
 
 Meccanoid::Meccanoid() {
   for (int i = 0; i < 13; i++) {
@@ -28,24 +29,24 @@ void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & m
       ToLog("Invalid pin message");
     }
     else {
+      // pin move needs 4 bytes:
+      // message - pin - position - duration
+
+      unsigned char out[4];
+      out[0] = (unsigned char) MESSAGE::SERVO;
+
       int pin = getPin(tokens[3]);
       if (pin == -1) {
         ToLog("Invalid pin identifier: " + tokens[3]);
       }
       else {
-        // construct pin message
-        juce::OSCMessage out(OSCAddressPattern("/" + name + "/pinMove"));
-        
-        // add pin ID
-        out.addInt32(pin);
+        // the actual pin is the sum of the base pin (like left arm)
+        // and the joint on that arm
+        out[1] = (unsigned char)(pin + message[0].getInt32());
+        out[2] = (unsigned char)(message[1].getInt32());
+        out[3] = (unsigned char)(message[2].getInt32());
 
-        // copy arguments (should be joint - position - duration)
-        for (int i = 0; i < message.size(); i++) {
-          out.addInt32(message[i].getInt32());
-        }
-
-        // send message
-        send(out);
+        send(&out, 4);
       }
     }
   }
@@ -118,19 +119,8 @@ int Meccanoid::getPin(const String & name) {
 }
 
 void Meccanoid::initialize() {
-  int current = 1;
-  for (int i = 0; i < 13; i++) {
-    if (pinStatus[i]) {
-      juce::OSCMessage message("/" + getName() + "/init");
-      message.addInt32(current);
-      message.addInt32(i);
-      send(message);
-      current++;
-    }
-  }
-
-  if (current > 4) {
-    ToLog("Warning on " + name + ": only 3 pins are currently supported");
-  }
+  unsigned char out[1];
+  out[0] = (unsigned char) MESSAGE::INIT;
+  send(&out, 1);
 }
 

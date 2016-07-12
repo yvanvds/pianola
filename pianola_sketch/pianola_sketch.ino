@@ -3,7 +3,7 @@
 #include <Bridge.h>
 #include "bridgeController.h"
 
-
+int previousTime = 0;
 
 void setup()
 {
@@ -27,4 +27,9 @@ void loop()
 
   // update the meccanoid if needed
   Meccanoid.update();
+
+  int updateDuration = millis() - previousTime;
+  //if(updateDuration > 100) 
+  //Serial.println("update needed " + String(updateDuration) + "Ms");
+  previousTime = millis();
 }

@@ -24,7 +24,7 @@ public:
   pinClass();
   
   void init  (byte ID);
-  void update(       );
+  bool update(       );
 
   byte getMotorPos  (byte servo                                  ) const;
   void setServoColor(byte servo, byte color                      );

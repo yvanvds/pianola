@@ -16,8 +16,8 @@
 
 Network::Network(MonitorWindow * monitorWindow)
   : oscReceiver(new OSCReceiver)
-  , udpSendSocket(new DatagramSocket)
-  , udpRecvSocket(new DatagramSocket)
+  , udpMulticastSocket(new DatagramSocket)
+  , udpMessageSocket(new DatagramSocket)
   , multicastTimer(5)
   , monitorWindow(monitorWindow)
   , connected(false)
@@ -33,19 +33,19 @@ Network::Network(MonitorWindow * monitorWindow)
   );
 
   // setup udp (for discovering robots on network)
-  udpSendSocket->setEnablePortReuse(true);
-  udpSendSocket->bindToPort(UDP_PORT);
-  udpSendSocket->joinMulticast(MULTICAST);
+  udpMulticastSocket->setEnablePortReuse(true);
+  udpMulticastSocket->bindToPort(MULTICAST_PORT);
+  udpMulticastSocket->joinMulticast(MULTICAST);
 
-  udpRecvSocket->bindToPort(UDP_PORT + 1);
+  udpMessageSocket->bindToPort(MESSAGE_PORT);
   startTimer(1000);
 }
 
 Network::~Network() {
   stopTimer();
 
-  udpSendSocket->shutdown();
-  udpRecvSocket->shutdown();
+  udpMulticastSocket->shutdown();
+  udpMessageSocket->shutdown();
   oscReceiver->disconnect();
 }
 
@@ -117,8 +117,8 @@ bool Network::isConnected() {
 }
 
 void Network::requestIdentify() {
-  if (udpSendSocket->waitUntilReady(false, 5) == 1) {
-    udpSendSocket->write(MULTICAST, UDP_PORT, "identify", sizeof("identify"));
+  if (udpMulticastSocket->waitUntilReady(false, 5) == 1) {
+    udpMulticastSocket->write(MULTICAST, MULTICAST_PORT, "identify", sizeof("identify"));
   }
 }
 
@@ -132,7 +132,7 @@ void Network::timerCallback() {
     requestIdentify();
   }
 
-  int bytesRead = udpRecvSocket->read(&udpBuffer, 1024, false, udpSender, udpPort);
+  int bytesRead = udpMessageSocket->read(&udpBuffer, 1024, false, udpSender, udpPort);
   if (bytesRead > 0) {
     String name;
     for (int i = 0; i < bytesRead; i++) {
@@ -146,6 +146,7 @@ void Network::timerCallback() {
       if (m->getIp() != udpSender) {
         m->setIp(udpSender);
         m->initialize();
+        m->assignSocket(udpMessageSocket.get());
       }
       
     }

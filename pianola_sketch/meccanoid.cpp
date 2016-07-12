@@ -24,10 +24,17 @@ void MeccanoidClass::initIfNeeded(byte pin) {
 }
 
 void MeccanoidClass::update() {
+  int startTime = millis();
+  bool printTime = false;
   for (byte pin = _lowestPin; pin <= _highestPin; pin++) {
     if (_pin[pin] != nullptr) {
-      _pin[pin]->update();
+      if(_pin[pin]->update()) printTime = true;
     }
+  }
+
+  if(printTime) {
+    int duration = millis() - startTime;
+    Serial.println("Servo update: " + String(duration));
   }
 }
 

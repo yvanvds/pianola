@@ -47,8 +47,8 @@ private:
   bool connected;
 
   // upd socket for client discovery
-  ScopedPointer<DatagramSocket> udpSendSocket;
-  ScopedPointer<DatagramSocket> udpRecvSocket;
+  ScopedPointer<DatagramSocket> udpMulticastSocket;
+  ScopedPointer<DatagramSocket> udpMessageSocket;
   int multicastTimer;
   char   udpBuffer[1024];
   String udpSender;

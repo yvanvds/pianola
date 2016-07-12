@@ -114,7 +114,7 @@ void pinClass::init(byte ID) {
   }
 }
 
-void pinClass::update() {
+bool pinClass::update() {
 
   if (_setup == PS_Meccanoid) {
     // change servo values
@@ -144,8 +144,10 @@ void pinClass::update() {
 
     if (doUpdate) {
       communicate(0);
+      return true;
     }
   }
+  return false;
 }
 
 byte pinClass::communicate(byte pos) const {
@@ -173,7 +175,7 @@ byte pinClass::communicate(byte pos) const {
 
   // receive input
   input = recvByte(_ID);
-  delay(10);
+  delay(5);
   return input;
 }
 
