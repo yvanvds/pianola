@@ -36,6 +36,7 @@ MonitorWindow::MonitorWindow()
   , copyIpButton       (new TextButton    )
   , logGroup           (new GroupComponent)
   , logBox             (new LogBox        )
+  , reloadButton       (new TextButton    )
 {
 
   network = new Network(this);
@@ -58,7 +59,12 @@ MonitorWindow::MonitorWindow()
   detailsGroup->addAndMakeVisible(ipAddressText);
 
   copyIpButton->setButtonText("Copy");
+  copyIpButton->addListener(this);
   detailsGroup->addAndMakeVisible(copyIpButton);
+
+  reloadButton->setButtonText("Reload Config");
+  reloadButton->addListener(this);
+  detailsGroup->addAndMakeVisible(reloadButton);
 
   // log
   logGroup->setText("Log");
@@ -94,14 +100,15 @@ MonitorWindow::~MonitorWindow() {
 }
 
 void MonitorWindow::resized() {
-  detailsGroup       ->setBounds( 10, 10, 370, 60);
-  toggleConnectButton->setBounds( 10, 20,  70, 30);
-  ipLabel            ->setBounds( 90, 20,  50, 30);
-  ipAddressText      ->setBounds(150, 20, 140, 30);
-  copyIpButton       ->setBounds(300, 20,  50, 30);
+  detailsGroup       ->setBounds( 10, 10, 370, 120);
+  toggleConnectButton->setBounds( 10, 20,  70,  30);
+  ipLabel            ->setBounds( 90, 20,  50,  30);
+  ipAddressText      ->setBounds(150, 20, 140,  30);
+  copyIpButton       ->setBounds(300, 20,  50,  30);
+  reloadButton->setBounds(10, 70, 100, 30);
   
-  logGroup->setBounds(10, 80, 370, 400);
-  logBox  ->setBounds(10, 20, 350, 370);
+  logGroup->setBounds(10, 140, 370, 360);
+  logBox  ->setBounds(10,  20, 350, 330);
   
 }
 
@@ -132,6 +139,10 @@ void MonitorWindow::buttonClicked(Button * b) {
 
   if (b == copyIpButton) {
     SystemClipboard::copyTextToClipboard(ipAddressText->getText());
+  }
+
+  if (b == reloadButton) {
+    Robots().reloadConfig();
   }
 }
 

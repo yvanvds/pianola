@@ -42,6 +42,7 @@ private:
   ScopedPointer<Label         > ipLabel            ;
   ScopedPointer<TextEditor    > ipAddressText      ;
   ScopedPointer<TextButton    > copyIpButton       ;
+  ScopedPointer<TextButton    > reloadButton       ;
 
   // log
   ScopedPointer<GroupComponent> logGroup;

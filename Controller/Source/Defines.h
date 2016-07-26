@@ -19,5 +19,6 @@ const int MULTICAST_PORT = 3456;
 const int MESSAGE_PORT = 3457;
 const String MULTICAST = "239.255.42.99";
 
+const unsigned int SERVO_COUNT = 16;
 
 #endif  // DEFINES_H_INCLUDED

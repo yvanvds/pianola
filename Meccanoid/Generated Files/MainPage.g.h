@@ -11,7 +11,7 @@ namespace Windows {
     namespace UI {
         namespace Xaml {
             namespace Controls {
-                ref class TextBox;
+                ref class TextBlock;
             }
         }
     }
@@ -32,7 +32,83 @@ namespace Meccanoid
     private:
         bool _contentLoaded;
     
-        private: ::Windows::UI::Xaml::Controls::TextBox^ logBox;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lName;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy1;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lConnected;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy3;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy4;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy5;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy6;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy7;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy8;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy9;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy10;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy11;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy12;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy13;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy14;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy15;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy16;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy17;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy18;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy19;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy20;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos0;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed0;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos1;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos2;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos3;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos4;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos5;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos6;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos7;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos8;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos9;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos10;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos11;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos12;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos13;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos14;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPos15;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed1;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed2;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed3;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed4;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed5;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed6;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed7;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed8;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed9;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed10;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed11;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed12;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed13;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed14;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lSpeed15;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy53;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lCycle;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock_Copy55;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget0;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget1;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget2;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget3;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget4;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget5;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget6;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget7;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget8;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget9;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget10;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget11;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget12;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget13;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget14;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lTarget15;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lIPlabel;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lIP_Copy;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lIP;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ lPort;
     };
 }
 

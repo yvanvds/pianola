@@ -10,6 +10,7 @@
 
 #include "Robots.h"
 #include "JuceHeader.h"
+#include "Servo.h"
 
 robots & Robots() {
   static robots r;
@@ -17,16 +18,21 @@ robots & Robots() {
 }
 
 robots::robots() {
-    File config = File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
-    config = config.getParentDirectory();
-    config = config.getChildFile("config.xml");
-    XmlDocument doc(config);
+  reloadConfig();
+}
+
+void robots::reloadConfig()
+{
+  File config = File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+  config = config.getParentDirectory();
+  config = config.getChildFile("config.xml");
+  XmlDocument doc(config);
   ScopedPointer<XmlElement> xml(doc.getDocumentElement());
 
   if (xml == nullptr) {
     AlertWindow::showMessageBoxAsync(AlertWindow::WarningIcon
-        , "Warning"
-        , "Missing file: " + config.getFullPathName()
+      , "Warning"
+      , "Missing file: " + config.getFullPathName()
     );
     return;
   }
@@ -47,16 +53,40 @@ void robots::loadMeccanoids(XmlElement * content) {
   XmlElement * child = content->getFirstChildElement();
 
   while (child != nullptr) {
+
+    // get named meccanoid or create one
     String name = child->getTagName();
-    Meccanoid * m = addMeccanoid(name);
+    Meccanoid * m = getMeccanoid(name);
+    if (m == nullptr) {
+      m = addMeccanoid(name);
+    }
+    
+    // reset all values
+    m->resetServos();
 
     XmlElement * elm = child->getFirstChildElement();
     while (elm != nullptr) {
-      if (elm->getTagName() == "pin") {
-        int pin = elm->getIntAttribute("id");
+      if (elm->getTagName() == "servo") {
+        int ID = elm->getIntAttribute("id");
         String name = elm->getStringAttribute("name");
-        m->setPinStatus(pin, true);
-        m->setPinName(pin, name);
+
+        Servo * s = m->getServo(ID);
+        if (s != nullptr) {
+          
+          s->setStatus(true);
+          if (elm->hasAttribute("name")) {
+            s->setName(elm->getStringAttribute("name"));
+          }
+          if (elm->hasAttribute("reverse")) {
+            s->setReverse(elm->getBoolAttribute("reverse"));
+          }
+          if (elm->hasAttribute("min")) {
+            s->setMin(elm->getIntAttribute("min"));
+          }
+          if (elm->hasAttribute("max")) {
+            s->setMax(elm->getIntAttribute("max"));
+          }
+        }
       }
       elm = elm->getNextElement();
     }

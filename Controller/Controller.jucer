@@ -29,6 +29,8 @@
             file="Source/MuteLookAndFeel.h"/>
       <FILE id="ymp0dM" name="Network.cpp" compile="1" resource="0" file="Source/Network.cpp"/>
       <FILE id="a6UMaa" name="Network.h" compile="0" resource="0" file="Source/Network.h"/>
+      <FILE id="xKRqwL" name="Servo.cpp" compile="1" resource="0" file="Source/Servo.cpp"/>
+      <FILE id="db85SA" name="Servo.h" compile="0" resource="0" file="Source/Servo.h"/>
       <FILE id="LoL2io" name="Pose.cpp" compile="1" resource="0" file="Source/Pose.cpp"/>
       <FILE id="jSEfRR" name="Pose.h" compile="0" resource="0" file="Source/Pose.h"/>
       <FILE id="JIwi5G" name="Poses.cpp" compile="1" resource="0" file="Source/Poses.cpp"/>

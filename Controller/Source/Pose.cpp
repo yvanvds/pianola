@@ -27,13 +27,13 @@ void Pose::addAction(XmlElement * elm) {
 
 bool Pose::sendToRobot(int duration, Meccanoid & robot) {
   for (int i = 0; i < actions.size(); i++) {
-    juce::OSCMessage message(OSCAddressPattern("/" + robot.getName() + "/pinMove"));
-    message.addInt32(robot.getPin(actions[i]->pin));
-    message.addInt32(actions[i]->joint);
-    message.addInt32(actions[i]->pos);
-    message.addInt32(duration);
+    //juce::OSCMessage message(OSCAddressPattern("/" + robot.getName() + "/pinMove"));
+    //message.addInt32(robot.getPin(actions[i]->pin));
+    //message.addInt32(actions[i]->joint);
+    //message.addInt32(actions[i]->pos);
+    //message.addInt32(duration);
     
-    robot.send(message);
+    //robot.send(message);
   }
   return true;
 }

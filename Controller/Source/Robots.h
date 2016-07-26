@@ -25,6 +25,8 @@ public:
 
   int countMeccanoids() { return meccanoids.size(); }
 
+  void reloadConfig();
+
 private:
   void loadMeccanoids(XmlElement * content);
   void loadPoses     (XmlElement * content);  

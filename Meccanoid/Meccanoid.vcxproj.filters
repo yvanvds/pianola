@@ -2,10 +2,10 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Common">
-      <UniqueIdentifier>d645786f-3787-4409-afee-1cfd033de516</UniqueIdentifier>
+      <UniqueIdentifier>4602cb36-ec23-4008-9fdf-0b72639a927a</UniqueIdentifier>
     </Filter>
     <Filter Include="Assets">
-      <UniqueIdentifier>5ef1b34e-7462-42ff-8ee1-ed4bdd8dfc3a</UniqueIdentifier>
+      <UniqueIdentifier>bc1465ff-e24d-44bd-a60a-20b0c81f1101</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
   </ItemGroup>
@@ -16,16 +16,19 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="AdaHat.cpp" />
     <ClCompile Include="ConnectorClass.cpp" />
     <ClCompile Include="ServerConnection.cpp" />
+    <ClCompile Include="Servo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
+    <ClInclude Include="AdaHat.h" />
     <ClInclude Include="ConnectorClass.h" />
     <ClInclude Include="ServerConnection.h" />
-    <ClInclude Include="..\Shared\Messages.h" />
+    <ClInclude Include="Servo.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">

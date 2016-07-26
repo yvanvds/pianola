@@ -16,42 +16,46 @@
 #include "../../Shared/Messages.h"
 
 Meccanoid::Meccanoid() {
-  for (int i = 0; i < 13; i++) {
-    pinStatus[i] = false;
+  for (int i = 0; i < SERVO_COUNT; i++) {
+    servo[i].setID(i);
   }
 }
 
 void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & message) {
   // we already have tested there are 3 tokens or more
-  ToLog("message handled on " + name + " with action " + tokens[2]);
+  
   if (tokens[2] == "pinMove") {
     if (tokens.size() < 4) {
       ToLog("Invalid pin message");
     }
     else {
-      // pin move needs 4 bytes:
-      // message - pin - position - duration
+      // pin move needs 3 bytes and a float
+      // message - pin - position - speed
 
-      unsigned char out[4];
-      out[0] = (unsigned char) MESSAGE::SERVO;
+      MemoryOutputStream out;
 
-      int pin = getPin(tokens[3]);
-      if (pin == -1) {
-        ToLog("Invalid pin identifier: " + tokens[3]);
+      out.writeByte((unsigned char) MESSAGE::SERVO);
+
+      // get the base servo according to name
+      Servo * s = getServo(tokens[3]);
+      if (s == nullptr) {
+        ToLog("Invalid servo identifier: " + tokens[3]);
       }
       else {
-        // the actual pin is the sum of the base pin (like left arm)
-        // and the joint on that arm
-        out[1] = (unsigned char)(pin + message[0].getInt32());
-        out[2] = (unsigned char)(message[1].getInt32());
-        out[3] = (unsigned char)(message[2].getInt32());
+        // add offset
+        s = getServo(s->getID() + message[0].getInt32());
+        if (s == nullptr) return;
 
-        send(&out, 4);
+        out.writeByte((unsigned char)(s->getID()));
+        out.writeByte((unsigned char)(s->calculatePos(message[1].getInt32())));
+        out.writeDoubleBigEndian(message[2].getFloat32());
+
+        send(out.getData(), out.getDataSize());        
       }
     }
   }
   else if (tokens[2] == "pinLight") {
-    if (tokens.size() < 4) {
+    /*if (tokens.size() < 4) {
       ToLog("Invalid led message");
     }
     else {
@@ -73,14 +77,14 @@ void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & m
         // send message
         send(out);
       }
-    }
+    }*/
   }
   else if (tokens[2] == "headLight") {
-    juce::OSCMessage out(OSCAddressPattern("/" + name + "/headLight"));
+    /*juce::OSCMessage out(OSCAddressPattern("/" + name + "/headLight"));
     for (int i = 0; i < message.size(); i++) {
       out.addInt32(message[i].getInt32());
     }
-    send(out);
+    send(out);*/
   }
   else if (tokens[2] == "pose") {
     if (message.size() > 1) {
@@ -93,34 +97,37 @@ void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & m
 }
 
 
-bool Meccanoid::getPinStatus(int pin) {
-  return pinStatus[pin];
-}
-
-Meccanoid & Meccanoid::setPinStatus(int pin, bool status) {
-  pinStatus[pin] = status;
-  return *this;
-}
-
-const String & Meccanoid::getPinName(int pin) {
-  return pinName[pin];
-}
-
-Meccanoid & Meccanoid::setPinName(int pin, const String & name) {
-  pinName[pin] = name;
-  return *this;
-}
-
-int Meccanoid::getPin(const String & name) {
-  for (int i = 0; i < 13; i++) {
-    if (pinName[i] == name) return i;
-  }
-  return -1;
-}
 
 void Meccanoid::initialize() {
   unsigned char out[1];
   out[0] = (unsigned char) MESSAGE::INIT;
   send(&out, 1);
 }
+
+Servo * Meccanoid::getServo(const String & name)
+{
+  for (int i = 0; i < SERVO_COUNT; i++) {
+    if (servo[i].getName().equalsIgnoreCase(name)) {
+      return &servo[i];
+    }
+  }
+  return nullptr;
+}
+
+Servo * Meccanoid::getServo(unsigned int ID)
+{
+  if (ID < SERVO_COUNT) {
+    return &servo[ID];
+  }
+  return nullptr;
+}
+
+void Meccanoid::resetServos()
+{
+  for (int i = 0; i < SERVO_COUNT; i++) {
+    servo[i].reset();
+  }
+}
+
+
 

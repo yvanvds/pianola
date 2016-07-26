@@ -23,7 +23,6 @@ using namespace Windows::UI::Xaml::Navigation;
 namespace Meccanoid {
   ConnectorClass::ConnectorClass() : serverConnection(nullptr)
   {
-    MainPage::Current->NotifyUser("Starting multicast socket");
     multicastSocket = ref new DatagramSocket();
     multicastSocket->MessageReceived += ref new TypedEventHandler<DatagramSocket^, DatagramSocketMessageReceivedEventArgs^>(this, &ConnectorClass::MulticastReceived);
     multicastSocket->Control->MulticastOnly = true;
@@ -35,13 +34,10 @@ namespace Meccanoid {
       try {
         bindTask.get();
         multicastSocket->JoinMulticastGroup(ref new HostName("239.255.42.99"));
-        MainPage::Current->NotifyUser("Listening on port " + multicastSocket->Information->LocalPort);
-
       }
       catch (Exception^ exception) {
         delete multicastSocket;
         multicastSocket = nullptr;
-        MainPage::Current->NotifyUser("Listening failed with error: " + exception->Message);
       }
     });
   }
@@ -69,10 +65,4 @@ namespace Meccanoid {
   }
 
 
-  void ConnectorClass::NotifyAsync(Platform::String ^ message)
-  {
-    MainPage::Current->Dispatcher->RunAsync(CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, message]() {
-      MainPage::Current->NotifyUser(message);
-    }));
-  }
 }

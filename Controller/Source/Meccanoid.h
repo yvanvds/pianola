@@ -13,6 +13,10 @@
 
 #include "Robot.h"
 #include "JuceHeader.h"
+#include "Servo.h"
+#include "Defines.h"
+
+
 
 class Meccanoid : public Robot {
 public:
@@ -22,14 +26,14 @@ public:
 
   void initialize();
 
-  bool           getPinStatus(int pin); Meccanoid & setPinStatus(int pin, bool           status);
-  const String & getPinName  (int pin); Meccanoid & setPinName  (int pin, const String & name  );
-  int            getPin(const String & name); // uses offset!!!
+  Servo * getServo(const    String & name);
+  Servo * getServo(unsigned int      ID  );
+
+  void resetServos();
 
 private:
 
-  bool pinStatus[13];
-  String pinName[13];
+  Servo servo[SERVO_COUNT];
 
 };
 

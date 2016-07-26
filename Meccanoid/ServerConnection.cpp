@@ -18,7 +18,14 @@ Meccanoid::ServerConnection::ServerConnection(HostName^ serverAddress)
 {
   this->udpSocket = nullptr;
   this->writer    = nullptr;
+  
+  // for device name
+  info = ref new EasClientDeviceInformation;
+  
   InitializeCriticalSectionEx(&lock, 0, 0);
+  hat = ref new AdaHat();
+  hat->init();
+
   SetServer(serverAddress);
 }
 
@@ -73,16 +80,18 @@ void Meccanoid::ServerConnection::SetupIfNeeded()
     create_task(udpSocket->ConnectAsync(serverAddress, "3457")).then([this](task<void> previousTask) {
       try {
         previousTask.get();
-        NotifyAsync("Listening on port " + udpSocket->Information->LocalPort);
+
         writer = ref new DataWriter(udpSocket->OutputStream);
 
         // send id
-        writer->WriteString("igor");
+        writer->WriteString(info->FriendlyName);
         writer->StoreAsync();
 
+        SetNameAsync(info->FriendlyName);
+        SetIPAsync(udpSocket->Information->LocalAddress->ToString(), udpSocket->Information->LocalPort);
       }
       catch (Exception^ exception) {
-        NotifyAsync("Listening failed with error: " + exception->Message);
+
       }
       setupInProgress = false;
       
@@ -90,7 +99,7 @@ void Meccanoid::ServerConnection::SetupIfNeeded()
   }
   else {
     if (writer != nullptr) {
-      writer->WriteString("igor");
+      writer->WriteString(info->FriendlyName);
       writer->StoreAsync();
     }
     setupInProgress = false;
@@ -110,12 +119,21 @@ Meccanoid::ServerConnection::~ServerConnection()
   DeleteCriticalSection(&lock);
 }
 
-void Meccanoid::ServerConnection::NotifyAsync(Platform::String ^ message)
+void Meccanoid::ServerConnection::SetNameAsync(Platform::String ^ message)
 {
   MainPage::Current->Dispatcher->RunAsync(CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, message]() {
-    MainPage::Current->NotifyUser(message);
+    MainPage::Current->SetName(message);
   }));
 }
+
+void Meccanoid::ServerConnection::SetIPAsync(String ^ ip, String ^ port)
+{
+  MainPage::Current->Dispatcher->RunAsync(CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, ip, port]() {
+    MainPage::Current->SetIP(ip, port);
+  }));
+}
+
+
 
 void Meccanoid::ServerConnection::Parse(DatagramSocketMessageReceivedEventArgs ^ args)
 {
@@ -124,23 +142,26 @@ void Meccanoid::ServerConnection::Parse(DatagramSocketMessageReceivedEventArgs ^
 
     switch (command) {
       case MESSAGE::INIT: {
-        NotifyAsync("Init message received");
+
         break;
       }
 
       case MESSAGE::LIGHT: {
-        NotifyAsync("Light message received");
+
         break;
       }
 
       case MESSAGE::SERVO: {
-        NotifyAsync("Servo message received");
+        byte  ID  = args->GetDataReader()->ReadByte  ();
+        byte  pos = args->GetDataReader()->ReadByte  ();
+        float dur = args->GetDataReader()->ReadDouble();
+        hat->setServo(ID, pos, dur);
         break;
       }
     }
   }
   catch (Exception ^ exception) {
-    NotifyAsync("Message parsing failed with error: " + exception->Message);
+
   }
 }
 
