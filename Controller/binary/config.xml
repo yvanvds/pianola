@@ -1,9 +1,14 @@
 <pianola>
 	<meccanoids>
 		<igor>
-			<pin name="left"  id="2" />
-			<pin name="head"  id="3" />
-			<pin name="right" id="4" />			
+			<servo name="left"  id="0" reverse="true" />
+			<servo id="2" reverse="true" />
+			<servo name="right" id="3" />	
+			<servo id="4" reverse="true"/>
+			<servo id="5" reverse="true" />
+			<servo name="head"  id="6" reverse="true"/>
+			<servo id="7" min="70" max="180"/>
+
 		</igor>
 	</meccanoids>
 	
