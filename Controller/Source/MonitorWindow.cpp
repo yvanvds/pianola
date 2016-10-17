@@ -71,7 +71,7 @@ MonitorWindow::MonitorWindow()
   addAndMakeVisible(logGroup);
   logGroup->addAndMakeVisible(logBox);
 
-  setSize(720, 500);
+  setSize(1040, 500);
   mlaf = new MuteLookAndFeel();
   this->setLookAndFeel(mlaf);
 
@@ -91,6 +91,16 @@ void MonitorWindow::addRobotBoxes() {
     addAndMakeVisible(box);
     box->setBounds(400, offset, 300, 60);
     offset += 70;
+  }
+
+  // virtualbots
+  offset = 10;
+  for (int i = 0; i < Robots().countVirtualBots(); i++) {
+	  VirtualBot * v = Robots().getVirtualBot(i);
+	  VirtualBox * box = virtualbots.add(new VirtualBox(v));
+	  addAndMakeVisible(box);
+	  box->setBounds(720, offset, 300, 60);
+	  offset += 70;
   }
 }
 
@@ -170,7 +180,10 @@ LogBox * MonitorWindow::getLog() {
 }
 
 void MonitorWindow::updateRobotGui() {
-  for (int i = 0; i < meccanoids.size(); i++) {
-    meccanoids[i]->update();
-  }
+	for (int i = 0; i < meccanoids.size(); i++) {
+		meccanoids[i]->update();
+	}
+	for (int i = 0; i < virtualbots.size(); i++) {
+		virtualbots[i]->update();
+	}
 }

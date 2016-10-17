@@ -51,19 +51,13 @@ Network::~Network() {
 
 void Network::oscMessageReceived(const OSCMessage & message) {
   // tokenize addressPattern
-  Array<String> tokens;
-  OSCTokenize(tokens, message.getAddressPattern().toString());
-  Meccanoid * m = nullptr;
+  //Array<String> tokens;
+  //OSCTokenize(tokens, message.getAddressPattern().toString());
+  Robot * r = nullptr;
+  r = Robots().getRobot(message[0].getString());
 
-  // all AddressPatterns should at least be 3 parts, first is project name
-  if (tokens.size() < 3) goto unhandled; // important!!! (robot handleMessage depends on this check)
-  if (tokens[0] != PROJECT) goto unhandled;
-
-  m = Robots().getMeccanoid(tokens[1]);
-
-  // if this is a meccanoid, let it take care of the message
-  if (m != nullptr) {
-    m->handleMessage(tokens, message);
+  if (r != nullptr) {
+    r->handleMessage(message);
   }
   else {
     goto unhandled;
@@ -132,24 +126,49 @@ void Network::timerCallback() {
     requestIdentify();
   }
 
-  int bytesRead = udpMessageSocket->read(&udpBuffer, 1024, false, udpSender, udpPort);
-  if (bytesRead > 0) {
-    String name;
-    for (int i = 0; i < bytesRead; i++) {
-      name += udpBuffer[i];
-    }
+  while (true) {
+	  int bytesRead = udpMessageSocket->read(&udpBuffer, 1024, false, udpSender, udpPort);
+	  if (bytesRead > 0) {
+		  String name;
+		  String port; // used for virtual robots
+		  bool writePort = false;
+		  for (int i = 0; i < bytesRead; i++) {
+			  if (!writePort) {
+				  if (udpBuffer[i] == ':') writePort = true;
+				  else name += udpBuffer[i];
+			  }
+			  else {
+				  port += udpBuffer[i];
+			  }
 
-    Meccanoid * m = Robots().getMeccanoid(name);
+		  }
 
-    if (m != nullptr) {
-      m->resetLastSeen();
-      if (m->getIp() != udpSender) {
-        m->setIp(udpSender);
-        m->initialize();
-        m->assignSocket(udpMessageSocket.get());
-      }
-      
-    }
+		  Meccanoid * m = Robots().getMeccanoid(name);
+
+		  if (m != nullptr) {
+			  m->resetLastSeen();
+			  if (m->getIp() != udpSender) {
+				  m->setIp(udpSender);
+				  m->initialize();
+				  m->assignSocket(udpMessageSocket.get());
+			  }
+		  }
+
+		  VirtualBot * v = Robots().getVirtualBot(name);
+
+		  if (v != nullptr) {
+			  v->resetLastSeen();
+			  if (v->getIp() != udpSender) {
+				  v->setIp(udpSender);
+				  v->setPort(port.getIntValue());
+				  v->initialize();
+				  v->assignSocket(udpMessageSocket.get());
+			  }
+		  }
+	  }
+	  else {
+		  break; // no new network message
+	  }
   }
 
   WindowPtr->updateRobotGui();

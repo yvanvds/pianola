@@ -24,4 +24,11 @@
 			<action pin="head" joint="1" pos="125"/>
 		</rest>
 	</poses>
+
+	<virtual>
+		<Vir1 />
+		<Vir2 />
+		<Vir3 />
+		<Vir4 />
+	</virtual>
 </pianola>

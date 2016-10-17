@@ -22,7 +22,7 @@ class Meccanoid : public Robot {
 public:
   Meccanoid();
 
-  virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message);
+  virtual void handleMessage(const OSCMessage & message);
 
   void initialize();
 

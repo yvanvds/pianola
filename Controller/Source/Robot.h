@@ -20,6 +20,7 @@ public:
   
   String getName(); Robot & setName(const String & value);
   String getIp  (); Robot & setIp  (const String & value);
+  int    getPort(); Robot & setPort(      int      value);
   
   Robot & resetLastSeen();
   int getLastSeen() { return lastSeen; }
@@ -30,11 +31,12 @@ public:
   bool send(const OSCMessage & message);
   bool send(const void * sourceBuffer, int buffersize); // sends over udp socket
 
-  virtual void handleMessage(const Array<String> & tokens, const OSCMessage & message) = 0;
+  virtual void handleMessage(const OSCMessage & message) = 0;
 
 protected:
   String name;
   String ipAddress;
+  int port;
   bool connected;
   int lastSeen;
   DatagramSocket * socket;

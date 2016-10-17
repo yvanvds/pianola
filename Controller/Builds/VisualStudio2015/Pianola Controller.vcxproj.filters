@@ -364,6 +364,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\VirtualBox.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\VirtualBot.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\LogBox.cpp">
       <Filter>Pianola Controller\Source</Filter>
     </ClCompile>
@@ -2115,6 +2121,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\VirtualBox.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\VirtualBot.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Defines.h">
       <Filter>Pianola Controller\Source</Filter>
     </ClInclude>
@@ -3974,6 +3986,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\vir.png">
+      <Filter>Pianola Controller\resources</Filter>
+    </None>
     <None Include="..\..\Resources\cog.png">
       <Filter>Pianola Controller\resources</Filter>
     </None>

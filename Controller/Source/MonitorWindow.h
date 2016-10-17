@@ -15,6 +15,7 @@
 #include "LogBox.h"
 #include "Network.h"
 #include "MeccaBox.h"
+#include "VirtualBox.h"
 #include "MuteLookAndFeel.h"
 
 class MonitorWindow : public Component, private Button::Listener {
@@ -50,6 +51,7 @@ private:
 
   // outputs
   OwnedArray<MeccaBox> meccanoids;
+  OwnedArray<VirtualBox> virtualbots;
 
   // network
   ScopedPointer<Network> network;

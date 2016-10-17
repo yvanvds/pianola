@@ -45,6 +45,10 @@ void robots::reloadConfig()
       loadMeccanoids(child);
     }
 
+	if (child->getTagName() == "virtual") {
+		loadVirtuals(child);
+	}
+
     child = child->getNextElement();
   }
 }
@@ -96,7 +100,23 @@ void robots::loadMeccanoids(XmlElement * content) {
 }
 
 void robots::loadPoses(XmlElement * content) {
+	
+}
 
+void robots::loadVirtuals(XmlElement * content) {
+	XmlElement * child = content->getFirstChildElement();
+
+	while (child != nullptr) {
+
+		// get named virtual or create one
+		String name = child->getTagName();
+		VirtualBot * v = getVirtualBot(name);
+		if (v == nullptr) {
+			v = addVirtualBot(name);
+		}
+
+		child = child->getNextElement();
+	}
 }
 
 Meccanoid * robots::addMeccanoid(const String & name) {
@@ -116,8 +136,37 @@ Meccanoid * robots::getMeccanoid(int idx) {
   return meccanoids[idx];
 }
 
+VirtualBot * robots::addVirtualBot(const String & name) {
+	VirtualBot * v = virtualbots.add(new VirtualBot());
+	v->setName(name);
+	return v;
+}
+
+VirtualBot * robots::getVirtualBot(const String & name) {
+	for (int i = 0; i < virtualbots.size(); i++) {
+		if (virtualbots[i]->getName() == name) return virtualbots[i];
+	}
+	return nullptr;
+}
+
+VirtualBot * robots::getVirtualBot(int idx) {
+	return virtualbots[idx];
+}
+
+Robot * robots::getRobot(const String & name) {
+	Robot * result = getMeccanoid(name);
+	if (result == nullptr) {
+		result = getVirtualBot(name);
+	}
+	return result;
+}
+
 void robots::update() {
   for (int i = 0; i < meccanoids.size(); i++) {
     meccanoids[i]->update();
+  }
+
+  for (int i = 0; i < virtualbots.size(); i++) {
+	  virtualbots[i]->update();
   }
 }

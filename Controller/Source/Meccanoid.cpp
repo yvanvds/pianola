@@ -21,13 +21,14 @@ Meccanoid::Meccanoid() {
   }
 }
 
-void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & message) {
+void Meccanoid::handleMessage(const OSCMessage & message) {
   // we already have tested there are 3 tokens or more
   
-  if (tokens[2] == "pinMove") {
-    if (tokens.size() < 4) {
+	if (message[1].getString().compareIgnoreCase("move") == 0) {
+    if (message.size() < 4) {
       ToLog("Invalid pin message");
     }
+	// todo: test message size (see VirtualBot::handleMessage)
     else {
       // pin move needs 3 bytes and a float
       // message - pin - position - speed
@@ -37,24 +38,24 @@ void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & m
       out.writeByte((unsigned char) MESSAGE::SERVO);
 
       // get the base servo according to name
-      Servo * s = getServo(tokens[3]);
+      Servo * s = getServo(message[2].getString());
       if (s == nullptr) {
-        ToLog("Invalid servo identifier: " + tokens[3]);
+        ToLog("Invalid servo identifier: " + message[2].getString());
       }
       else {
         // add offset
-        s = getServo(s->getID() + message[0].getInt32());
+        s = getServo(s->getID() + message[3].getInt32());
         if (s == nullptr) return;
 
         out.writeByte((unsigned char)(s->getID()));
-        out.writeByte((unsigned char)(s->calculatePos(message[1].getInt32())));
-        out.writeDoubleBigEndian(message[2].getFloat32());
+        out.writeByte((unsigned char)(s->calculatePos(message[4].getInt32())));
+        out.writeFloatBigEndian(message[5].getFloat32());
 
         send(out.getData(), out.getDataSize());        
       }
     }
   }
-  else if (tokens[2] == "pinLight") {
+  //else if (tokens[2] == "pinLight") {
     /*if (tokens.size() < 4) {
       ToLog("Invalid led message");
     }
@@ -78,22 +79,22 @@ void Meccanoid::handleMessage(const Array<String> & tokens, const OSCMessage & m
         send(out);
       }
     }*/
-  }
-  else if (tokens[2] == "headLight") {
+  //}
+  //else if (tokens[2] == "headLight") {
     /*juce::OSCMessage out(OSCAddressPattern("/" + name + "/headLight"));
     for (int i = 0; i < message.size(); i++) {
       out.addInt32(message[i].getInt32());
     }
     send(out);*/
-  }
-  else if (tokens[2] == "pose") {
-    if (message.size() > 1) {
-      String pose = message[0].getString();
-      int time = message[1].getInt32();
+  //}
+  //else if (tokens[2] == "pose") {
+  //  if (message.size() > 1) {
+  //    String pose = message[0].getString();
+  //    int time = message[1].getInt32();
 
-      Poses().sendPoseToRobot(pose, time, *this);
-    }
-  }
+  //    Poses().sendPoseToRobot(pose, time, *this);
+  //  }
+  //}
 }
 
 

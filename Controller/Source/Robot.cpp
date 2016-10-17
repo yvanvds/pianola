@@ -17,6 +17,7 @@ Robot::Robot() {
   socket = nullptr;
   connected = false;
   lastSeen = 60;
+  port = 0;
 }
 
 String Robot::getName() {
@@ -25,6 +26,10 @@ String Robot::getName() {
 
 String Robot::getIp() {
   return ipAddress;
+}
+
+int Robot::getPort() {
+	return port;
 }
 
 Robot & Robot::setName(const String & value) {
@@ -37,6 +42,11 @@ Robot & Robot::setIp(const String & value) {
   disconnect();
   connected = connect(ipAddress, OSC_PORT);
   return *this;
+}
+
+Robot & Robot::setPort(int port) {
+	this->port = port;
+	return *this;
 }
 
 void Robot::assignSocket(DatagramSocket * socket)
@@ -53,7 +63,7 @@ bool Robot::send(const OSCMessage & message) {
 bool Robot::send(const void * sourceBuffer, int buffersize)
 {
   if (socket != nullptr) {
-    socket->write(ipAddress, MESSAGE_PORT, sourceBuffer, buffersize);
+    socket->write(ipAddress, port != 0 ? port : MESSAGE_PORT, sourceBuffer, buffersize);
     return true;
   }
   return false;

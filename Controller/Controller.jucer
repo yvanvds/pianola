@@ -6,12 +6,17 @@
               companyEmail="info@mutecode.com">
   <MAINGROUP id="Iu5jLN" name="Pianola Controller">
     <GROUP id="{3DF32F99-F5C7-ACF6-8E97-6BB1B133C898}" name="resources">
+      <FILE id="fT2kZx" name="vir.png" compile="0" resource="1" file="Resources/vir.png"/>
       <FILE id="JyDq8z" name="cog.png" compile="0" resource="1" file="Resources/cog.png"/>
       <FILE id="O041HK" name="meccanoid.png" compile="0" resource="1" file="Resources/meccanoid.png"/>
       <FILE id="Zat0NI" name="led_off.png" compile="0" resource="1" file="Resources/led_off.png"/>
       <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
     </GROUP>
     <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
+      <FILE id="KPMrkB" name="VirtualBox.cpp" compile="1" resource="0" file="Source/VirtualBox.cpp"/>
+      <FILE id="kraFpH" name="VirtualBox.h" compile="0" resource="0" file="Source/VirtualBox.h"/>
+      <FILE id="IThQIX" name="VirtualBot.cpp" compile="1" resource="0" file="Source/VirtualBot.cpp"/>
+      <FILE id="Sw5t8V" name="VirtualBot.h" compile="0" resource="0" file="Source/VirtualBot.h"/>
       <FILE id="QdqZlG" name="Defines.h" compile="0" resource="0" file="Source/Defines.h"/>
       <FILE id="PpCP9L" name="LogBox.cpp" compile="1" resource="0" file="Source/LogBox.cpp"/>
       <FILE id="Fnk8Wr" name="LogBox.h" compile="0" resource="0" file="Source/LogBox.h"/>
