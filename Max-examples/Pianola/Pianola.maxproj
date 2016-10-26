@@ -2,7 +2,7 @@
 	"name" : "Pianola",
 	"version" : 1,
 	"creationdate" : -737300408,
-	"modificationdate" : -735400386,
+	"modificationdate" : -734625164,
 	"viewrect" : [ 277.0, 320.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -95,11 +95,6 @@
 				"local" : 1
 			}
 ,
-			"c-background.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"spotlights.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -136,6 +131,11 @@
 			}
 ,
 			"images.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"c-background.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -192,6 +192,11 @@
 			}
 ,
 			"botCopy.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"c-relativeRotation.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
