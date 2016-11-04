@@ -1,0 +1,34 @@
+<pianola>
+	<meccanoids>
+		<igor>
+			<servo name="left"  id="0" reverse="true" />
+			<servo id="2" reverse="true" />
+			<servo name="right" id="3" />	
+			<servo id="4" reverse="true"/>
+			<servo id="5" reverse="true" />
+			<servo name="head"  id="6" reverse="true"/>
+			<servo id="7" min="70" max="180"/>
+
+		</igor>
+	</meccanoids>
+	
+	<poses>
+		<rest>
+			<action pin="left" joint="0" pos="24"/>
+			<action pin="left" joint="1" pos="224"/>
+			<action pin="left" joint="2" pos="90"/>
+			<action pin="right" joint="0" pos="224"/>
+			<action pin="right" joint="1" pos="24"/>
+			<action pin="right" joint="2" pos="90"/>
+			<action pin="head" joint="0" pos="125"/>
+			<action pin="head" joint="1" pos="125"/>
+		</rest>
+	</poses>
+
+	<virtual>
+		<Vir1 />
+		<Vir2 />
+		<Vir3 />
+		<Vir4 />
+	</virtual>
+</pianola>
