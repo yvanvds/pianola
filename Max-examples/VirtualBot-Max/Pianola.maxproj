@@ -2,8 +2,8 @@
 	"name" : "Pianola",
 	"version" : 1,
 	"creationdate" : -737300408,
-	"modificationdate" : -733925050,
-	"viewrect" : [ 127.0, 332.0, 300.0, 500.0 ],
+	"modificationdate" : -730491173,
+	"viewrect" : [ 350.0, 310.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -207,6 +207,46 @@
 			}
 ,
 			"writeToDict.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"sendBrownWithSustain.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"subSend.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"midiinput.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"parser.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"toBcr.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"realBot.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"runningAverage.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"realBodyPart.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

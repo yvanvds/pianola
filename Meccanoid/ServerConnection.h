@@ -1,5 +1,6 @@
 #pragma once
 #include "AdaHat.h"
+#include "Speak.h"
 
 using namespace Windows::Networking;
 using namespace Windows::Networking::Sockets;
@@ -33,6 +34,7 @@ namespace Meccanoid {
     DataWriter    ^ writer       ;
 
     AdaHat ^ hat;
+    Speak ^ speaker;
 
     EasClientDeviceInformation^ info;
     

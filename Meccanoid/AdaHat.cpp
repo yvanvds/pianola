@@ -23,6 +23,117 @@ void Meccanoid::AdaHat::init()
   
 }
 
+void Meccanoid::AdaHat::reset() {
+  for (int i = 0; i < (int)BODYPART::INVALID; i++) {
+    setRotate((BODYPART)i, 127, 127, 0);
+    setRelRotate((BODYPART)i, 127, 127, 0);
+    setBrown((BODYPART)i, 0, 0);
+    setConstraintMultiplier((BODYPART)i, 1.f);
+  }
+}
+
+void Meccanoid::AdaHat::setRotate(BODYPART part, byte x, byte y, float speed)
+{
+  switch (part) {
+    case BODYPART::HEAD: head.setOrn(x, y, speed); break;
+    case BODYPART::ARMLU: leftArmUpper.setOrn(x, y, speed); break;
+    case BODYPART::ARMLL: leftArmLower.setOrn(x, y, speed); break;
+    case BODYPART::ARMRU: rightArmUpper.setOrn(x, y, speed); break;
+    case BODYPART::ARMRL: rightArmLower.setOrn(x, y, speed); break;
+    case BODYPART::HANDL: leftHand.setOrn(x, y, speed); break;
+    case BODYPART::HANDR: rightHand.setOrn(x, y, speed); break;
+    case BODYPART::LEGLU: leftLegUpper.setOrn(x, y, speed); break;
+    case BODYPART::LEGLL: leftLegLower.setOrn(x, y, speed); break;
+    case BODYPART::LEGRU: rightLegUpper.setOrn(x, y, speed); break;
+    case BODYPART::LEGRL: rightLegLower.setOrn(x, y, speed); break;
+  }
+}
+
+void Meccanoid::AdaHat::setRelRotate(BODYPART part, byte x, byte y, float speed)
+{
+  switch (part) {
+  case BODYPART::HEAD: head.setOrnRelative(x, y, speed); break;
+  case BODYPART::ARMLU: leftArmUpper.setOrnRelative(x, y, speed); break;
+  case BODYPART::ARMLL: leftArmLower.setOrnRelative(x, y, speed); break;
+  case BODYPART::ARMRU: rightArmUpper.setOrnRelative(x, y, speed); break;
+  case BODYPART::ARMRL: rightArmLower.setOrnRelative(x, y, speed); break;
+  case BODYPART::HANDL: leftHand.setOrnRelative(x, y, speed); break;
+  case BODYPART::HANDR: rightHand.setOrnRelative(x, y, speed); break;
+  case BODYPART::LEGLU: leftLegUpper.setOrnRelative(x, y, speed); break;
+  case BODYPART::LEGLL: leftLegLower.setOrnRelative(x, y, speed); break;
+  case BODYPART::LEGRU: rightLegUpper.setOrnRelative(x, y, speed); break;
+  case BODYPART::LEGRL: rightLegLower.setOrnRelative(x, y, speed); break;
+  }
+}
+
+void Meccanoid::AdaHat::setBrown(BODYPART part, int factor, float speed)
+{
+  switch (part) {
+    case BODYPART::HEAD: head.setBrown(factor, speed); break;
+    case BODYPART::ARMLU: leftArmUpper.setBrown(factor, speed); break;
+    case BODYPART::ARMLL: leftArmLower.setBrown(factor, speed); break;
+    case BODYPART::ARMRU: rightArmUpper.setBrown(factor, speed); break;
+    case BODYPART::ARMRL: rightArmLower.setBrown(factor, speed); break;
+    case BODYPART::HANDL: leftHand.setBrown(factor, speed); break;
+    case BODYPART::HANDR: rightHand    .setBrown(factor, speed); break;
+    case BODYPART::LEGLU: leftLegUpper .setBrown(factor, speed); break;
+    case BODYPART::LEGLL: leftLegLower .setBrown(factor, speed); break;
+    case BODYPART::LEGRU: rightLegUpper.setBrown(factor, speed); break;
+    case BODYPART::LEGRL: rightLegLower.setBrown(factor, speed); break;
+  }
+}
+
+void Meccanoid::AdaHat::setConstraintMultiplier(BODYPART part, float value)
+{
+  switch (part) {
+    case BODYPART::HEAD: head.setConstraintMultiplier(value); break;
+    case BODYPART::ARMLU: leftArmUpper.setConstraintMultiplier(value); break;
+    case BODYPART::ARMLL: leftArmLower.setConstraintMultiplier(value); break;
+    case BODYPART::ARMRU: rightArmUpper.setConstraintMultiplier(value); break;
+    case BODYPART::ARMRL: rightArmLower.setConstraintMultiplier(value); break;
+    case BODYPART::HANDL: leftHand.setConstraintMultiplier(value); break;
+    case BODYPART::HANDR: rightHand.setConstraintMultiplier(value); break;
+    case BODYPART::LEGLU: leftLegUpper.setConstraintMultiplier(value); break;
+    case BODYPART::LEGLL: leftLegLower.setConstraintMultiplier(value); break;
+    case BODYPART::LEGRU: rightLegUpper.setConstraintMultiplier(value); break;
+    case BODYPART::LEGRL: rightLegLower.setConstraintMultiplier(value); break;
+  }
+}
+
+void Meccanoid::AdaHat::setConstraints(BODYPART part, byte minX, byte minY, byte maxX, byte maxY)
+{
+  switch (part) {
+    case BODYPART::HEAD: head.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMLU: leftArmUpper.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMLL: leftArmLower.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMRU: rightArmUpper.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMRL: rightArmLower.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::HANDL: leftHand.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::HANDR: rightHand.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGLU: leftLegUpper .setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGLL: leftLegLower .setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGRU: rightLegUpper.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGRL: rightLegLower.setOrnConstraints({ minX, minY }, { maxX, maxY }); break;
+  }
+}
+
+void Meccanoid::AdaHat::setLimits(BODYPART part, byte minX, byte minY, byte maxX, byte maxY)
+{
+  switch (part) {
+  case BODYPART::HEAD: head.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::ARMLU: leftArmUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::ARMLL: leftArmLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::ARMRU: rightArmUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::ARMRL: rightArmLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::HANDL: leftHand.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::HANDR: rightHand.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::LEGLU: leftLegUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::LEGLL: leftLegLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::LEGRU: rightLegUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  case BODYPART::LEGRL: rightLegLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  }
+}
+
 void Meccanoid::AdaHat::setServo(byte ID, byte position, float speed)
 {
   int pos = position;
@@ -56,6 +167,8 @@ void Meccanoid::AdaHat::setPWMFreq(int freq)
 }
 
 void Meccanoid::AdaHat::setPWM(int channel, int on, int off) {
+  if (channel < 0) return;
+
   auto b = ref new Array<byte>(2);
   b[0] = (byte)(REG_LED0_ON_L  + (4 * channel)); b[1] = (byte(on   & 0xFF)); servoHat->Write(b);
   b[0] = (byte)(REG_LED0_ON_H  + (4 * channel)); b[1] = (byte(on  >>    8)); servoHat->Write(b);
@@ -93,10 +206,17 @@ concurrency::task<void> Meccanoid::AdaHat::startAsync()
     servoHat = hat;
     setPWMFreq(60);
 
-    servo = ref new Array<Servo^>(16);
-    for (int i = 0; i < 16; i++) {
-      servo[i] = ref new Servo(i, this);
-    }
+    head         .init({  0, 1 }, this); // head is on pins 0 and 1
+    leftArmUpper .init({  2, 3 }, this);
+    rightArmUpper.init({  4, 5 }, this);
+    leftArmLower .init({  6,-1 }, this);
+    rightArmLower.init({  7,-1 }, this);
+    leftHand     .init({  8,-1 }, this);
+    rightHand    .init({  9,-1 }, this);
+    leftLegUpper .init({ 10,-1 }, this);
+    rightLegUpper.init({ 11,-1 }, this);
+    leftLegLower .init({ 12,-1 }, this);
+    rightLegLower.init({ 13,-1 }, this);
 
     timer = ref new DispatcherTimer();
     timer->Interval = TimeSpan{ 20 * 1000 * 10 }; // 20ms
@@ -113,9 +233,16 @@ void Meccanoid::AdaHat::timerTick(Object ^ sender, Object ^ e)
   SetCycleAsync(delta);
   float fDelta = delta / 1000.f;
 
-  for (int i = 0; i < 16; i++) {
-    servo[i]->update(fDelta);
-  }
-  
+  head         .update(fDelta);
+  leftArmUpper .update(fDelta);
+  rightArmUpper.update(fDelta);
+  leftArmLower .update(fDelta);
+  rightArmLower.update(fDelta);
+  leftHand     .update(fDelta);
+  rightHand    .update(fDelta);
+  leftLegUpper .update(fDelta);
+  rightLegUpper.update(fDelta);
+  leftLegLower .update(fDelta);
+  rightLegLower.update(fDelta);
 }
 

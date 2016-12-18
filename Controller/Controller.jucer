@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="BGJ8WI" name="Pianola Controller" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.mute.Controller" includeBinaryInAppConfig="1"
-              jucerVersion="4.2.3" companyName="Mute" companyWebsite="www.mutecode.com"
+              jucerVersion="4.3.0" companyName="Mute" companyWebsite="www.mutecode.com"
               companyEmail="info@mutecode.com">
   <MAINGROUP id="Iu5jLN" name="Pianola Controller">
     <GROUP id="{3DF32F99-F5C7-ACF6-8E97-6BB1B133C898}" name="resources">
@@ -13,6 +13,8 @@
       <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
     </GROUP>
     <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
+      <FILE id="C4hdhn" name="BodyPart.cpp" compile="1" resource="0" file="Source/BodyPart.cpp"/>
+      <FILE id="rpLTXV" name="BodyPart.h" compile="0" resource="0" file="Source/BodyPart.h"/>
       <FILE id="KPMrkB" name="VirtualBox.cpp" compile="1" resource="0" file="Source/VirtualBox.cpp"/>
       <FILE id="kraFpH" name="VirtualBox.h" compile="0" resource="0" file="Source/VirtualBox.h"/>
       <FILE id="IThQIX" name="VirtualBot.cpp" compile="1" resource="0" file="Source/VirtualBot.cpp"/>

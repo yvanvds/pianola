@@ -149,8 +149,9 @@ void Network::timerCallback() {
 			  m->resetLastSeen();
 			  if (m->getIp() != udpSender) {
 				  m->setIp(udpSender);
-				  m->initialize();
+				  
 				  m->assignSocket(udpMessageSocket.get());
+          m->initialize();
 			  }
 		  }
 
@@ -161,8 +162,9 @@ void Network::timerCallback() {
 			  if (v->getIp() != udpSender) {
 				  v->setIp(udpSender);
 				  v->setPort(port.getIntValue());
-				  v->initialize();
+				  
 				  v->assignSocket(udpMessageSocket.get());
+          v->initialize();
 			  }
 		  }
 	  }

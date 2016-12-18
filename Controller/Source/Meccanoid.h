@@ -15,7 +15,8 @@
 #include "JuceHeader.h"
 #include "Servo.h"
 #include "Defines.h"
-
+#include "../../Shared/Messages.h"
+#include "BodyPart.h"
 
 
 class Meccanoid : public Robot {
@@ -31,10 +32,14 @@ public:
 
   void resetServos();
 
+  BodyPart & getBodyPart(const String & name);
+  BodyPart & getBodyPart(BODYPART part);
+
 private:
-
+	
   Servo servo[SERVO_COUNT];
-
+  
+  BodyPart part[(unsigned int)BODYPART::NUM];
 };
 
 

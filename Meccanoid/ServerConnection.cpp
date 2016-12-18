@@ -26,6 +26,8 @@ Meccanoid::ServerConnection::ServerConnection(HostName^ serverAddress)
   hat = ref new AdaHat();
   hat->init();
 
+  speaker = ref new Speak();
+
   SetServer(serverAddress);
 }
 
@@ -142,20 +144,73 @@ void Meccanoid::ServerConnection::Parse(DatagramSocketMessageReceivedEventArgs ^
 
     switch (command) {
       case MESSAGE::INIT: {
-
+        hat->reset();
         break;
       }
 
-      case MESSAGE::LIGHT: {
-
+      case MESSAGE::BROWN: {
+        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
+        byte factor = args->GetDataReader()->ReadByte();
+        float speed = args->GetDataReader()->ReadSingle();
+        hat->setBrown(part, factor, speed);
         break;
       }
 
-      case MESSAGE::SERVO: {
-        byte  ID  = args->GetDataReader()->ReadByte  ();
-        byte  pos = args->GetDataReader()->ReadByte  ();
-        float dur = args->GetDataReader()->ReadDouble();
-        hat->setServo(ID, pos, dur);
+      case MESSAGE::JOINTROTATE: {
+        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();       
+        byte x = args->GetDataReader()->ReadByte();
+        byte y = args->GetDataReader()->ReadByte();
+        float speed = args->GetDataReader()->ReadSingle();
+        hat->setRotate(part, x, y, speed);
+        break;
+      }
+
+      case MESSAGE::JOINTRELROTATE: {
+        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
+        byte x = args->GetDataReader()->ReadByte();
+        byte y = args->GetDataReader()->ReadByte();
+        float speed = args->GetDataReader()->ReadSingle();
+        hat->setRelRotate(part, x, y, speed);
+        break;
+      }
+
+      case MESSAGE::CONSTRAIN: {
+        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
+        float value = args->GetDataReader()->ReadSingle();
+        hat->setConstraintMultiplier(part, value);
+        break;
+      }
+
+      case MESSAGE::SETCONSTRAINTS: {
+        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
+        byte minX = args->GetDataReader()->ReadByte();
+        byte maxX = args->GetDataReader()->ReadByte();
+        byte minY = args->GetDataReader()->ReadByte();
+        byte maxY = args->GetDataReader()->ReadByte();
+        hat->setConstraints(part, minX, minY, maxX, maxY);
+        break;
+      }
+
+      case MESSAGE::SETLIMITS: {
+        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
+        byte minX = args->GetDataReader()->ReadByte();
+        byte maxX = args->GetDataReader()->ReadByte();
+        byte minY = args->GetDataReader()->ReadByte();
+        byte maxY = args->GetDataReader()->ReadByte();
+        hat->setLimits(part, minX, minY, maxX, maxY);
+        break;
+      }
+
+      case MESSAGE::SPEAK: {
+        //speaker->start("Hello world.");
+        int size = args->GetDataReader()->ReadInt32();
+        Platform::String ^ text = args->GetDataReader()->ReadString(size);
+        std::wstring wstr(text->Data());
+        wstr.erase(0, 5);
+        std::replace(wstr.begin(), wstr.end(), '_', ' ');
+        std::replace(wstr.begin(), wstr.end(), '$', ',');
+        Platform::String ^ result = ref new Platform::String(wstr.c_str());
+        speaker->start(result);
         break;
       }
     }

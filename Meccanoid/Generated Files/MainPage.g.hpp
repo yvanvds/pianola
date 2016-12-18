@@ -6,6 +6,9 @@
 //------------------------------------------------------------------------------
 #include "pch.h"
 
+#pragma warning(push)
+#pragma warning(disable: 4100) // unreferenced formal parameter
+
 #if defined _DEBUG && !defined DISABLE_XAML_GENERATED_BINDING_DEBUG_OUTPUT
 extern "C" __declspec(dllimport) int __stdcall IsDebuggerPresent();
 #endif
@@ -27,545 +30,545 @@ void ::Meccanoid::MainPage::Connect(int __connectionId, ::Platform::Object^ __ta
 {
     switch (__connectionId)
     {
-        case 1:
-            {
-                this->textBlock = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 2:
-            {
-                this->lName = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lName))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 3:
-            {
-                this->textBlock_Copy1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 4:
-            {
-                this->lConnected = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lConnected))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 5:
-            {
-                this->textBlock_Copy3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 6:
-            {
-                this->textBlock_Copy4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 7:
-            {
-                this->textBlock_Copy5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 8:
-            {
-                this->textBlock_Copy6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 9:
-            {
-                this->textBlock_Copy7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 10:
-            {
-                this->textBlock_Copy8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 11:
-            {
-                this->textBlock_Copy9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 12:
-            {
-                this->textBlock_Copy10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 13:
-            {
-                this->textBlock_Copy11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 14:
-            {
-                this->textBlock_Copy12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 15:
-            {
-                this->textBlock_Copy13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 16:
-            {
-                this->textBlock_Copy14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 17:
-            {
-                this->textBlock_Copy15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 18:
-            {
-                this->textBlock_Copy16 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy16))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 19:
-            {
-                this->textBlock_Copy17 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy17))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 20:
-            {
-                this->textBlock_Copy18 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy18))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 21:
-            {
-                this->textBlock_Copy19 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy19))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 22:
-            {
-                this->textBlock_Copy20 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy20))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 23:
-            {
-                this->lPos0 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos0))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 24:
-            {
-                this->lSpeed0 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed0))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 25:
-            {
-                this->lPos1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 26:
-            {
-                this->lPos2 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos2))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 27:
-            {
-                this->lPos3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 28:
-            {
-                this->lPos4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 29:
-            {
-                this->lPos5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 30:
-            {
-                this->lPos6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 31:
-            {
-                this->lPos7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 32:
-            {
-                this->lPos8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 33:
-            {
-                this->lPos9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 34:
-            {
-                this->lPos10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 35:
-            {
-                this->lPos11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 36:
-            {
-                this->lPos12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 37:
-            {
-                this->lPos13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 38:
-            {
-                this->lPos14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 39:
-            {
-                this->lPos15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 40:
-            {
-                this->lSpeed1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 41:
-            {
-                this->lSpeed2 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed2))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 42:
-            {
-                this->lSpeed3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 43:
-            {
-                this->lSpeed4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 44:
-            {
-                this->lSpeed5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 45:
-            {
-                this->lSpeed6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 46:
-            {
-                this->lSpeed7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 47:
-            {
-                this->lSpeed8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 48:
-            {
-                this->lSpeed9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 49:
-            {
-                this->lSpeed10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 50:
-            {
-                this->lSpeed11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 51:
-            {
-                this->lSpeed12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 52:
-            {
-                this->lSpeed13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 53:
-            {
-                this->lSpeed14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 54:
-            {
-                this->lSpeed15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 55:
-            {
-                this->textBlock_Copy53 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy53))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 56:
-            {
-                this->lCycle = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lCycle))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 57:
-            {
-                this->textBlock_Copy55 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy55))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 58:
-            {
-                this->lTarget0 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget0))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 59:
-            {
-                this->lTarget1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 60:
-            {
-                this->lTarget2 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget2))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 61:
-            {
-                this->lTarget3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 62:
-            {
-                this->lTarget4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 63:
-            {
-                this->lTarget5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 64:
-            {
-                this->lTarget6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 65:
-            {
-                this->lTarget7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 66:
-            {
-                this->lTarget8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 67:
-            {
-                this->lTarget9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 68:
-            {
-                this->lTarget10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 69:
-            {
-                this->lTarget11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 70:
-            {
-                this->lTarget12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 71:
-            {
-                this->lTarget13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 72:
-            {
-                this->lTarget14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 73:
-            {
-                this->lTarget15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 74:
-            {
-                this->lIPlabel = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lIPlabel))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 75:
-            {
-                this->lIP_Copy = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lIP_Copy))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 76:
-            {
-                this->lIP = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lIP))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
-        case 77:
-            {
-                this->lPort = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPort))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
-            }
-            break;
+    case 1:
+        {
+            this->textBlock = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 2:
+        {
+            this->lName = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lName))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 3:
+        {
+            this->textBlock_Copy1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 4:
+        {
+            this->lConnected = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lConnected))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 5:
+        {
+            this->textBlock_Copy3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 6:
+        {
+            this->textBlock_Copy4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 7:
+        {
+            this->textBlock_Copy5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 8:
+        {
+            this->textBlock_Copy6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 9:
+        {
+            this->textBlock_Copy7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 10:
+        {
+            this->textBlock_Copy8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 11:
+        {
+            this->textBlock_Copy9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 12:
+        {
+            this->textBlock_Copy10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 13:
+        {
+            this->textBlock_Copy11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 14:
+        {
+            this->textBlock_Copy12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 15:
+        {
+            this->textBlock_Copy13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 16:
+        {
+            this->textBlock_Copy14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 17:
+        {
+            this->textBlock_Copy15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 18:
+        {
+            this->textBlock_Copy16 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy16))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 19:
+        {
+            this->textBlock_Copy17 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy17))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 20:
+        {
+            this->textBlock_Copy18 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy18))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 21:
+        {
+            this->textBlock_Copy19 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy19))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 22:
+        {
+            this->textBlock_Copy20 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy20))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 23:
+        {
+            this->lPos0 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos0))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 24:
+        {
+            this->lSpeed0 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed0))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 25:
+        {
+            this->lPos1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 26:
+        {
+            this->lPos2 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos2))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 27:
+        {
+            this->lPos3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 28:
+        {
+            this->lPos4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 29:
+        {
+            this->lPos5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 30:
+        {
+            this->lPos6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 31:
+        {
+            this->lPos7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 32:
+        {
+            this->lPos8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 33:
+        {
+            this->lPos9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 34:
+        {
+            this->lPos10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 35:
+        {
+            this->lPos11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 36:
+        {
+            this->lPos12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 37:
+        {
+            this->lPos13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 38:
+        {
+            this->lPos14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 39:
+        {
+            this->lPos15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPos15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 40:
+        {
+            this->lSpeed1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 41:
+        {
+            this->lSpeed2 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed2))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 42:
+        {
+            this->lSpeed3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 43:
+        {
+            this->lSpeed4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 44:
+        {
+            this->lSpeed5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 45:
+        {
+            this->lSpeed6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 46:
+        {
+            this->lSpeed7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 47:
+        {
+            this->lSpeed8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 48:
+        {
+            this->lSpeed9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 49:
+        {
+            this->lSpeed10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 50:
+        {
+            this->lSpeed11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 51:
+        {
+            this->lSpeed12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 52:
+        {
+            this->lSpeed13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 53:
+        {
+            this->lSpeed14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 54:
+        {
+            this->lSpeed15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lSpeed15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 55:
+        {
+            this->textBlock_Copy53 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy53))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 56:
+        {
+            this->lCycle = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lCycle))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 57:
+        {
+            this->textBlock_Copy55 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->textBlock_Copy55))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 58:
+        {
+            this->lTarget0 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget0))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 59:
+        {
+            this->lTarget1 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget1))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 60:
+        {
+            this->lTarget2 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget2))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 61:
+        {
+            this->lTarget3 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget3))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 62:
+        {
+            this->lTarget4 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget4))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 63:
+        {
+            this->lTarget5 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget5))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 64:
+        {
+            this->lTarget6 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget6))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 65:
+        {
+            this->lTarget7 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget7))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 66:
+        {
+            this->lTarget8 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget8))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 67:
+        {
+            this->lTarget9 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget9))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 68:
+        {
+            this->lTarget10 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget10))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 69:
+        {
+            this->lTarget11 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget11))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 70:
+        {
+            this->lTarget12 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget12))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 71:
+        {
+            this->lTarget13 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget13))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 72:
+        {
+            this->lTarget14 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget14))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 73:
+        {
+            this->lTarget15 = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lTarget15))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 74:
+        {
+            this->lIPlabel = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lIPlabel))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 75:
+        {
+            this->lIP_Copy = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lIP_Copy))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 76:
+        {
+            this->lIP = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lIP))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
+    case 77:
+        {
+            this->lPort = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(this->lPort))->SelectionChanged += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::Meccanoid::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::textBlock_SelectionChanged);
+        }
+        break;
     }
     _contentLoaded = true;
 }
@@ -576,5 +579,7 @@ void ::Meccanoid::MainPage::Connect(int __connectionId, ::Platform::Object^ __ta
     __target;               // unreferenced
     return nullptr;
 }
+
+#pragma warning(pop)
 
 

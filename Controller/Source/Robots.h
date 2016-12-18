@@ -30,15 +30,14 @@ public:
 
   void update();
 
-  int countMeccanoids() { return meccanoids.size(); }
+  int countMeccanoids () { return meccanoids .size(); }
   int countVirtualBots() { return virtualbots.size(); }
 
   void reloadConfig();
 
 private:
-  void loadMeccanoids(XmlElement * content);
-  void loadPoses     (XmlElement * content);  
-  void loadVirtuals  (XmlElement * content);
+  void loadRobots  (XmlElement * content);
+  void loadVirtuals(XmlElement * content);
 
   OwnedArray<Meccanoid> meccanoids;
   OwnedArray<VirtualBot> virtualbots;

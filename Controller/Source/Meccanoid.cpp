@@ -15,86 +15,114 @@
 #include "Poses.h"
 #include "../../Shared/Messages.h"
 
+
 Meccanoid::Meccanoid() {
-  for (int i = 0; i < SERVO_COUNT; i++) {
-    servo[i].setID(i);
+  for (unsigned int i = 0; i < (unsigned int)BODYPART::INVALID; i++) {
+    part[i].init((BODYPART)i);
   }
 }
 
 void Meccanoid::handleMessage(const OSCMessage & message) {
   // we already have tested there are 3 tokens or more
   
-	if (message[1].getString().compareIgnoreCase("move") == 0) {
-    if (message.size() < 4) {
-      ToLog("Invalid pin message");
+	if (message[1].getString().equalsIgnoreCase("rotate")) {
+    if (message.size() != 7) {
+      ToLog("Invalid bone rotation");
     }
-	// todo: test message size (see VirtualBot::handleMessage)
     else {
-      // pin move needs 3 bytes and a float
-      // message - pin - position - speed
-
-      MemoryOutputStream out;
-
-      out.writeByte((unsigned char) MESSAGE::SERVO);
-
-      // get the base servo according to name
-      Servo * s = getServo(message[2].getString());
-      if (s == nullptr) {
-        ToLog("Invalid servo identifier: " + message[2].getString());
-      }
-      else {
-        // add offset
-        s = getServo(s->getID() + message[3].getInt32());
-        if (s == nullptr) return;
-
-        out.writeByte((unsigned char)(s->getID()));
-        out.writeByte((unsigned char)(s->calculatePos(message[4].getInt32())));
-        out.writeFloatBigEndian(message[5].getFloat32());
-
-        send(out.getData(), out.getDataSize());        
+      BodyPart & part = getBodyPart(message[2].getString());
+      if (!part.valid()) {
+        ToLog("Invalid body part: " + message[2].getString());
+      } else {
+        MemoryOutputStream out;
+        part.writeOrn(out, message);
+        send(out.getData(), out.getDataSize());
       }
     }
+    return; // message is handled
   }
-  //else if (tokens[2] == "pinLight") {
-    /*if (tokens.size() < 4) {
-      ToLog("Invalid led message");
+
+  if (message[1].getString().equalsIgnoreCase("relrotate")) {
+    if (message.size() != 7) {
+      ToLog("Invalid relative bone rotation");
     }
     else {
-      int pin = getPin(tokens[3]);
-      if (pin == -1) {
-        ToLog("Invalid pin identifier: " + tokens[3]);
+      BodyPart & part = getBodyPart(message[2].getString());
+      if (!part.valid()) {
+        ToLog("Invalid body part: " + message[2].getString());
       }
       else {
-        juce::OSCMessage out(OSCAddressPattern("/" + name + "/pinLight"));
-
-        // add pin ID
-        out.addInt32(pin);
-
-        // copy arguments (should be joint - position - duration)
-        for (int i = 0; i < message.size(); i++) {
-          out.addInt32(message[i].getInt32());
-        }
-
-        // send message
-        send(out);
+        MemoryOutputStream out;
+        part.writeRelOrn(out, message);
+        send(out.getData(), out.getDataSize());
       }
-    }*/
-  //}
-  //else if (tokens[2] == "headLight") {
-    /*juce::OSCMessage out(OSCAddressPattern("/" + name + "/headLight"));
-    for (int i = 0; i < message.size(); i++) {
-      out.addInt32(message[i].getInt32());
     }
-    send(out);*/
-  //}
-  //else if (tokens[2] == "pose") {
-  //  if (message.size() > 1) {
-  //    String pose = message[0].getString();
-  //    int time = message[1].getInt32();
+    return; // message is handled
+  }
 
-  //    Poses().sendPoseToRobot(pose, time, *this);
-  //  }
-  //}
+  if (message[1].getString().equalsIgnoreCase("constraint")) {
+    if (message.size() != 4) {
+      ToLog("Invalid bone constraint");
+    }
+    else {
+      BodyPart & part = getBodyPart(message[2].getString());
+      if (!part.valid()) {
+        ToLog("Invalid body part: " + message[2].getString());
+      }
+      else {
+        MemoryOutputStream out;
+        part.writeConstraint(out, message);
+        send(out.getData(), out.getDataSize());
+      }
+    }
+    return; // message is handled
+  }
+
+  if (message[1].getString().equalsIgnoreCase("brown")) {
+    if (message.size() != 5) {
+      ToLog("Invalid brown message");
+    }
+    else {
+      BodyPart & part = getBodyPart(message[2].getString());
+      if (!part.valid()) {
+        ToLog("Invalid body part: " + message[2].getString());
+      }
+      else {
+        MemoryOutputStream out;
+        part.writeBrown(out, message);
+        send(out.getData(), out.getDataSize());
+      }
+    }
+    return; // message is handled
+  }
+
+  if (message[1].getString().equalsIgnoreCase("textMessage")) {
+    if (message.size() != 4) {
+      ToLog("Invalid Text Message");
+    }
+    else {
+      MemoryOutputStream out;
+      out.writeByte((unsigned char)MESSAGE::SPEAK);
+
+      // write foreground ID and alpha
+      String msg = message[2].getString();
+      const char * bytes = msg.getCharPointer();
+      int size = msg.getNumBytesAsUTF8();
+      out.writeIntBigEndian(size);
+      for (int i = 0; i < size; i++) {
+        out.writeByte(bytes[i]);
+      }
+
+      // send it
+      send(out.getData(), out.getDataSize());
+    }
+    return;
+  }
+
+  // if we get here, the message was not handled
+  ToLog("Invalid message: ");
+  ToLog(message);
+
 }
 
 
@@ -103,6 +131,21 @@ void Meccanoid::initialize() {
   unsigned char out[1];
   out[0] = (unsigned char) MESSAGE::INIT;
   send(&out, 1);
+
+  for (int i = 0; i < (int)BODYPART::INVALID; i++) {
+    {
+      MemoryOutputStream out;
+      part[i].writeConstraints(out);
+      send(out.getData(), out.getDataSize());
+    }
+    {
+      MemoryOutputStream out;
+      part[i].writeLimits(out);
+      send(out.getData(), out.getDataSize());
+    }
+    
+  }
+
 }
 
 Servo * Meccanoid::getServo(const String & name)
@@ -130,5 +173,26 @@ void Meccanoid::resetServos()
   }
 }
 
+BodyPart & Meccanoid::getBodyPart(BODYPART part)
+{
+   return this->part[(unsigned int)part];
+}
 
+BodyPart & Meccanoid::getBodyPart(const String & name) {
+  BODYPART part;
+  if (name.equalsIgnoreCase("head"         )) part = BODYPART::HEAD;
+  else if (name.equalsIgnoreCase("armLeftUpper" )) part = BODYPART::ARMLU;
+  else if (name.equalsIgnoreCase("armLeftLower" )) part = BODYPART::ARMLL;
+  else if (name.equalsIgnoreCase("handLeft"     )) part = BODYPART::HANDL;
+  else if (name.equalsIgnoreCase("armRightUpper")) part = BODYPART::ARMRU;
+  else if (name.equalsIgnoreCase("armRightLower")) part = BODYPART::ARMRL;
+  else if (name.equalsIgnoreCase("handRight"    )) part = BODYPART::HANDR;
+  else if (name.equalsIgnoreCase("legLeftUpper" )) part = BODYPART::LEGLU;
+  else if (name.equalsIgnoreCase("legLeftLower" )) part = BODYPART::LEGLL;
+  else if (name.equalsIgnoreCase("legRightUpper")) part = BODYPART::LEGRU;
+  else if (name.equalsIgnoreCase("legRightLower")) part = BODYPART::LEGRL;
+  else part = BODYPART::INVALID;
+
+  return getBodyPart(part);
+}
 

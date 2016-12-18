@@ -20,6 +20,10 @@
     <ClCompile Include="ConnectorClass.cpp" />
     <ClCompile Include="ServerConnection.cpp" />
     <ClCompile Include="Servo.cpp" />
+    <ClCompile Include="bodyPart.cpp" />
+    <ClCompile Include="Interpolator.cpp" />
+    <ClCompile Include="MyMath.cpp" />
+    <ClCompile Include="Speak.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -29,6 +33,10 @@
     <ClInclude Include="ConnectorClass.h" />
     <ClInclude Include="ServerConnection.h" />
     <ClInclude Include="Servo.h" />
+    <ClInclude Include="bodyPart.h" />
+    <ClInclude Include="Interpolator.h" />
+    <ClInclude Include="MyMath.h" />
+    <ClInclude Include="Speak.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">

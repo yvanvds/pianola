@@ -28,6 +28,9 @@ enum class MESSAGE : unsigned char {
   BACKGROUND,
   FOREGROUND,
   MESSAGE,
+  SETCONSTRAINTS,
+  SETLIMITS,
+  SPEAK,
 };
 
 enum class BODYPART : unsigned char {
@@ -47,6 +50,7 @@ enum class BODYPART : unsigned char {
 	LEGRL,
 	FOOTR,
 	INVALID,
+  NUM,
 };
 
 enum class BACKGROUND : unsigned char

@@ -1,29 +1,56 @@
 <pianola>
-	<meccanoids>
+	<robots>
 		<igor>
-			<servo name="left"  id="0" reverse="true" />
-			<servo id="2" reverse="true" />
-			<servo name="right" id="3" />	
-			<servo id="4" reverse="true"/>
-			<servo id="5" reverse="true" />
-			<servo name="head"  id="6" reverse="true"/>
-			<servo id="7" min="70" max="180"/>
-
+			<part name="head">
+				<servo first="Rot" second="X" />
+			 	<reverse first="true" second="false" />
+			 	<firstConstraint min="127" max="127" />
+			 	<secondConstraint min="127" max="127" />
+			 	<firstLimit min="100" max="100" />
+			 	<secondLimit min="65" max="65" />
+			</part>
+			<part name="armRightUpper">
+			 	<servo first="Rot" second="Y" />
+			 	<reverse first="true" second="false" />
+			</part>
+			<part name="armRightLower">
+			 	<servo first="X" />
+			 	<reverse first="true" />
+			</part>
+			<part name="handRight">
+			 	<servo first="X" />
+			 	<reverse first="true" />
+			</part>
+			<part name="armLeftUpper">
+			 	<servo first="Rot" second="Y" />
+			 	<reverse first="false" second="true" />
+			</part>
+			<part name="armLeftLower">
+			 	<servo first="X" />
+			 	<reverse first="true" />
+			</part>
+			<part name="handLeft">
+			 	<servo first="X" />
+			 	<reverse first="false" />
+			</part>
+			<part name="legRightUpper">
+			 	<servo first="x" />
+			 	<reverse first="false" />
+			</part>
+			<part name="legRightLower">
+			 	<servo first="x" />
+			 	<reverse first="false" />
+			</part>
+			<part name="legLeftUpper">
+			 	<servo first="x" />
+			 	<reverse first="false" />
+			</part>
+			<part name="legLeftLower">
+			 	<servo first="x" />
+			 	<reverse first="false" />
+			</part>
 		</igor>
-	</meccanoids>
-	
-	<poses>
-		<rest>
-			<action pin="left" joint="0" pos="24"/>
-			<action pin="left" joint="1" pos="224"/>
-			<action pin="left" joint="2" pos="90"/>
-			<action pin="right" joint="0" pos="224"/>
-			<action pin="right" joint="1" pos="24"/>
-			<action pin="right" joint="2" pos="90"/>
-			<action pin="head" joint="0" pos="125"/>
-			<action pin="head" joint="1" pos="125"/>
-		</rest>
-	</poses>
+	</robots>
 
 	<virtual>
 		<Vir1 />

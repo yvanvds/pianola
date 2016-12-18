@@ -41,19 +41,19 @@ void robots::reloadConfig()
 
   while (child != nullptr) {
     String tag = child->getTagName();
-    if (child->getTagName() == "meccanoids") {
-      loadMeccanoids(child);
+    if (child->getTagName() == "robots") {
+      loadRobots(child);
     }
 
-	if (child->getTagName() == "virtual") {
-		loadVirtuals(child);
-	}
+	  else if (child->getTagName() == "virtual") {
+		  loadVirtuals(child);
+	  }
 
     child = child->getNextElement();
   }
 }
 
-void robots::loadMeccanoids(XmlElement * content) {
+void robots::loadRobots(XmlElement * content) {
   XmlElement * child = content->getFirstChildElement();
 
   while (child != nullptr) {
@@ -65,31 +65,17 @@ void robots::loadMeccanoids(XmlElement * content) {
       m = addMeccanoid(name);
     }
     
-    // reset all values
-    m->resetServos();
+    // TODO: reset all values
+    m->initialize();
 
     XmlElement * elm = child->getFirstChildElement();
     while (elm != nullptr) {
-      if (elm->getTagName() == "servo") {
-        int ID = elm->getIntAttribute("id");
+      if (elm->getTagName() == "part") {
         String name = elm->getStringAttribute("name");
+        BodyPart & part = m->getBodyPart(name);
 
-        Servo * s = m->getServo(ID);
-        if (s != nullptr) {
-          
-          s->setStatus(true);
-          if (elm->hasAttribute("name")) {
-            s->setName(elm->getStringAttribute("name"));
-          }
-          if (elm->hasAttribute("reverse")) {
-            s->setReverse(elm->getBoolAttribute("reverse"));
-          }
-          if (elm->hasAttribute("min")) {
-            s->setMin(elm->getIntAttribute("min"));
-          }
-          if (elm->hasAttribute("max")) {
-            s->setMax(elm->getIntAttribute("max"));
-          }
+        if (part.valid()) {
+          part.readConfig(elm);
         }
       }
       elm = elm->getNextElement();
@@ -99,9 +85,6 @@ void robots::loadMeccanoids(XmlElement * content) {
   }
 }
 
-void robots::loadPoses(XmlElement * content) {
-	
-}
 
 void robots::loadVirtuals(XmlElement * content) {
 	XmlElement * child = content->getFirstChildElement();
@@ -127,7 +110,7 @@ Meccanoid * robots::addMeccanoid(const String & name) {
 
 Meccanoid * robots::getMeccanoid(const String & name) {
   for (int i = 0; i < meccanoids.size(); i++) {
-    if (meccanoids[i]->getName() == name) return meccanoids[i];
+    if (meccanoids[i]->getName().compareIgnoreCase(name) == 0) return meccanoids[i];
   }
   return nullptr;
 }
@@ -144,7 +127,7 @@ VirtualBot * robots::addVirtualBot(const String & name) {
 
 VirtualBot * robots::getVirtualBot(const String & name) {
 	for (int i = 0; i < virtualbots.size(); i++) {
-		if (virtualbots[i]->getName() == name) return virtualbots[i];
+		if (virtualbots[i]->getName().compareIgnoreCase(name) == 0) return virtualbots[i];
 	}
 	return nullptr;
 }

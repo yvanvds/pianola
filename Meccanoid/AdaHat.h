@@ -1,5 +1,7 @@
 #pragma once
 #include "Servo.h"
+#include "bodyPart.h"
+#include "../Shared/Messages.h"
 
 using namespace Windows::Devices::I2c;
 using namespace Platform;
@@ -9,11 +11,18 @@ namespace Meccanoid {
 
   ref class AdaHat sealed
   {
-  public:
+  internal:
     AdaHat();
 
     void init();
+    void reset();
 
+    void setRotate(BODYPART part, byte x, byte y, float speed);
+    void setRelRotate(BODYPART part, byte x, byte y, float speed);
+    void setBrown(BODYPART part, int factor, float speed);
+    void setConstraintMultiplier(BODYPART part, float value);
+    void setConstraints(BODYPART part, byte minX, byte minY, byte maxX, byte maxY);
+    void setLimits(BODYPART part, byte minX, byte minY, byte maxX, byte maxY);
     void setServo(byte ID, byte position, float speed);
     void setPWM(int channel, int on, int off);
 
@@ -47,6 +56,10 @@ namespace Meccanoid {
     
     DispatcherTimer^ timer;
     long lastTick;
+
+    BodyPart head, leftArmUpper, rightArmUpper, leftArmLower, rightArmLower, leftHand, rightHand;
+    BodyPart leftLegUpper, rightLegUpper, leftLegLower, rightLegLower;
+
   };
 
 
