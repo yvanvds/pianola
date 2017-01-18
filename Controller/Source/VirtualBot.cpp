@@ -13,6 +13,7 @@
 #include "Defines.h"
 #include "MonitorWindow.h"
 #include "../../Shared/Messages.h"
+#include "Vector.h"
 
 VirtualBot::VirtualBot() {
 
@@ -36,9 +37,10 @@ void VirtualBot::handleMessage(const OSCMessage & message) {
 			}
 			else {
 				out.writeByte((unsigned char)part);
-				out.writeByte((unsigned char)message[3].getInt32());
-				out.writeByte((unsigned char)message[4].getInt32());
-				out.writeByte((unsigned char)message[5].getInt32());
+        out.writeByte((unsigned char)message[3].getInt32());
+        out.writeByte((unsigned char)message[4].getInt32());
+        out.writeByte((unsigned char)message[5].getInt32());
+				
 				float time = message[6].getFloat32();
 				out.writeFloat(time);
 
@@ -63,9 +65,10 @@ void VirtualBot::handleMessage(const OSCMessage & message) {
 			}
 			else {
 				out.writeByte((unsigned char)part);
-				out.writeByte((unsigned char)message[3].getInt32());
-				out.writeByte((unsigned char)message[4].getInt32());
-				out.writeByte((unsigned char)message[5].getInt32());
+        out.writeByte((unsigned char)message[3].getInt32());
+        out.writeByte((unsigned char)message[4].getInt32());
+        out.writeByte((unsigned char)message[5].getInt32());
+       
 				float time = message[6].getFloat32();
 				out.writeFloat(time);
 
@@ -73,6 +76,42 @@ void VirtualBot::handleMessage(const OSCMessage & message) {
 			}
 		}
 	}
+  else if (message[1].getString().compareIgnoreCase("kinectrotate") == 0) {
+    if (message.size() != 7) {
+      ToLog("Invalid kinect rotation");
+    }
+    else {
+      // bone rotation needs 5 bytes and a float
+      // message - bone - move x - move y - move z - speed
+
+      MemoryOutputStream out;
+      out.writeByte((unsigned char)MESSAGE::KINECTROTATE);
+
+      BODYPART part = getBodyPart(message[2].getString());
+      if (part == BODYPART::INVALID) {
+        ToLog("Invalid body part: " + message[2].getString());
+      }
+      else {
+        out.writeByte((unsigned char)part);
+        out.writeByte((unsigned char)message[3].getInt32());
+        out.writeByte((unsigned char)message[4].getInt32());
+        out.writeByte((unsigned char)message[5].getInt32());
+        //Vec coord;
+        //coord.x = message[3].getInt32() - 127;
+        //coord.y = message[4].getInt32() - 127;
+        //coord.z = message[5].getInt32() - 127;
+        //ConvertVecToRotation(coord, part);
+        //out.writeByte((unsigned char)(coord.y + 127));
+        //out.writeByte((unsigned char)(coord.z + 127));
+        //out.writeByte((unsigned char)(coord.x + 127));
+
+        float time = message[6].getFloat32();
+        out.writeFloat(time);
+
+        send(out.getData(), out.getDataSize());
+      }
+    }
+  }
 	else if (message[1].getString().compareIgnoreCase("offset") == 0) {
 		if (message.size() != 7) {
 			ToLog("Invalid bone offset");

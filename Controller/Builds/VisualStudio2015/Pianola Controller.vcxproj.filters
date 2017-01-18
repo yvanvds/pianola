@@ -361,6 +361,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\joint.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Vector.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Matrix.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BodyPart.cpp">
       <Filter>Pianola Controller\Source</Filter>
     </ClCompile>
@@ -2106,6 +2115,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\joint.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Vector.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Matrix.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\BodyPart.h">
       <Filter>Pianola Controller\Source</Filter>
     </ClInclude>

@@ -1,0 +1,556 @@
+﻿<Window x:Class="KinectRecorder.FrameDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KinectRecorder"
+        mc:Ignorable="d"
+        Title="FrameDetail" Height="550" Width="990">
+    <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="333"/>
+      <ColumnDefinition Width="333"/>
+      <ColumnDefinition Width="333"/>
+    </Grid.ColumnDefinitions>
+      
+    <Grid Grid.Column="0" HorizontalAlignment="Left" Width="333">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="0.7*"/>
+        <RowDefinition Height="0.7*"/>
+      </Grid.RowDefinitions>
+
+      <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Head" Width="90"/>
+        <TextBox x:Name="previousHeadX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousHeadY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousHeadZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Neck" Width="90"/>
+        <TextBox x:Name="previousNeckX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousNeckY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousNeckZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Shoulder" Width="90"/>
+        <TextBox x:Name="previousSpineShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousSpineShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousSpineShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Mid" Width="90"/>
+        <TextBox x:Name="previousSpineMidX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousSpineMidY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousSpineMidZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Base" Width="90"/>
+        <TextBox x:Name="previousSpineBaseX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousSpineBaseY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousSpineBaseZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Shoulder" Width="90"/>
+        <TextBox x:Name="previousLeftShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Elbow" Width="90"/>
+        <TextBox x:Name="previousLeftElbowX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftElbowY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftElbowZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Wrist" Width="90"/>
+        <TextBox x:Name="previousLeftWristX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftWristY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftWristZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Hand" Width="90"/>
+        <TextBox x:Name="previousLeftHandX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftHandY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftHandZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Shoulder" Width="90"/>
+        <TextBox x:Name="previousRightShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="10" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Elbow" Width="90"/>
+        <TextBox x:Name="previousRightElbowX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightElbowY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightElbowZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="11" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Wrist" Width="90"/>
+        <TextBox x:Name="previousRightWristX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightWristY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightWristZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="12" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Hand" Width="90"/>
+        <TextBox x:Name="previousRightHandX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightHandY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightHandZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="13" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Hip" Width="90"/>
+        <TextBox x:Name="previousLeftHipX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftHipY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftHipZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="14" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Knee" Width="90"/>
+        <TextBox x:Name="previousLeftKneeX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftKneeY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftKneeZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="15" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Ankle" Width="90"/>
+        <TextBox x:Name="previousLeftAnkleX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftAnkleY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftAnkleZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="16" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Foot" Width="90"/>
+        <TextBox x:Name="previousLeftFootX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftFootY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousLeftFootZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="17" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Hip" Width="90"/>
+        <TextBox x:Name="previousRightHipX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightHipY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightHipZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="18" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Knee" Width="90"/>
+        <TextBox x:Name="previousRightKneeX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightKneeY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightKneeZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="19" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Ankle" Width="90"/>
+        <TextBox x:Name="previousRightAnkleX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightAnkleY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightAnkleZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="20" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Foot" Width="90"/>
+        <TextBox x:Name="previousRightFootX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightFootY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="previousRightFootZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <Button Grid.Row="21" x:Name="btnPreviousFrame" Content="Previous Frame" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Click="onPreviousFrameClick" />
+      <Button Grid.Row="22" x:Name="btnPreviousFrameCurrent" Content="Make Current" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Click="onMakePreviousCurrentClick" />
+
+    </Grid>
+
+    <Grid Grid.Column="1" HorizontalAlignment="Left" Width="333">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="0.7*"/>
+        <RowDefinition Height="0.7*"/>
+      </Grid.RowDefinitions>
+
+      <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Head" Width="90"/>
+        <TextBox x:Name="currentHeadX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentHeadY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentHeadZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Neck" Width="90"/>
+        <TextBox x:Name="currentNeckX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentNeckY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentNeckZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Shoulder" Width="90"/>
+        <TextBox x:Name="currentSpineShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentSpineShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentSpineShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Mid" Width="90"/>
+        <TextBox x:Name="currentSpineMidX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentSpineMidY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentSpineMidZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Base" Width="90"/>
+        <TextBox x:Name="currentSpineBaseX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentSpineBaseY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentSpineBaseZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Shoulder" Width="90"/>
+        <TextBox x:Name="currentLeftShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Elbow" Width="90"/>
+        <TextBox x:Name="currentLeftElbowX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftElbowY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftElbowZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Wrist" Width="90"/>
+        <TextBox x:Name="currentLeftWristX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftWristY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftWristZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Hand" Width="90"/>
+        <TextBox x:Name="currentLeftHandX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftHandY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftHandZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Shoulder" Width="90"/>
+        <TextBox x:Name="currentRightShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="10" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Elbow" Width="90"/>
+        <TextBox x:Name="currentRightElbowX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightElbowY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightElbowZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="11" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Wrist" Width="90"/>
+        <TextBox x:Name="currentRightWristX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightWristY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightWristZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="12" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Hand" Width="90"/>
+        <TextBox x:Name="currentRightHandX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightHandY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightHandZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="13" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Hip" Width="90"/>
+        <TextBox x:Name="currentLeftHipX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftHipY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftHipZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="14" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Knee" Width="90"/>
+        <TextBox x:Name="currentLeftKneeX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftKneeY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftKneeZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="15" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Ankle" Width="90"/>
+        <TextBox x:Name="currentLeftAnkleX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftAnkleY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftAnkleZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="16" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Foot" Width="90"/>
+        <TextBox x:Name="currentLeftFootX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftFootY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentLeftFootZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="17" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Hip" Width="90"/>
+        <TextBox x:Name="currentRightHipX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightHipY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightHipZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="18" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Knee" Width="90"/>
+        <TextBox x:Name="currentRightKneeX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightKneeY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightKneeZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="19" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Ankle" Width="90"/>
+        <TextBox x:Name="currentRightAnkleX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightAnkleY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightAnkleZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="20" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Foot" Width="90"/>
+        <TextBox x:Name="currentRightFootX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightFootY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right"/>
+        <TextBox x:Name="currentRightFootZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+      </StackPanel>
+
+      <Button Grid.Row="21" x:Name="btnCurrentFrame" Content="Current Frame" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Click="OnCurrentFrameClick" />
+      <Label x:Name="CurrentLabel" Grid.Row="22" FontSize="18" Content="test" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+    </Grid>
+
+    <Grid Grid.Column="2" HorizontalAlignment="Left" Width="333">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="0.7*"/>
+        <RowDefinition Height="0.7*"/>
+      </Grid.RowDefinitions>
+
+      <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Head" Width="90"/>
+        <TextBox x:Name="nextHeadX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextHeadY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextHeadZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Neck" Width="90"/>
+        <TextBox x:Name="nextNeckX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextNeckY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextNeckZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Shoulder" Width="90"/>
+        <TextBox x:Name="nextSpineShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextSpineShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextSpineShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Mid" Width="90"/>
+        <TextBox x:Name="nextSpineMidX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextSpineMidY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextSpineMidZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Spine Base" Width="90"/>
+        <TextBox x:Name="nextSpineBaseX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextSpineBaseY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextSpineBaseZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Shoulder" Width="90"/>
+        <TextBox x:Name="nextLeftShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Elbow" Width="90"/>
+        <TextBox x:Name="nextLeftElbowX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftElbowY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftElbowZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Wrist" Width="90"/>
+        <TextBox x:Name="nextLeftWristX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftWristY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftWristZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Hand" Width="90"/>
+        <TextBox x:Name="nextLeftHandX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftHandY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftHandZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Shoulder" Width="90"/>
+        <TextBox x:Name="nextRightShoulderX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightShoulderY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightShoulderZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="10" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Elbow" Width="90"/>
+        <TextBox x:Name="nextRightElbowX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightElbowY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightElbowZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="11" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Wrist" Width="90"/>
+        <TextBox x:Name="nextRightWristX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightWristY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightWristZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="12" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Hand" Width="90"/>
+        <TextBox x:Name="nextRightHandX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightHandY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightHandZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="13" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Hip" Width="90"/>
+        <TextBox x:Name="nextLeftHipX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftHipY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftHipZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="14" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Knee" Width="90"/>
+        <TextBox x:Name="nextLeftKneeX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftKneeY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftKneeZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="15" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Ankle" Width="90"/>
+        <TextBox x:Name="nextLeftAnkleX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftAnkleY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftAnkleZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="16" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Left Foot" Width="90"/>
+        <TextBox x:Name="nextLeftFootX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftFootY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextLeftFootZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="17" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Hip" Width="90"/>
+        <TextBox x:Name="nextRightHipX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightHipY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightHipZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="18" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Knee" Width="90"/>
+        <TextBox x:Name="nextRightKneeX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightKneeY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightKneeZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="19" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Ankle" Width="90"/>
+        <TextBox x:Name="nextRightAnkleX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightAnkleY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightAnkleZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <StackPanel Grid.Row="20" Orientation="Horizontal" Margin="2,2,2,2">
+        <TextBlock Text="Right Foot" Width="90"/>
+        <TextBox x:Name="nextRightFootX" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightFootY" Width="60" Margin="0,0,5,0" HorizontalAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="nextRightFootZ" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" IsEnabled="False"/>
+      </StackPanel>
+
+      <Button Grid.Row="21" x:Name="btnNextFrame" Content="Next Frame" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Click="OnNextFrameClick" />
+      <Button Grid.Row="22" x:Name="btnNextFrameCurrent" Content="Make Current" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Click="onMakeNextCurrentClick" />
+
+
+    </Grid>
+
+
+  </Grid>
+</Window>

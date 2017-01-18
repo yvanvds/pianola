@@ -12,10 +12,16 @@
 #define UTILITIES_H_INCLUDED
 
 #include "JuceHeader.h"
+#include <math.h>
 
 void OSCTokenize(Array<String> & tokens, const String & string);
 
+void SinCos(float & sin, float & cos, float angle);
 
+float Angle(float x, float y);
+float Asin(float sin);
+
+float RadToDeg(float value);
 
 
 #endif  // UTILITIES_H_INCLUDED

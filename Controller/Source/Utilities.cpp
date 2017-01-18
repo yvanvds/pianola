@@ -9,6 +9,7 @@
 */
 
 #include "Utilities.h"
+#include "Defines.h"
 
 void OSCTokenize(Array<String> & tokens, const String & string) {
   tokens.clear();
@@ -25,3 +26,26 @@ void OSCTokenize(Array<String> & tokens, const String & string) {
   }
   tokens.add(token);
 }
+
+void SinCos(float & sin, float & cos, float angle)
+{
+  sin = sinf(angle);
+  cos = cosf(angle);
+}
+
+  float Angle(float x, float y)
+  {
+    return atan2f(y, x);
+  }
+
+  float Asin(float sin)
+  {
+    if (sin >= 1) return PID_2;
+    if (sin <= -1) return -PID_2;
+    return asinf(sin);
+  }
+
+  float RadToDeg(float rad)
+  {
+    return rad*(180/PID);
+  }

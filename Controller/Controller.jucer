@@ -13,6 +13,12 @@
       <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
     </GROUP>
     <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
+      <FILE id="tLdgpJ" name="joint.cpp" compile="1" resource="0" file="Source/joint.cpp"/>
+      <FILE id="EbdHBQ" name="joint.h" compile="0" resource="0" file="Source/joint.h"/>
+      <FILE id="YwX2Du" name="Vector.cpp" compile="1" resource="0" file="Source/Vector.cpp"/>
+      <FILE id="GlQxrc" name="Vector.h" compile="0" resource="0" file="Source/Vector.h"/>
+      <FILE id="RPkE06" name="Matrix.cpp" compile="1" resource="0" file="Source/Matrix.cpp"/>
+      <FILE id="tZ7EqI" name="Matrix.h" compile="0" resource="0" file="Source/Matrix.h"/>
       <FILE id="C4hdhn" name="BodyPart.cpp" compile="1" resource="0" file="Source/BodyPart.cpp"/>
       <FILE id="rpLTXV" name="BodyPart.h" compile="0" resource="0" file="Source/BodyPart.h"/>
       <FILE id="KPMrkB" name="VirtualBox.cpp" compile="1" resource="0" file="Source/VirtualBox.cpp"/>

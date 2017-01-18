@@ -1,0 +1,33 @@
+﻿<Window x:Class="KinectRecorder.DebugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KinectRecorder"
+        mc:Ignorable="d"
+        Title="DebugWindow" Height="300" Width="300">
+  <Grid>
+    <TextBlock x:Name="line1" HorizontalAlignment="Left" Margin="10,59,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="272" FontFamily="Consolas"/>
+    <TextBlock x:Name="line2" HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="272" FontFamily="Consolas"/>
+    <TextBlock x:Name="line3" HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="272" FontFamily="Consolas"/>
+    <TextBlock x:Name="line4" HorizontalAlignment="Left" Margin="10,122,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="272" FontFamily="Consolas"/>
+    <TextBlock x:Name="line5" HorizontalAlignment="Left" Margin="10,143,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="272" FontFamily="Consolas"/>
+    <TextBlock x:Name="line6" HorizontalAlignment="Left" Margin="10,164,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="272" FontFamily="Consolas"/>
+    <Canvas x:Name="CanvasXY" HorizontalAlignment="Left" Height="80" Margin="52,183,0,0" VerticalAlignment="Top" Width="80">
+      <Line X1="0" Y1="40" X2="80" Y2="40" Stroke="Black" StrokeThickness="1"/>
+      <Line X1="40" Y1="0" X2="40" Y2="80" Stroke="Black" StrokeThickness="1"/>
+      <Ellipse x:Name="ellipseXY" Width="4" Height="4" Fill="Blue" />
+      <Ellipse x:Name="ellipseXYangle" Width="4" Height="4" Fill="Red" />
+      <Ellipse x:Name="ellipseZYangle" Width="4" Height="4" Fill="Green" />
+    </Canvas>
+    <Canvas x:Name="CanvasXZ" HorizontalAlignment="Left" Height="80" Margin="167,183,0,0" VerticalAlignment="Top" Width="80">
+      <Line X1="0" Y1="40" X2="80" Y2="40" Stroke="Black" StrokeThickness="1"/>
+      <Line X1="40" Y1="0" X2="40" Y2="80" Stroke="Black" StrokeThickness="1"/>
+      <Ellipse x:Name="ellipseXZ" Width="4" Height="4" Fill="Blue" />
+      <Ellipse x:Name="ellipseXZangle" Width="4" Height="4" Fill="Red" />
+    </Canvas>
+    <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,183,0,0" TextWrapping="Wrap" Text="XY" VerticalAlignment="Top"/>
+    <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="148,183,0,0" TextWrapping="Wrap" Text="XZ" VerticalAlignment="Top"/>
+
+  </Grid>
+</Window>

@@ -11,8 +11,6 @@ namespace Meccanoid {
   private:
     Windows::Media::SpeechSynthesis::SpeechSynthesizer ^ synthesizer;
     Windows::Media::Playback::MediaPlayer ^ player;
-    Windows::Media::Audio::
-
   };
 }
 

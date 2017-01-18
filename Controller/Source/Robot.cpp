@@ -12,12 +12,16 @@
 #include "Defines.h"
 #include "JuceHeader.h"
 #include "MonitorWindow.h"
+#include "joint.h"
+#include "Vector.h"
+#include "Utilities.h"
 
 Robot::Robot() {
   socket = nullptr;
   connected = false;
   lastSeen = 60;
   port = 0;
+  VecToRot = true;
 }
 
 String Robot::getName() {
@@ -67,6 +71,15 @@ bool Robot::send(const void * sourceBuffer, int buffersize)
     return true;
   }
   return false;
+}
+
+void Robot::ConvertVecToRotation(Vec & coord, BODYPART part)
+{
+  joint j;
+  j.look(coord);
+  coord.x = RadToDeg(j.pitch) / 360 * 255;
+  coord.y = RadToDeg(j.roll) / 360 * 255;
+  coord.z = RadToDeg(j.yaw) / 360 * 255;
 }
 
 Robot & Robot::update() {

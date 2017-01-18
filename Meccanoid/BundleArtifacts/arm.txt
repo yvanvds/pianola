@@ -1,2 +1,2 @@
-MainPackage=D:\pianola\Meccanoid\ARM\Release\Meccanoid\Meccanoid_1.0.4.0_ARM.appx
-SymbolPackage=D:\pianola\Meccanoid\AppPackages\Meccanoid\Meccanoid_1.0.4.0_Test\Meccanoid_1.0.4.0_ARM.appxsym
+MainPackage=D:\pianola\Meccanoid\ARM\Release\Meccanoid\Meccanoid_1.0.6.0_ARM.appx
+SymbolPackage=D:\pianola\Meccanoid\AppPackages\Meccanoid\Meccanoid_1.0.6.0_Test\Meccanoid_1.0.6.0_ARM.appxsym

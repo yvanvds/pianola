@@ -12,6 +12,8 @@
 #define ROBOT_H_INCLUDED
 
 #include "JuceHeader.h"
+#include "Vector.h"
+#include "../../Shared/Messages.h"
 
 class Robot : OSCSender {
 public:
@@ -33,11 +35,14 @@ public:
 
   virtual void handleMessage(const OSCMessage & message) = 0;
 
+  void ConvertVecToRotation(Vec & coord, BODYPART part);
+
 protected:
   String name;
   String ipAddress;
   int port;
   bool connected;
+  bool VecToRot;
   int lastSeen;
   DatagramSocket * socket;
 };
