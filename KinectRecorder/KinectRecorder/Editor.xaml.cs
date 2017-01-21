@@ -70,7 +70,6 @@ namespace KinectRecorder
       if(parent != null && dataGrid.SelectedItems.Count > 0)
       {
         FrameRecorder.body.SetRotations((TimedFrame)dataGrid.SelectedItem, true);
-        parent.debugWindow.setFrame((TimedFrame)dataGrid.SelectedItem);
       }
     }
 

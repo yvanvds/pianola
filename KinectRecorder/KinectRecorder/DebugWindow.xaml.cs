@@ -21,59 +21,71 @@ namespace KinectRecorder
   /// </summary>
   public partial class DebugWindow : Window
   {
+    public int jointID { get; set; }
+
     public DebugWindow()
     {
       InitializeComponent();
+      jointID = 0;
     }
 
-    public void setFrame(TimedFrame frame)
+    private void onComboBoxChange(object sender, EventArgs e)
     {
-      line1.Text = "Parent X: " + frame.LeftShoulderX.ToString("0.###") + " Y: " + frame.LeftShoulderY.ToString("0.###") + " Z: " + frame.LeftShoulderZ.ToString("0.###");
-      line2.Text = "Node   X: " + frame.LeftElbowX.ToString("0.###") + " Y: " + frame.LeftElbowY.ToString("0.###") + " Z: " + frame.LeftElbowZ.ToString("0.###");
-
-      double x = 0, y = 0, z = 0;
-      frame.getOffset(JointType.WristLeft, JointType.ElbowLeft, ref x, ref y, ref z);
-      line3.Text = "Offset   X: " + x.ToString("0.###") + " Y: " + y.ToString("0.###") + " Z: " + z.ToString("0.###");
-
-      ellipseXY.SetValue(Canvas.LeftProperty, (Double)40 + -x * 100);
-      ellipseXY.SetValue(Canvas.TopProperty, (Double)40 + -y * 100);
-
-      ellipseXZ.SetValue(Canvas.LeftProperty, (Double)40 + -x * 100);
-      ellipseXZ.SetValue(Canvas.TopProperty, (Double)40 + z * 100);
-
-      double angleXY = 0;
-      if (x < 0)
-      {
-        angleXY = Body.clampRadians(Math.Atan2(x, y) + Constants.PI_2);
-      } else
-      {
-        angleXY = Body.clampRadians(Constants.PI_2 - Math.Atan2(x, y));
-      }
-
-      double angleXZ = Body.clampRadians(Constants.PI - Math.Atan2(z, x));
-
-      line4.Text = "XY: " + angleXY.ToDegrees().ToString("0.") + " ZY: "  + " XZ: " + angleXZ.ToDegrees().ToString("0.");
-      //line4.Text = "XY: " + angleXY.ToDegrees().ToString("0.") + " XZ: " + angleXZ.ToDegrees().ToString("0.");
-
-      //red dot
-      ellipseXYangle.SetValue(Canvas.LeftProperty, (double)10);
-      ellipseXYangle.SetValue(Canvas.TopProperty, 40 - angleXY.ToDegrees() / 5);
-
-      // green dot
-      //ellipseZYangle.SetValue(Canvas.LeftProperty, (double)70);
-      //ellipseZYangle.SetValue(Canvas.TopProperty, 40 - angleZY.ToDegrees() / 5);
-
-      ellipseXZangle.SetValue(Canvas.LeftProperty, (Double)40 + Math.Cos(angleXZ) * 20);
-      ellipseXZangle.SetValue(Canvas.TopProperty, (Double)40 + Math.Sin(angleXZ) * 20);
-      //double angleY = Math.Atan2(x, -y).ToDegrees();
-      //line4.Text = "Degrees  XY: " + angleX.ToString("###.#") + " X-Y: " + angleY.ToString("###.#");
-
-      //angleX = Math.Atan2(-x, y).ToDegrees();
-      //angleY = Math.Atan2(-x, -y).ToDegrees();
-      //line5.Text = "alt  -XY: " + angleX.ToString("###.#") + " -X-Y: " + angleY.ToString("###.#");
-
+      jointID = comboBox.SelectedIndex;
     }
 
+    public void clear()
+    {
+      line1.Text = "";
+      line2.Text = "";
+      line3.Text = "";
+      line4.Text = "";
+      line5.Text = "";
+      line6.Text = "";
+    }
+
+    public void setLine1(string value) { line1.Text = value; }
+    public void setLine2(string value) { line2.Text = value; }
+    public void setLine3(string value) { line3.Text = value; }
+    public void setLine4(string value) { line4.Text = value; }
+    public void setLine5(string value) { line5.Text = value; }
+    public void setLine6(string value) { line6.Text = value; }
+
+    public void setBlueDot1(double x, double y)
+    {
+      ellipse1Blue.SetValue(Canvas.LeftProperty, 40 + x);
+      ellipse1Blue.SetValue(Canvas.TopProperty , 40 + y);
+    }
+
+    public void setBlueDot2(double x, double y)
+    {
+      ellipse2Blue.SetValue(Canvas.LeftProperty, 40 + x);
+      ellipse2Blue.SetValue(Canvas.TopProperty , 40 + y);
+    }
+
+    public void setRedDot1(double x, double y)
+    {
+      ellipse1Red.SetValue(Canvas.LeftProperty, 40 + x);
+      ellipse1Red.SetValue(Canvas.TopProperty , 40 + y);
+    }
+
+    public void setRedDot2(double x, double y)
+    {
+      ellipse2Red.SetValue(Canvas.LeftProperty, 40 + x);
+      ellipse2Red.SetValue(Canvas.TopProperty , 40 + y);
+    }
+
+    public void setGreenDot1(double x, double y)
+    {
+      ellipse1Green.SetValue(Canvas.LeftProperty, 40 + x);
+      ellipse1Green.SetValue(Canvas.TopProperty , 40 + y);
+    }
+
+    public void setGreenDot2(double x, double y)
+    {
+      ellipse2Green.SetValue(Canvas.LeftProperty, 40 + x);
+      ellipse2Green.SetValue(Canvas.TopProperty , 40 + y);
+    }
   }
 
 

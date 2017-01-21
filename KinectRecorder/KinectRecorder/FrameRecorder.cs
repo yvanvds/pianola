@@ -41,6 +41,7 @@ namespace KinectRecorder
     public static void init(RecordingPage page)
     {
       recordingPage = page;
+      body.setDebug(recordingPage.debugWindow);
       frames = new ObservableCollection<TimedFrame>();
       timer = new DispatcherTimer();
       timer.Tick += new EventHandler(OnTimedEvent);

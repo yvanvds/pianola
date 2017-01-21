@@ -34,6 +34,8 @@ namespace KinectRecorder
     static IPAddress address = IPAddress.Parse("127.0.0.1");
     static int port = 34567;
 
+    DebugWindow debug = null;
+
     public Body()
     {
       if(osc == null)
@@ -43,214 +45,225 @@ namespace KinectRecorder
       }
     }
 
+    public void setDebug(DebugWindow window) { debug = window; }
+
     public void SetRotations(TimedFrame frame, bool sendRotations = false)
     {
-      int parentAngleX;
-      int parentAngleY;
-
-      int torsoAngleX;
-      int torsoAngleY;
-
-      double x = 0, y = 0, z = 0;
-
       // set used parts
       bUse = frame.Use;
-      bHead = frame.Head;
-      bTorsoUpper = frame.TorsoUpper;
-      bTorsoLower = frame.TorsoLower;
-      bShoulderLeft = frame.ShoulderLeft;
-      bShoulderRight = frame.ShoulderRight;
-      bElbowLeft = frame.ElbowLeft;
-      bElbowright = frame.ElbowRight;
-      bHandLeft = frame.HandLeft;
-      bHandRight = frame.HandRight;
-      bHipLeft = frame.HipLeft;
-      bHipRight = frame.HipRight;
-      bKneeLeft = frame.KneeLeft;
-      bKneeRight = frame.KneeRight;
-      bFootLeft = frame.FootLeft;
-      bFootRight = frame.FootRight;
+      bHead          = frame.Head         ; bTorsoUpper    = frame.TorsoUpper   ; bTorsoLower    = frame.TorsoLower   ;
+      bShoulderLeft  = frame.ShoulderLeft ; bElbowLeft     = frame.ElbowLeft    ; bHandLeft      = frame.HandLeft     ;
+      bShoulderRight = frame.ShoulderRight; bElbowright    = frame.ElbowRight   ; bHandRight     = frame.HandRight    ;
+      bHipLeft       = frame.HipLeft      ; bKneeLeft      = frame.KneeLeft     ; bFootLeft      = frame.FootLeft     ;
+      bHipRight      = frame.HipRight     ; bKneeRight     = frame.KneeRight    ; bFootRight     = frame.FootRight    ;
 
+      calcLowerTorso   (frame); calcUpperTorso(frame); calcHead     (frame);
+      calcLeftShoulder (frame); calcLeftElbow (frame); calcLeftHand (frame);
+      calcRightShoulder(frame); calcRightElbow(frame); calcRightHand(frame);
+      calcLeftHip      (frame); calcLeftKnee  (frame); calcLeftFoot (frame);
+      calcRightHip     (frame); calcRightKnee (frame); calcRightFoot(frame);
+
+      if(sendRotations) send(10);
+    }
+
+    private void calcLowerTorso(TimedFrame frame) {
+      // lower torso
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.SpineMid, JointType.SpineBase, ref x, ref y, ref z);
+
+      TorsoLower.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) - Constants.PI_2).ToDegrees() / 180 * 127));
+      TorsoLower.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, y)).ToDegrees() / 180 * 127));
+      TorsoLower.z = 0;
+    }
+
+    private void calcUpperTorso(TimedFrame frame) {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.SpineShoulder, JointType.SpineMid, ref x, ref y, ref z);
+
+      TorsoUpper.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) - Constants.PI_2).ToDegrees() / 180 * 127)) + TorsoLower.x;
+      TorsoUpper.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, y)).ToDegrees() / 180 * 127)) + TorsoLower.y;
+      TorsoUpper.z = 0;
+    }
+
+    private void calcHead(TimedFrame frame) {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.Head, JointType.Neck, ref x, ref y, ref z);
+
+      Head.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) - Constants.PI_2).ToDegrees() / 180 * 127)) + TorsoLower.x + TorsoUpper.x;
+      Head.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, y)).ToDegrees() / 180 * 127)) + TorsoLower.y + TorsoUpper.y;
+      Head.z = 0;
+    }
+
+    private void calcLeftShoulder(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.ElbowLeft, JointType.ShoulderLeft, ref x, ref y, ref z);
+
+      if (x < 0)
       {
-        // lower torso
-        frame.getOffset(JointType.SpineMid, JointType.SpineBase, ref x, ref y, ref z);
-
-        TorsoLower.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) - Constants.PI_2).ToDegrees() / 180 * 127));
-        TorsoLower.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, y)).ToDegrees() / 180 * 127));
-        TorsoLower.z = 0;
-
-        torsoAngleX = TorsoLower.x;
-        torsoAngleY = TorsoLower.y;
+        LeftShoulder.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127));
+      }
+      else
+      {
+        LeftShoulder.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 - Math.Atan2(x, y)).ToDegrees() / 180 * 127));
       }
 
+      LeftShoulder.y = clampRotation(Convert.ToInt32(clampRadians(Constants.PI + Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      LeftShoulder.z = 0;
+
+      LeftShoulder.x -= (TorsoUpper.x + TorsoLower.x);
+    }
+
+    private void calcLeftElbow(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.WristLeft, JointType.ElbowLeft, ref x, ref y, ref z);
+
+      if(x < 0)
       {
-        // upper torso
-        frame.getOffset(JointType.SpineShoulder, JointType.SpineMid, ref x, ref y, ref z);
+        LeftElbow.x = clampRotation(Convert.ToInt32((Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127));
+      } else
+      {
+        LeftElbow.x = clampRotation(Convert.ToInt32((Constants.PI_2 - Math.Atan2(x, y)).ToDegrees() / 180 * 127));
+      }
+      LeftElbow.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      LeftElbow.z = 0;
 
-        TorsoUpper.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) - Constants.PI_2).ToDegrees() / 180 * 127)) + torsoAngleX;
-        TorsoUpper.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, y)).ToDegrees() / 180 * 127)) + torsoAngleY;
-        TorsoUpper.z = 0;
+      LeftElbow.x -= (TorsoUpper.x + TorsoLower.x + LeftShoulder.x);
+      LeftElbow.y -= (LeftShoulder.y);
 
-        torsoAngleX += TorsoUpper.x;
-        torsoAngleY += TorsoUpper.y;
+      if (debug != null && debug.jointID == 4)
+      {
+        setDebugXYZ(x, y, z);
+        setDebugRotation(LeftElbow);
       }
 
+    }
+
+    private void calcLeftHand(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.HandLeft, JointType.WristLeft, ref x, ref y, ref z);
+
+      if(x < 0)
       {
-        // head
-        frame.getOffset(JointType.Head, JointType.Neck, ref x, ref y, ref z);
-
-        Head.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) - Constants.PI_2).ToDegrees() / 180 * 127)) + torsoAngleX;
-        Head.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, y)).ToDegrees() / 180 * 127)) + torsoAngleY;
-        Head.z = 0;
-      }
-
+        LeftHand.x = clampRotation(Convert.ToInt32((Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127));
+      } else
       {
-        // left shoulder
-        frame.getOffset(JointType.ElbowLeft, JointType.ShoulderLeft, ref x, ref y, ref z);
-
-        if(x < 0)
-        {
-          LeftShoulder.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127));
-        } else
-        {
-          LeftShoulder.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 - Math.Atan2(x, y)).ToDegrees() / 180 * 127));
-        }
-        
-        LeftShoulder.y = clampRotation(Convert.ToInt32(clampRadians(Constants.PI + Math.Atan2(z, x)).ToDegrees() / 180 * 127));
-        LeftShoulder.z = 0;
-
-        
-
-        LeftShoulder.x -= torsoAngleX;
-
-        parentAngleX = torsoAngleX + LeftShoulder.x;
-        parentAngleY = LeftShoulder.y;
+        LeftHand.x = clampRotation(Convert.ToInt32((Constants.PI_2 - Math.Atan2(x, y)).ToDegrees() / 180 * 127));
       }
+      LeftHand.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      LeftHand.z = 0;
 
+      LeftHand.x -= (TorsoUpper.x + TorsoLower.x + LeftShoulder.x + LeftElbow.x);
+      LeftHand.y -= (LeftShoulder.y + LeftElbow.y);
+    }
+
+    private void calcRightShoulder(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.ElbowRight, JointType.ShoulderRight, ref x, ref y, ref z);
+
+      if(x < 0)
       {
-        // left elbow
-        frame.getOffset(JointType.WristLeft, JointType.ElbowLeft, ref x, ref y, ref z);
-
-        LeftElbow.x = clampRotation(Convert.ToInt32((Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127)) - parentAngleX;
-        LeftElbow.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, x)).ToDegrees() / 180 * 127)) - parentAngleY;
-        LeftElbow.z = 0;
-
-        parentAngleX += LeftElbow.x;
-        parentAngleY += LeftElbow.y;
-      }
-
+        RightShoulder.x = clampRotation(-Convert.ToInt32(clampRadians(Math.Atan2(x, y) + Constants.PI_2).ToDegrees() / 180 * 127));
+      } else
       {
-        // left hand
-        frame.getOffset(JointType.HandLeft, JointType.WristLeft, ref x, ref y, ref z);
-
-        LeftHand.x = clampRotation(Convert.ToInt32((Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127)) - parentAngleX;
-        LeftHand.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, x)).ToDegrees() / 180 * 127)) - parentAngleY;
-        LeftHand.z = 0;
+        RightShoulder.x = clampRotation(-Convert.ToInt32(clampRadians(Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127));
       }
+      
+      RightShoulder.y = clampRotation(-Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      RightShoulder.z = 0;
 
-      {
-        // right shoulder
-        frame.getOffset(JointType.ElbowRight, JointType.ShoulderRight, ref x, ref y, ref z);
+      RightShoulder.x -= (TorsoLower.x + TorsoUpper.x);
+    }
 
-        RightShoulder.x = clampRotation(-Convert.ToInt32(clampRadians(Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127)) - torsoAngleX;
-        RightShoulder.y = clampRotation(-Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
-        RightShoulder.z = 0;
+    private void calcRightElbow(TimedFrame frame) {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.WristRight, JointType.ElbowRight, ref x, ref y, ref z);
 
-        parentAngleX = torsoAngleX + RightShoulder.x;
-        parentAngleY = RightShoulder.y;
-      }
+      RightElbow.x = -clampRotation(Convert.ToInt32((Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127));
+      RightElbow.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      RightElbow.z = 0;
 
-      {
-        // right elbow
-        frame.getOffset(JointType.WristRight, JointType.ElbowRight, ref x, ref y, ref z);
+      RightElbow.x -= (TorsoLower.x + TorsoUpper.x + RightShoulder.x);
+    }
 
-        RightElbow.x = -clampRotation(Convert.ToInt32((Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127)) - parentAngleX;
-        RightElbow.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
-        RightElbow.z = 0;
+    private void calcRightHand(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.HandRight, JointType.WristRight, ref x, ref y, ref z);
 
-        parentAngleX += RightElbow.x;
-        parentAngleY += RightElbow.y;
-      }
+      RightHand.x = -clampRotation(Convert.ToInt32((Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127));
+      RightHand.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      RightHand.z = 0;
 
-      {
-        // right hand
-        frame.getOffset(JointType.HandRight, JointType.WristRight, ref x, ref y, ref z);
+      RightHand.x -= (RightElbow.x + RightShoulder.x + TorsoUpper.x + TorsoLower.x);
+      RightHand.y -= (RightElbow.y + RightShoulder.y);
+    }
 
-        RightHand.x = -clampRotation(Convert.ToInt32((Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127)) - parentAngleX;
-        RightHand.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
-        RightHand.z = 0;
-      }
+    private void calcLeftHip(TimedFrame frame) {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.KneeLeft, JointType.HipLeft, ref x, ref y, ref z);
 
-      {
-        // left Leg Upper
-        frame.getOffset(JointType.KneeLeft, JointType.HipLeft, ref x, ref y, ref z);
+      LeftHip.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127));
+      LeftHip.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127));
+      LeftHip.z = 0;
+    }
 
-        LeftHip.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127));
-        LeftHip.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127));
-        LeftHip.z = 0;
+    private void calcLeftKnee(TimedFrame frame) {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.AnkleLeft, JointType.KneeLeft, ref x, ref y, ref z);
 
-        parentAngleX = LeftHip.x;
-        parentAngleY = LeftHip.y;
-      }
+      LeftKnee.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127));
+      LeftKnee.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127));
+      LeftKnee.z = 0;
 
-      {
-        // left Leg Lower
-        frame.getOffset(JointType.AnkleLeft, JointType.KneeLeft, ref x, ref y, ref z);
+      LeftKnee.x -= LeftHip.x;
+      LeftKnee.y -= LeftHip.y;
+    }
 
-        LeftKnee.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127) - parentAngleX);
-        LeftKnee.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127) - parentAngleY);
-        LeftKnee.z = 0;
+    private void calcLeftFoot(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.FootLeft, JointType.AnkleLeft, ref x, ref y, ref z);
 
-        parentAngleX += LeftKnee.x;
-        parentAngleY += LeftKnee.y;
-      }
+      LeftFoot.x = -clampRotation(Convert.ToInt32((Math.Atan2(z, x) + Constants.PI_2).ToDegrees() / 180 * 127));
+      LeftFoot.y = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2 + Constants.PI_4).ToDegrees() / 180 * 127));
+      LeftFoot.z = 0;
+    }
 
-      {
-        // left Foot
-        frame.getOffset(JointType.FootLeft, JointType.AnkleLeft, ref x, ref y, ref z);
+    private void calcRightHip(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.KneeRight, JointType.HipRight, ref x, ref y, ref z);
 
-        LeftFoot.x = -clampRotation(Convert.ToInt32((Math.Atan2(z, x) + Constants.PI_2).ToDegrees() / 180 * 127));
-        LeftFoot.y = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2 + Constants.PI_4).ToDegrees() / 180 * 127));
-        LeftFoot.z = 0;
-      }
+      RightHip.x = clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127));
+      RightHip.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127));
+      RightHip.z = 0;
+    }
 
-      {
-        // Right Leg Upper
-        frame.getOffset(JointType.KneeRight, JointType.HipRight, ref x, ref y, ref z);
+    private void calcRightKnee(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.AnkleRight, JointType.KneeRight, ref x, ref y, ref z);
 
-        RightHip.x = clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127));
-        RightHip.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127));
-        RightHip.z = 0;
+      RightKnee.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127));
+      RightKnee.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127));
+      RightKnee.z = 0;
 
-        parentAngleX = RightHip.x;
-        parentAngleY = RightHip.y;
-      }
+      RightKnee.x -= RightHip.x;
+      RightKnee.y -= RightHip.y;
+    }
 
-      {
-        // right Leg Lower
-        frame.getOffset(JointType.AnkleRight, JointType.KneeRight, ref x, ref y, ref z);
+    private void calcRightFoot(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.FootRight, JointType.AnkleRight, ref x, ref y, ref z);
 
-        RightKnee.x = -clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_2).ToDegrees() / 180 * 127) - parentAngleX);
-        RightKnee.y = clampRotation(Convert.ToInt32((Constants.PI + Math.Atan2(z, y)).ToDegrees() / 180 * 127) - parentAngleY);
-        RightKnee.z = 0;
-
-        parentAngleX = RightKnee.x;
-        parentAngleY = RightKnee.y;
-      }
-
-      {
-        // right Foot
-        frame.getOffset(JointType.FootRight, JointType.AnkleRight, ref x, ref y, ref z);
-
-        RightFoot.x = clampRotation(Convert.ToInt32((Math.Atan2(z, x) + Constants.PI_2).ToDegrees() / 180 * 127));
-        RightFoot.y = clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_4).ToDegrees() / 180 * 127));
-        RightFoot.z = 0;
-      }
-
-      if(sendRotations)
-      {
-        send(10);
-      }
+      RightFoot.x = clampRotation(Convert.ToInt32((Math.Atan2(z, x) + Constants.PI_2).ToDegrees() / 180 * 127));
+      RightFoot.y = clampRotation(Convert.ToInt32((Math.Atan2(y, x) + Constants.PI_4).ToDegrees() / 180 * 127));
+      RightFoot.z = 0;
     }
 
     public void send(float speed)
@@ -290,6 +303,20 @@ namespace KinectRecorder
       while (value > Constants.PI) value -= Constants.PI2;
       while (value < -Constants.PI) value += Constants.PI2;
       return value;
+    }
+
+    private void setDebugXYZ(double x, double y, double z)
+    {
+      debug.clear();
+      debug.setLine1("Offset   X: " + x.ToString("0.###") + " Y: " + y.ToString("0.###") + " Z: " + z.ToString("0.###"));
+
+      debug.setBlueDot1(x * 100, y * 100);
+      debug.setBlueDot2(x * 100, z * 100);
+    }
+
+    private void setDebugRotation(VecI rot)
+    {
+      debug.setLine2("Rot X: " + rot.x.ToString() + " Y: " + rot.y.ToString());
     }
   }
 }
