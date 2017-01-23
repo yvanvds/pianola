@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ -1886.0, 80.0, 1852.0, 929.0 ],
+		"rect" : [ 42.0, 85.0, 1852.0, 929.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -480,10 +480,10 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-17::obj-38" : [ "swatch[1]", "swatch", 0 ],
-			"obj-17::obj-7" : [ "swatch", "swatch", 0 ],
 			"obj-1::obj-9" : [ "swatch[3]", "swatch", 0 ],
-			"obj-1::obj-27" : [ "swatch[2]", "swatch", 0 ]
+			"obj-17::obj-38" : [ "swatch[1]", "swatch", 0 ],
+			"obj-1::obj-27" : [ "swatch[2]", "swatch", 0 ],
+			"obj-17::obj-7" : [ "swatch", "swatch", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{

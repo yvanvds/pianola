@@ -35,7 +35,11 @@
           <Button x:Name="ClearButton" Style="{StaticResource ButtonCommonStyle}" Content ="Clear" Width="100" Padding="20,0,20,0" Margin="5,5,5,5" Click="Clear_Click" IsEnabled="True"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical">
+      <StackPanel Height="40" Orientation="Horizontal">
+        <Button x:Name="ExportButton" Style="{StaticResource ButtonCommonStyle}" Content ="Export" Width="100" Padding="20,0,20,0" Margin="5,5,5,5" Click="Export_Click" IsEnabled="True"/>
+      </StackPanel>
+
+      <StackPanel Orientation="Vertical">
           <TextBlock x:Name="DebugText1" Style="{StaticResource RotationTextBlockStyle}" Text=""/>
           <TextBlock x:Name="DebugText2" Style="{StaticResource RotationTextBlockStyle}" Text=""/>
           <TextBlock x:Name="DebugText3" Style="{StaticResource RotationTextBlockStyle}" Text=""/>

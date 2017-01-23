@@ -3,6 +3,7 @@ using Microsoft.Kinect;
 using Rug.Osc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -28,7 +29,28 @@ namespace KinectRecorder
     public VecI LeftFoot = new VecI();
     public VecI RightFoot = new VecI();
 
-    private bool bUse, bHead, bTorsoUpper, bTorsoLower, bShoulderLeft, bShoulderRight, bElbowLeft, bElbowright, bHandLeft, bHandRight, bHipLeft, bHipRight, bKneeLeft, bKneeRight, bFootLeft, bFootRight; 
+    private enum BODYPART
+    {
+      HEAD,
+      TORSO_UPPER,
+      TORSO_LOWER,
+      ARMLU,
+      ARMLL,
+      HANDL,
+      ARMRU,
+      ARMRL,
+      HANDR,
+      LEGLU,
+      LEGLL,
+      FOOTL,
+      LEGRU,
+      LEGRL,
+      FOOTR,
+      INVALID,
+      NUM,
+    };
+
+    private bool bUse, bHead, bTorsoUpper, bTorsoLower, bShoulderLeft, bShoulderRight, bElbowLeft, bElbowRight, bHandLeft, bHandRight, bHipLeft, bHipRight, bKneeLeft, bKneeRight, bFootLeft, bFootRight;
 
     static OscSender osc = null;
     static IPAddress address = IPAddress.Parse("127.0.0.1");
@@ -38,7 +60,7 @@ namespace KinectRecorder
 
     public Body()
     {
-      if(osc == null)
+      if (osc == null)
       {
         osc = new OscSender(address, port);
         osc.Connect();
@@ -51,19 +73,19 @@ namespace KinectRecorder
     {
       // set used parts
       bUse = frame.Use;
-      bHead          = frame.Head         ; bTorsoUpper    = frame.TorsoUpper   ; bTorsoLower    = frame.TorsoLower   ;
-      bShoulderLeft  = frame.ShoulderLeft ; bElbowLeft     = frame.ElbowLeft    ; bHandLeft      = frame.HandLeft     ;
-      bShoulderRight = frame.ShoulderRight; bElbowright    = frame.ElbowRight   ; bHandRight     = frame.HandRight    ;
-      bHipLeft       = frame.HipLeft      ; bKneeLeft      = frame.KneeLeft     ; bFootLeft      = frame.FootLeft     ;
-      bHipRight      = frame.HipRight     ; bKneeRight     = frame.KneeRight    ; bFootRight     = frame.FootRight    ;
+      bHead = frame.Head; bTorsoUpper = frame.TorsoUpper; bTorsoLower = frame.TorsoLower;
+      bShoulderLeft = frame.ShoulderLeft; bElbowLeft = frame.ElbowLeft; bHandLeft = frame.HandLeft;
+      bShoulderRight = frame.ShoulderRight; bElbowRight = frame.ElbowRight; bHandRight = frame.HandRight;
+      bHipLeft = frame.HipLeft; bKneeLeft = frame.KneeLeft; bFootLeft = frame.FootLeft;
+      bHipRight = frame.HipRight; bKneeRight = frame.KneeRight; bFootRight = frame.FootRight;
 
-      calcLowerTorso   (frame); calcUpperTorso(frame); calcHead     (frame);
-      calcLeftShoulder (frame); calcLeftElbow (frame); calcLeftHand (frame);
+      calcLowerTorso(frame); calcUpperTorso(frame); calcHead(frame);
+      calcLeftShoulder(frame); calcLeftElbow(frame); calcLeftHand(frame);
       calcRightShoulder(frame); calcRightElbow(frame); calcRightHand(frame);
-      calcLeftHip      (frame); calcLeftKnee  (frame); calcLeftFoot (frame);
-      calcRightHip     (frame); calcRightKnee (frame); calcRightFoot(frame);
+      calcLeftHip(frame); calcLeftKnee(frame); calcLeftFoot(frame);
+      calcRightHip(frame); calcRightKnee(frame); calcRightFoot(frame);
 
-      if(sendRotations) send(10);
+      if (sendRotations) send(10);
     }
 
     private void calcLowerTorso(TimedFrame frame) {
@@ -119,7 +141,7 @@ namespace KinectRecorder
       double x = 0, y = 0, z = 0;
       frame.getOffset(JointType.WristLeft, JointType.ElbowLeft, ref x, ref y, ref z);
 
-      if(x < 0)
+      if (x < 0)
       {
         LeftElbow.x = clampRotation(Convert.ToInt32((Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127));
       } else
@@ -145,7 +167,7 @@ namespace KinectRecorder
       double x = 0, y = 0, z = 0;
       frame.getOffset(JointType.HandLeft, JointType.WristLeft, ref x, ref y, ref z);
 
-      if(x < 0)
+      if (x < 0)
       {
         LeftHand.x = clampRotation(Convert.ToInt32((Constants.PI_2 + Math.Atan2(x, y)).ToDegrees() / 180 * 127));
       } else
@@ -164,14 +186,14 @@ namespace KinectRecorder
       double x = 0, y = 0, z = 0;
       frame.getOffset(JointType.ElbowRight, JointType.ShoulderRight, ref x, ref y, ref z);
 
-      if(x < 0)
+      if (x < 0)
       {
         RightShoulder.x = clampRotation(-Convert.ToInt32(clampRadians(Math.Atan2(x, y) + Constants.PI_2).ToDegrees() / 180 * 127));
       } else
       {
         RightShoulder.x = clampRotation(-Convert.ToInt32(clampRadians(Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127));
       }
-      
+
       RightShoulder.y = clampRotation(-Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
       RightShoulder.z = 0;
 
@@ -269,21 +291,41 @@ namespace KinectRecorder
     public void send(float speed)
     {
       if (!bUse) return;
-      if(bTorsoLower) sendMessage("torsoLower", TorsoLower, speed);
-      if(bTorsoUpper) sendMessage("torsoUpper", TorsoUpper, speed);
-      if(bHead) sendMessage("head", Head, speed);
-      if(bShoulderLeft) sendMessage("armLeftUpper", LeftShoulder, speed);
-      if(bElbowLeft) sendMessage("armLeftLower", LeftElbow, speed);
-      if(bHandLeft) sendMessage("handLeft", LeftHand, speed);
-      if(bShoulderRight) sendMessage("armRightUpper", RightShoulder, speed);
-      if(bElbowright) sendMessage("armRightLower", RightElbow, speed);
-      if(bHandRight) sendMessage("handRight", RightHand, speed);
-      if(bHipLeft) sendMessage("legLeftUpper", LeftHip, speed);
-      if(bKneeLeft) sendMessage("legLeftLower", LeftKnee, speed);
-      if(bFootLeft) sendMessage("footLeft", LeftFoot, speed);
-      if(bHipRight) sendMessage("legRightUpper", RightHip, speed);
-      if(bKneeRight) sendMessage("legRightLower", RightKnee, speed);
-      if(bFootRight) sendMessage("footRight", RightFoot, speed);
+      if (bTorsoLower) sendMessage("torsoLower", TorsoLower, speed);
+      if (bTorsoUpper) sendMessage("torsoUpper", TorsoUpper, speed);
+      if (bHead) sendMessage("head", Head, speed);
+      if (bShoulderLeft) sendMessage("armLeftUpper", LeftShoulder, speed);
+      if (bElbowLeft) sendMessage("armLeftLower", LeftElbow, speed);
+      if (bHandLeft) sendMessage("handLeft", LeftHand, speed);
+      if (bShoulderRight) sendMessage("armRightUpper", RightShoulder, speed);
+      if (bElbowRight) sendMessage("armRightLower", RightElbow, speed);
+      if (bHandRight) sendMessage("handRight", RightHand, speed);
+      if (bHipLeft) sendMessage("legLeftUpper", LeftHip, speed);
+      if (bKneeLeft) sendMessage("legLeftLower", LeftKnee, speed);
+      if (bFootLeft) sendMessage("footLeft", LeftFoot, speed);
+      if (bHipRight) sendMessage("legRightUpper", RightHip, speed);
+      if (bKneeRight) sendMessage("legRightLower", RightKnee, speed);
+      if (bFootRight) sendMessage("footRight", RightFoot, speed);
+    }
+
+    public void export(BinaryWriter writer)
+    {
+      if (bHead         ) { writer.Write((int)BODYPART.HEAD       ); writer.Write(Head.x         ); writer.Write(Head.y         ); writer.Write(Head.z         ); }
+      if (bTorsoUpper   ) { writer.Write((int)BODYPART.TORSO_UPPER); writer.Write(TorsoUpper.x   ); writer.Write(TorsoUpper.y   ); writer.Write(TorsoUpper.z   ); }
+      if (bTorsoLower   ) { writer.Write((int)BODYPART.TORSO_LOWER); writer.Write(TorsoLower.x   ); writer.Write(TorsoLower.y   ); writer.Write(TorsoLower.z   ); }
+      if (bShoulderLeft ) { writer.Write((int)BODYPART.ARMLU      ); writer.Write(LeftShoulder.x ); writer.Write(LeftShoulder.y ); writer.Write(LeftShoulder.z ); }
+      if (bElbowLeft    ) { writer.Write((int)BODYPART.ARMLL      ); writer.Write(LeftElbow.x    ); writer.Write(LeftElbow.y    ); writer.Write(LeftElbow.z    ); }
+      if (bHandLeft     ) { writer.Write((int)BODYPART.HANDL      ); writer.Write(LeftHand.x     ); writer.Write(LeftHand.y     ); writer.Write(LeftHand.z     ); }
+      if (bShoulderRight) { writer.Write((int)BODYPART.ARMRU      ); writer.Write(RightShoulder.x); writer.Write(RightShoulder.y); writer.Write(RightShoulder.z); }
+      if (bElbowRight   ) { writer.Write((int)BODYPART.ARMRL      ); writer.Write(RightElbow.x   ); writer.Write(RightElbow.y   ); writer.Write(RightElbow.z   ); }
+      if (bHandRight    ) { writer.Write((int)BODYPART.HANDR      ); writer.Write(RightHand.x    ); writer.Write(RightHand.y    ); writer.Write(RightHand.z    ); }
+      if (bHipLeft      ) { writer.Write((int)BODYPART.LEGLU      ); writer.Write(LeftHip.x      ); writer.Write(LeftHip.y      ); writer.Write(LeftHip.z      ); }
+      if (bKneeLeft     ) { writer.Write((int)BODYPART.LEGLL      ); writer.Write(LeftKnee.x     ); writer.Write(LeftKnee.y     ); writer.Write(LeftKnee.z     ); }
+      if (bFootLeft     ) { writer.Write((int)BODYPART.FOOTL      ); writer.Write(LeftFoot.x     ); writer.Write(LeftFoot.y     ); writer.Write(LeftFoot.z     ); }
+      if (bHipRight     ) { writer.Write((int)BODYPART.LEGRU      ); writer.Write(RightHip.x     ); writer.Write(RightHip.y     ); writer.Write(RightHip.z     ); }
+      if (bKneeRight    ) { writer.Write((int)BODYPART.LEGRL      ); writer.Write(RightKnee.x    ); writer.Write(RightKnee.y    ); writer.Write(RightKnee.z    ); }
+      if (bFootRight    ) { writer.Write((int)BODYPART.FOOTR      ); writer.Write(RightFoot.x    ); writer.Write(RightFoot.y    ); writer.Write(RightFoot.z    ); }
+      writer.Write((int)BODYPART.INVALID);
     }
 
     public void sendMessage(String part, VecI rot, float speed)

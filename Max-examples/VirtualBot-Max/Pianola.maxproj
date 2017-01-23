@@ -2,8 +2,8 @@
 	"name" : "Pianola",
 	"version" : 1,
 	"creationdate" : -737300408,
-	"modificationdate" : -730491173,
-	"viewrect" : [ 350.0, 310.0, 300.0, 500.0 ],
+	"modificationdate" : -726915274,
+	"viewrect" : [ 671.0, 286.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -241,12 +241,17 @@
 				"local" : 1
 			}
 ,
+			"realBodyPart.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"runningAverage.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"realBodyPart.maxpat" : 			{
+			"c-kinect.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

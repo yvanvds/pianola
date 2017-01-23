@@ -163,6 +163,22 @@ namespace KinectRecorder
       }
     }
 
+    public static void exportToFile(Stream stream)
+    {
+      using(BinaryWriter writer = new BinaryWriter(stream))
+      {
+        writer.Write(Convert.ToInt32(frames.Count));
+        for(int i =0; i < frames.Count; i++)
+        {
+          frames[i].saveTime(writer);
+          frames[i].writeJointHeader(writer);
+          body.SetRotations(frames[i], false);
+          body.export(writer);
+          frames[i].saveEnd(writer);
+        }
+      }
+    }
+
     public static void loadFromFile(Stream stream)
     {
       using (BinaryReader reader = new BinaryReader(stream))

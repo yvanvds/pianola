@@ -329,10 +329,15 @@ namespace KinectRecorder
       saveEnd(writer);
     }
 
-    private void saveTime(BinaryWriter writer)
+    public void saveTime(BinaryWriter writer)
     {
       writer.Write((int)FilePart.Time);
       writer.Write(Convert.ToInt64(Time));
+    }
+
+    public void writeJointHeader(BinaryWriter writer)
+    {
+      writer.Write((int)FilePart.Joints);
     }
 
     private void saveJoints(BinaryWriter writer)
@@ -376,7 +381,7 @@ namespace KinectRecorder
       writer.Write(HipRight); writer.Write(KneeRight); writer.Write(FootRight);
     }
     
-    private void saveEnd(BinaryWriter writer)
+    public void saveEnd(BinaryWriter writer)
     {
       writer.Write((int)FilePart.End);
     }

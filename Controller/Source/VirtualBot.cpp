@@ -14,6 +14,7 @@
 #include "MonitorWindow.h"
 #include "../../Shared/Messages.h"
 #include "Vector.h"
+#include "KinectPlayer.h"
 
 VirtualBot::VirtualBot() {
 
@@ -110,6 +111,16 @@ void VirtualBot::handleMessage(const OSCMessage & message) {
 
         send(out.getData(), out.getDataSize());
       }
+    }
+  }
+  else if (message[1].getString().equalsIgnoreCase("kinect")) {
+    if (message.size() != 4) {
+      ToLog("Invalid kinect message");
+    }
+    else {
+      String recording = message[2].getString();
+      float speed = message[3].getFloat32();
+      Player().play(recording, speed, name);
     }
   }
 	else if (message[1].getString().compareIgnoreCase("offset") == 0) {

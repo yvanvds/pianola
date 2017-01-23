@@ -131,6 +131,9 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Frame.cpp"/>
+    <ClCompile Include="..\..\Source\KinectPlayer.cpp"/>
+    <ClCompile Include="..\..\Source\Recording.cpp"/>
     <ClCompile Include="..\..\Source\joint.cpp"/>
     <ClCompile Include="..\..\Source\Vector.cpp"/>
     <ClCompile Include="..\..\Source\Matrix.cpp"/>
@@ -1707,6 +1710,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Frame.h"/>
+    <ClInclude Include="..\..\Source\KinectPlayer.h"/>
+    <ClInclude Include="..\..\Source\Recording.h"/>
     <ClInclude Include="..\..\Source\joint.h"/>
     <ClInclude Include="..\..\Source\Vector.h"/>
     <ClInclude Include="..\..\Source\Matrix.h"/>

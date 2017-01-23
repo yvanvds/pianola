@@ -13,6 +13,7 @@
 #include "Defines.h"
 #include "MuteLookAndFeel.h"
 #include "Robots.h"
+#include "KinectPlayer.h"
 
 // global ptr to window
 MonitorWindow * WindowPtr = nullptr;
@@ -40,7 +41,8 @@ MonitorWindow::MonitorWindow()
 {
 
   network = new Network(this);
-  
+  // for kinect recordings
+  Player().init();
  
   // environment
   detailsGroup->setText("Environment");  

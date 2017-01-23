@@ -361,6 +361,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Frame.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\KinectPlayer.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Recording.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\joint.cpp">
       <Filter>Pianola Controller\Source</Filter>
     </ClCompile>
@@ -2115,6 +2124,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Frame.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\KinectPlayer.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Recording.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\joint.h">
       <Filter>Pianola Controller\Source</Filter>
     </ClInclude>

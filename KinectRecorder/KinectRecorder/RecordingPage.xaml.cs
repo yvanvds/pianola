@@ -19,6 +19,7 @@ namespace KinectRecorder
   {
     SaveFileDialog saveFileDialog = new SaveFileDialog();
     OpenFileDialog openFileDialog = new OpenFileDialog();
+    SaveFileDialog exportFileDialog = new SaveFileDialog();
     readonly string FOLDER_PATH = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "recordings");
 
     KinectSensor _sensor = null;
@@ -55,6 +56,11 @@ namespace KinectRecorder
         openFileDialog.InitialDirectory = FOLDER_PATH;
         openFileDialog.Filter = "kinect data files |*.kdf";
         openFileDialog.RestoreDirectory = true;
+
+        exportFileDialog.InitialDirectory = FOLDER_PATH;
+        exportFileDialog.Filter = "model rotation files |*.rot";
+        exportFileDialog.RestoreDirectory = true;
+        exportFileDialog.OverwritePrompt = true;
       }
 
       boneBrush = new SolidColorBrush(Color.FromRgb(0, 255, 0));
@@ -277,8 +283,26 @@ namespace KinectRecorder
           System.Windows.Forms.MessageBox.Show("Error: Could not write to file. Original Error: " + ex.Message);
         }
       }
+    }
 
+    private void Export_Click(object sender, RoutedEventArgs e)
+    {
+      if (FrameRecorder.GetStatus() != FrameRecorder.Status.IDLE) return;
+      Stream stream = null;
 
+      if(exportFileDialog.ShowDialog() == DialogResult.OK)
+      {
+        try
+        {
+          if((stream = exportFileDialog.OpenFile()) != null)
+          {
+            FrameRecorder.exportToFile(stream);
+          }
+        } catch (Exception ex)
+        {
+          System.Windows.Forms.MessageBox.Show("Error: Could not write to file. Original Error: " + ex.Message);
+        }
+      }
     }
 
     private void Load_Click(object sender, RoutedEventArgs e)

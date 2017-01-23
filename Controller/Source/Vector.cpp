@@ -77,3 +77,9 @@ Vec2 & Vec2::rotate(float angle)
   float sin, cos; SinCos(sin, cos, angle);
   return set(x*cos - y*sin, x*sin + y*cos);
 }
+
+void VecI::read(ScopedPointer<FileInputStream> & source) {
+  x = source->readInt();
+  y = source->readInt();
+  z = source->readInt();
+}

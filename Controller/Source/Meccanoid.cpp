@@ -14,6 +14,7 @@
 #include "MonitorWindow.h"
 #include "Poses.h"
 #include "../../Shared/Messages.h"
+#include "KinectPlayer.h"
 
 
 Meccanoid::Meccanoid() {
@@ -58,6 +59,18 @@ void Meccanoid::handleMessage(const OSCMessage & message) {
       }
     }
     return; // message is handled
+  }
+
+  if (message[1].getString().equalsIgnoreCase("kinect")) {
+    if (message.size() != 4) {
+      ToLog("Invalid kinect message");
+    }
+    else {
+      String recording = message[2].getString();
+      float speed = message[3].getFloat32();
+      Player().play(recording, speed, name);
+    }
+    return;
   }
 
   if (message[1].getString().equalsIgnoreCase("constraint")) {

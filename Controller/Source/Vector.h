@@ -11,6 +11,8 @@
 #ifndef VECTOR_H_INCLUDED
 #define VECTOR_H_INCLUDED
 
+#include "Defines.h"
+
 struct Matrix3;
 
 struct Vec2 {
@@ -27,6 +29,14 @@ struct Vec2 {
   Vec2 & set(float x, float y) { this->x = x; this->y = y; return *this; }
 
   Vec2 & rotate(float angle);
+};
+
+struct VecI {
+  float x, y, z;
+
+  VecI() : x(0), y(0), z(0) {}
+
+  void read(ScopedPointer<FileInputStream> & source);
 };
 
 struct Vec {
