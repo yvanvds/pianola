@@ -53,18 +53,26 @@ namespace KinectRecorder
     private bool bUse, bHead, bTorsoUpper, bTorsoLower, bShoulderLeft, bShoulderRight, bElbowLeft, bElbowRight, bHandLeft, bHandRight, bHipLeft, bHipRight, bKneeLeft, bKneeRight, bFootLeft, bFootRight;
 
     static OscSender osc = null;
-    static IPAddress address = IPAddress.Parse("127.0.0.1");
+    static IPAddress address;
     static int port = 34567;
 
     DebugWindow debug = null;
 
     public Body()
     {
-      if (osc == null)
+
+    }
+
+    public bool SetIP(string value)
+    {
+      if(osc == null)
       {
+        address = IPAddress.Parse(value);
         osc = new OscSender(address, port);
         osc.Connect();
+        return true;
       }
+      return false;
     }
 
     public void setDebug(DebugWindow window) { debug = window; }
@@ -136,6 +144,32 @@ namespace KinectRecorder
       LeftShoulder.x -= (TorsoUpper.x + TorsoLower.x);
     }
 
+    private void calcRightShoulder(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.ElbowRight, JointType.ShoulderRight, ref x, ref y, ref z);
+
+      if (x > 0)
+      {
+        RightShoulder.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 + Math.Atan2(-x, y)).ToDegrees() / 180 * 127));
+      }
+      else
+      {
+        RightShoulder.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 - Math.Atan2(-x, y)).ToDegrees() / 180 * 127));
+      }
+
+      RightShoulder.y = clampRotation(-Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      RightShoulder.z = 0;
+
+      RightShoulder.x -= (TorsoLower.x + TorsoUpper.x);
+
+      if (debug != null && debug.jointID == 6)
+      {
+        setDebugXYZ(x, y, z);
+        setDebugRotation(RightShoulder);
+      }
+    }
+
     private void calcLeftElbow(TimedFrame frame)
     {
       double x = 0, y = 0, z = 0;
@@ -159,7 +193,27 @@ namespace KinectRecorder
         setDebugXYZ(x, y, z);
         setDebugRotation(LeftElbow);
       }
+    }
 
+    private void calcRightElbow(TimedFrame frame)
+    {
+      double x = 0, y = 0, z = 0;
+      frame.getOffset(JointType.WristRight, JointType.ElbowRight, ref x, ref y, ref z);
+
+      if (x > 0)
+      {
+        RightElbow.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 + Math.Atan2(-x, y)).ToDegrees() / 180 * 127));
+      }
+      else
+      {
+        RightElbow.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 - Math.Atan2(-x, y)).ToDegrees() / 180 * 127));
+      }
+
+      RightElbow.y = clampRotation(-Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      RightElbow.z = 0;
+
+      RightElbow.x -= (TorsoLower.x + TorsoUpper.x + RightShoulder.x);
+      RightElbow.y -= (RightShoulder.y);
     }
 
     private void calcLeftHand(TimedFrame frame)
@@ -181,43 +235,22 @@ namespace KinectRecorder
       LeftHand.y -= (LeftShoulder.y + LeftElbow.y);
     }
 
-    private void calcRightShoulder(TimedFrame frame)
-    {
-      double x = 0, y = 0, z = 0;
-      frame.getOffset(JointType.ElbowRight, JointType.ShoulderRight, ref x, ref y, ref z);
-
-      if (x < 0)
-      {
-        RightShoulder.x = clampRotation(-Convert.ToInt32(clampRadians(Math.Atan2(x, y) + Constants.PI_2).ToDegrees() / 180 * 127));
-      } else
-      {
-        RightShoulder.x = clampRotation(-Convert.ToInt32(clampRadians(Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127));
-      }
-
-      RightShoulder.y = clampRotation(-Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
-      RightShoulder.z = 0;
-
-      RightShoulder.x -= (TorsoLower.x + TorsoUpper.x);
-    }
-
-    private void calcRightElbow(TimedFrame frame) {
-      double x = 0, y = 0, z = 0;
-      frame.getOffset(JointType.WristRight, JointType.ElbowRight, ref x, ref y, ref z);
-
-      RightElbow.x = -clampRotation(Convert.ToInt32((Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127));
-      RightElbow.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
-      RightElbow.z = 0;
-
-      RightElbow.x -= (TorsoLower.x + TorsoUpper.x + RightShoulder.x);
-    }
-
     private void calcRightHand(TimedFrame frame)
     {
       double x = 0, y = 0, z = 0;
       frame.getOffset(JointType.HandRight, JointType.WristRight, ref x, ref y, ref z);
 
-      RightHand.x = -clampRotation(Convert.ToInt32((Math.Atan2(x, y) - Constants.PI_2).ToDegrees() / 180 * 127));
-      RightHand.y = -clampRotation(Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+      if (x > 0)
+      {
+        RightHand.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 + Math.Atan2(-x, y)).ToDegrees() / 180 * 127));
+      }
+      else
+      {
+        RightHand.x = clampRotation(Convert.ToInt32(clampRadians(Constants.PI_2 - Math.Atan2(-x, y)).ToDegrees() / 180 * 127));
+      }
+
+      RightHand.y = clampRotation(-Convert.ToInt32((Math.Atan2(z, x)).ToDegrees() / 180 * 127));
+
       RightHand.z = 0;
 
       RightHand.x -= (RightElbow.x + RightShoulder.x + TorsoUpper.x + TorsoLower.x);
@@ -330,7 +363,7 @@ namespace KinectRecorder
 
     public void sendMessage(String part, VecI rot, float speed)
     {
-      osc.Send(new OscMessage("/a", "Vir1", "relrotate", part, 127 + rot.x, 127 + rot.y, 127 + rot.z, speed));
+      if(osc != null) osc.Send(new OscMessage("/a", "Vir1", "relrotate", part, 127 + rot.x, 127 + rot.y, 127 + rot.z, speed));
     }
 
     private static int clampRotation(int rot)

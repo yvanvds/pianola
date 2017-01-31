@@ -39,6 +39,11 @@
         <Button x:Name="ExportButton" Style="{StaticResource ButtonCommonStyle}" Content ="Export" Width="100" Padding="20,0,20,0" Margin="5,5,5,5" Click="Export_Click" IsEnabled="True"/>
       </StackPanel>
 
+      <StackPanel Height="40" Orientation="Horizontal">
+        <TextBox x:Name="TbIP" Text="192.168.1.147" Width="120" Padding="20,0,20,0" Margin="5"/>
+        <Button x:Name="IPButton" Style="{StaticResource ButtonCommonStyle}" Content="Connect" Width="80" Padding="20,0,20,0" Margin="5" Click="SetIP_Click" IsEnabled="True"/>
+      </StackPanel>
+
       <StackPanel Orientation="Vertical">
           <TextBlock x:Name="DebugText1" Style="{StaticResource RotationTextBlockStyle}" Text=""/>
           <TextBlock x:Name="DebugText2" Style="{StaticResource RotationTextBlockStyle}" Text=""/>

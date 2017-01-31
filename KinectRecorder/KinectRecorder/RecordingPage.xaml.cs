@@ -21,6 +21,7 @@ namespace KinectRecorder
     OpenFileDialog openFileDialog = new OpenFileDialog();
     SaveFileDialog exportFileDialog = new SaveFileDialog();
     readonly string FOLDER_PATH = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "recordings");
+    string SafeFileName;
 
     KinectSensor _sensor = null;
     MultiSourceFrameReader _reader = null;
@@ -72,6 +73,7 @@ namespace KinectRecorder
 
     private void Page_Unloaded(object sender, RoutedEventArgs e)
     {
+      debugWindow.Close();
       if(_playersController != null)
       {
         _playersController.Stop();
@@ -229,8 +231,13 @@ namespace KinectRecorder
 
     private void Clear_Click(object sender, RoutedEventArgs e)
     {
-      DialogResult result = System.Windows.Forms.MessageBox.Show("Are You Sure?", "This will remove the current recording.", MessageBoxButtons.YesNo);
-      if(result == DialogResult.Yes) FrameRecorder.clear();
+      DialogResult result = System.Windows.Forms.MessageBox.Show("This will remove the current recording.", "Are You Sure?", MessageBoxButtons.YesNo);
+      if (result == DialogResult.Yes)
+      {
+        FrameRecorder.clear();
+        SafeFileName = "";
+        StatusText.Text = "";
+      }
     }
 
     void UserReporter_BodyEntered(object sender, PlayersControllerEventArgs e) { }
@@ -268,7 +275,8 @@ namespace KinectRecorder
       if (FrameRecorder.GetStatus() != FrameRecorder.Status.IDLE) return;
 
       Stream stream = null;
-
+      saveFileDialog.FileName = SafeFileName;
+      
       if(saveFileDialog.ShowDialog() == DialogResult.OK)
       {
         try
@@ -276,6 +284,8 @@ namespace KinectRecorder
           if((stream = saveFileDialog.OpenFile()) != null)
           {
             FrameRecorder.saveToFile(stream);
+            StatusText.Text = System.IO.Path.GetFileName(saveFileDialog.FileName);
+            SafeFileName = System.IO.Path.GetFileName(saveFileDialog.FileName);
           }
         }
         catch (Exception ex)
@@ -311,10 +321,10 @@ namespace KinectRecorder
 
       if (FrameRecorder.hasRecording())
       {
-        DialogResult result = System.Windows.Forms.MessageBox.Show("Are You Sure?", "This will remove the current recording.", MessageBoxButtons.YesNo);
+        DialogResult result = System.Windows.Forms.MessageBox.Show("This will remove the current recording.", "Are You Sure?", MessageBoxButtons.YesNo);
         if (result == DialogResult.No) return;
       }
-
+      FrameRecorder.clear();
       Stream stream = null;
 
       if(openFileDialog.ShowDialog() == DialogResult.OK)
@@ -324,6 +334,8 @@ namespace KinectRecorder
           if ((stream = openFileDialog.OpenFile()) != null)
           {
             FrameRecorder.loadFromFile(stream);
+            StatusText.Text = openFileDialog.SafeFileName;
+            SafeFileName = StatusText.Text;
           }
         }
         catch (Exception ex)
@@ -333,5 +345,12 @@ namespace KinectRecorder
       }
     }
 
+    private void SetIP_Click(object sender, RoutedEventArgs e)
+    {
+      if(!FrameRecorder.body.SetIP(TbIP.Text))
+      {
+        System.Windows.Forms.MessageBox.Show("Error: Already Connected.");
+      }
+    }
   }
 }
