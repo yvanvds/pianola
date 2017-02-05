@@ -156,7 +156,11 @@ void Meccanoid::initialize() {
       part[i].writeLimits(out);
       send(out.getData(), out.getDataSize());
     }
-    
+    {
+      MemoryOutputStream out;
+      part[i].writeOffset(out);
+      send(out.getData(), out.getDataSize());
+    }
   }
 
 }

@@ -37,6 +37,7 @@ public:
 
   void writeConstraints(MemoryOutputStream & out); // sends on init
   void writeLimits(MemoryOutputStream & out);
+  void writeOffset(MemoryOutputStream & out);
 
 private:
   BODYPART _id;

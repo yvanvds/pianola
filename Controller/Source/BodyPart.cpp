@@ -120,7 +120,7 @@ void BodyPart::writeOrn(MemoryOutputStream & out, const OSCMessage & message)
 
   // write first axis
   if (_first != ORN::NONE) {
-    int value = message[3 + (int)_first].getInt32() + _offsetFirst;
+    int value = message[3 + (int)_first].getInt32();
     value < 0 ? value = 0 : value > 255 ? value = 255 : value;
 
     if (_reverseFirst) out.writeByte((unsigned char)(255 - value));
@@ -130,7 +130,7 @@ void BodyPart::writeOrn(MemoryOutputStream & out, const OSCMessage & message)
   
   // write second axis
   if (_second != ORN::NONE) {
-    int value = message[3 + (int)_second].getInt32() + _offsetSecond;
+    int value = message[3 + (int)_second].getInt32();
     value < 0 ? value = 0 : value > 255 ? value = 255 : value;
 
     if (_reverseSecond) out.writeByte((unsigned char)(255 - value));
@@ -148,7 +148,7 @@ void BodyPart::writeRelOrn(MemoryOutputStream & out, const OSCMessage & message)
 
   // write first axis
   if (_first != ORN::NONE) {
-    int value = message[3 + (int)_first].getInt32() + _offsetFirst;
+    int value = message[3 + (int)_first].getInt32();
     value < 0 ? value = 0 : value > 255 ? value = 255 : value;
 
     if (_reverseFirst) out.writeByte((unsigned char)(255 - value));
@@ -158,7 +158,7 @@ void BodyPart::writeRelOrn(MemoryOutputStream & out, const OSCMessage & message)
 
   // write second axis
   if (_second != ORN::NONE) {
-    int value = message[3 + (int)_second].getInt32() + _offsetSecond;
+    int value = message[3 + (int)_second].getInt32();
     value < 0 ? value = 0 : value > 255 ? value = 255 : value;
 
     if (_reverseSecond) out.writeByte((unsigned char)(255 - value));
@@ -201,4 +201,12 @@ void BodyPart::writeLimits(MemoryOutputStream & out) {
   out.writeByte((unsigned char)_limitFirstMax);
   out.writeByte((unsigned char)_limitSecondMin);
   out.writeByte((unsigned char)_limitSecondMax);
+}
+
+void BodyPart::writeOffset(MemoryOutputStream & out)
+{
+  out.writeByte((unsigned char)MESSAGE::JOINTOFFSET);
+  out.writeByte((unsigned char)_id);
+  out.writeIntBigEndian(_offsetFirst);
+  out.writeIntBigEndian(_offsetSecond);
 }
