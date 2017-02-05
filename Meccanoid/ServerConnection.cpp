@@ -174,6 +174,14 @@ void Meccanoid::ServerConnection::Parse(DatagramSocketMessageReceivedEventArgs ^
         break;
       }
 
+      case MESSAGE::JOINTOFFSET: {
+        // warning: in this context, the offset is a rotation offset
+        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
+        int x = args->GetDataReader()->ReadInt32();
+        int y = args->GetDataReader()->ReadInt32();
+        hat->setOffset(part, x, y);
+      }
+
       case MESSAGE::CONSTRAIN: {
         BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
         float value = args->GetDataReader()->ReadSingle();

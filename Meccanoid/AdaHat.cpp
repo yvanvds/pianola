@@ -120,17 +120,34 @@ void Meccanoid::AdaHat::setConstraints(BODYPART part, byte minX, byte minY, byte
 void Meccanoid::AdaHat::setLimits(BODYPART part, byte minX, byte minY, byte maxX, byte maxY)
 {
   switch (part) {
-  case BODYPART::HEAD: head.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::ARMLU: leftArmUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::ARMLL: leftArmLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::ARMRU: rightArmUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::ARMRL: rightArmLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::HANDL: leftHand.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::HANDR: rightHand.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::LEGLU: leftLegUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::LEGLL: leftLegLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::LEGRU: rightLegUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
-  case BODYPART::LEGRL: rightLegLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::HEAD: head.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMLU: leftArmUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMLL: leftArmLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMRU: rightArmUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::ARMRL: rightArmLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::HANDL: leftHand.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::HANDR: rightHand.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGLU: leftLegUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGLL: leftLegLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGRU: rightLegUpper.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+    case BODYPART::LEGRL: rightLegLower.setOrnLimits({ minX, minY }, { maxX, maxY }); break;
+  }
+}
+
+void Meccanoid::AdaHat::setOffset(BODYPART part, int x, int y)
+{
+  switch (part) {
+    case BODYPART::HEAD: head.setOffset(x, y); break;
+    case BODYPART::ARMLU: leftArmUpper.setOffset(x, y); break;
+    case BODYPART::ARMLL: leftArmLower.setOffset(x, y); break;
+    case BODYPART::ARMRU: rightArmUpper.setOffset(x, y); break;
+    case BODYPART::ARMRL: rightArmLower.setOffset(x, y); break;
+    case BODYPART::HANDL: leftHand.setOffset(x, y); break;
+    case BODYPART::HANDR: rightHand.setOffset(x, y); break;
+    case BODYPART::LEGLU: leftLegUpper.setOffset(x, y); break;
+    case BODYPART::LEGLL: leftLegLower.setOffset(x, y); break;
+    case BODYPART::LEGRU: rightLegUpper.setOffset(x, y); break;
+    case BODYPART::LEGRL: rightLegLower.setOffset(x, y); break;
   }
 }
 

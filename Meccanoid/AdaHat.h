@@ -23,6 +23,7 @@ namespace Meccanoid {
     void setConstraintMultiplier(BODYPART part, float value);
     void setConstraints(BODYPART part, byte minX, byte minY, byte maxX, byte maxY);
     void setLimits(BODYPART part, byte minX, byte minY, byte maxX, byte maxY);
+    void setOffset(BODYPART part, int x, int y);
     void setServo(byte ID, byte position, float speed);
     void setPWM(int channel, int on, int off);
 

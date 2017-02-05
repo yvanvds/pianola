@@ -14,6 +14,7 @@ namespace Meccanoid {
     void init(const VecI & ID, AdaHat ^ hat);
     void setOrn(int x, int y, float time);
     void setOrnRelative(int x, int y, float time);
+    void setOffset(int x, int y);
     void setOrnConstraints(const VecI & min, const VecI & max);
     void setOrnLimits(const VecI & min, const VecI & max);
     void setConstraintMultiplier(float value);
@@ -32,7 +33,8 @@ namespace Meccanoid {
     Interpolator<Vec> iOrn;
     Interpolator<Vec> iRelative;
     VecI ornMin, ornMax; // constraints
-    VecI limitMin, limitMax; // hardware limitss
+    VecI limitMin, limitMax; // hardware limits
+    VecI offset;
     float constraintMultiplier;
 
     // brown values

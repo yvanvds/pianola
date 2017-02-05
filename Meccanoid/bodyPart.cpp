@@ -23,6 +23,7 @@ void Meccanoid::BodyPart::init(const VecI & ID, AdaHat ^ hat)
   ornMax.x = 127;
   ornMin.y = 127;
   ornMax.y = 127;
+  offset.x = offset.y = 0;
 
   limitMin.x = limitMin.y = limitMax.x = limitMax.y = 127;
 
@@ -68,6 +69,12 @@ void Meccanoid::BodyPart::setOrnRelative(int x, int y, float time)
   EnterCriticalSection(&lock);
   iRelative.set({ (float)x,(float)y }, time);
   LeaveCriticalSection(&lock);
+}
+
+void Meccanoid::BodyPart::setOffset(int x, int y)
+{
+  offset.x = x;
+  offset.y = y;
 }
 
 void Meccanoid::BodyPart::setOrnConstraints(const VecI & min, const VecI & max)
@@ -119,8 +126,8 @@ void Meccanoid::BodyPart::update(float delta)
   Vec brown = iBrown.update(delta);
   LeaveCriticalSection(&lock);
 
-  float x = orn.x + relative.x + brown.x;
-  float y = orn.y + relative.y + brown.y;
+  float x = offset.x + orn.x + relative.x + brown.x;
+  float y = offset.y + orn.y + relative.y + brown.y;
 
   x -= 127; y -= 127;
   if (x < -limitMin.x) x = -limitMin.x;
