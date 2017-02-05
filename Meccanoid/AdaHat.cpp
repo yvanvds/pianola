@@ -211,10 +211,10 @@ concurrency::task<void> Meccanoid::AdaHat::startAsync()
     rightArmUpper.init({  4, 5 }, this);
     leftArmLower .init({  6,-1 }, this);
     rightArmLower.init({  7,-1 }, this);
-    leftHand     .init({  8,-1 }, this);
-    rightHand    .init({  9,-1 }, this);
-    leftLegUpper .init({ 10,-1 }, this);
-    rightLegUpper.init({ 11,-1 }, this);
+    leftHand     .init({ -1,-1 }, this);
+    rightHand    .init({ -1,-1 }, this);
+    leftLegUpper .init({  8, 9 }, this);
+    rightLegUpper.init({ 10,11 }, this);
     leftLegLower .init({ 12,-1 }, this);
     rightLegLower.init({ 13,-1 }, this);
 

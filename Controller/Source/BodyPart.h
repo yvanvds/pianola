@@ -44,6 +44,7 @@ private:
   bool _reverseFirst, _reverseSecond;
   unsigned int _constraintFirstMin, _constraintFirstMax, _constraintSecondMin, _constraintSecondMax;
   unsigned int _limitFirstMin, _limitFirstMax, _limitSecondMin, _limitSecondMax;
+  int _offsetFirst, _offsetSecond;
 };
 
 

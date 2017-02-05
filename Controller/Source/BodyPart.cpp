@@ -23,6 +23,7 @@ void BodyPart::init(BODYPART id) {
   _id = id;
   _limitFirstMin = _limitFirstMax = _limitSecondMin = _limitSecondMax = 127;
   _constraintFirstMin = _constraintFirstMax = _constraintSecondMin = _constraintSecondMax = 127;
+  _offsetFirst = _offsetSecond = 0;
 }
 
 void BodyPart::readConfig(XmlElement * elm)
@@ -51,6 +52,18 @@ void BodyPart::readConfig(XmlElement * elm)
       }
       if (child->hasAttribute("second")) {
         _reverseSecond = child->getBoolAttribute("second");
+      }
+    }
+
+    // set offset
+    if (name.equalsIgnoreCase("offset")) {
+      _offsetFirst = 0;
+      _offsetSecond = 0;
+      if (child->hasAttribute("first")) {
+        _offsetFirst = child->getIntAttribute("first");
+      }
+      if (child->hasAttribute("second")) {
+        _offsetSecond = child->getIntAttribute("second");
       }
     }
 
@@ -107,15 +120,21 @@ void BodyPart::writeOrn(MemoryOutputStream & out, const OSCMessage & message)
 
   // write first axis
   if (_first != ORN::NONE) {
-    if (_reverseFirst) out.writeByte((unsigned char)(255 - message[3 + (int)_first].getInt32()));
-    else out.writeByte((unsigned char)(message[3 + (int)_first].getInt32()));
+    int value = message[3 + (int)_first].getInt32() + _offsetFirst;
+    value < 0 ? value = 0 : value > 255 ? value = 255 : value;
+
+    if (_reverseFirst) out.writeByte((unsigned char)(255 - value));
+    else out.writeByte((unsigned char)(value));
   }
   else out.writeByte(0);
   
   // write second axis
   if (_second != ORN::NONE) {
-    if (_reverseSecond) out.writeByte((unsigned char)(255 - message[3 + (int)_second].getInt32()));
-    else out.writeByte((unsigned char)(message[3 + (int)_second].getInt32()));
+    int value = message[3 + (int)_second].getInt32() + _offsetSecond;
+    value < 0 ? value = 0 : value > 255 ? value = 255 : value;
+
+    if (_reverseSecond) out.writeByte((unsigned char)(255 - value));
+    else out.writeByte((unsigned char)(value));
   }
   else out.writeByte(0);
 
@@ -129,15 +148,21 @@ void BodyPart::writeRelOrn(MemoryOutputStream & out, const OSCMessage & message)
 
   // write first axis
   if (_first != ORN::NONE) {
-    if (_reverseFirst) out.writeByte((unsigned char)(255 - message[3 + (int)_first].getInt32()));
-    else out.writeByte((unsigned char)(message[3 + (int)_first].getInt32()));
+    int value = message[3 + (int)_first].getInt32() + _offsetFirst;
+    value < 0 ? value = 0 : value > 255 ? value = 255 : value;
+
+    if (_reverseFirst) out.writeByte((unsigned char)(255 - value));
+    else out.writeByte((unsigned char)(value));
   }
   else out.writeByte(0);
 
   // write second axis
   if (_second != ORN::NONE) {
-    if (_reverseSecond) out.writeByte((unsigned char)(255 - message[3 + (int)_second].getInt32()));
-    else out.writeByte((unsigned char)(message[3 + (int)_second].getInt32()));
+    int value = message[3 + (int)_second].getInt32() + _offsetSecond;
+    value < 0 ? value = 0 : value > 255 ? value = 255 : value;
+
+    if (_reverseSecond) out.writeByte((unsigned char)(255 - value));
+    else out.writeByte((unsigned char)(value));
   }
   else out.writeByte(0);
 
