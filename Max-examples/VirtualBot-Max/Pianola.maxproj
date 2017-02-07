@@ -2,8 +2,8 @@
 	"name" : "Pianola",
 	"version" : 1,
 	"creationdate" : -737300408,
-	"modificationdate" : -726915274,
-	"viewrect" : [ 671.0, 286.0, 300.0, 500.0 ],
+	"modificationdate" : -725805369,
+	"viewrect" : [ 485.0, 322.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -246,12 +246,42 @@
 				"local" : 1
 			}
 ,
+			"c-kinect.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"headBang.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"runningAverage.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"c-kinect.maxpat" : 			{
+			"strobo.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"lightFlash.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"spotlightFlash.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"spotlightFlash2.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"lightShow.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

@@ -3,13 +3,13 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 3,
-			"revision" : 1,
-			"architecture" : "x64",
+			"minor" : 2,
+			"revision" : 5,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 2594.0, 77.0, 1852.0, 963.0 ],
+		"rect" : [ 26.0, 85.0, 1852.0, 963.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,278 @@
 		"style" : "redness",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-46",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 7,
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
+							"modernui" : 1
+						}
+,
+						"rect" : [ 246.0, 172.0, 1140.0, 805.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-16",
+									"maxclass" : "slider",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 631.0, 107.0, 20.0, 140.0 ],
+									"size" : 1000.0,
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-14",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 564.0, 223.0, 24.0, 24.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-12",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 0,
+									"patching_rect" : [ 564.0, 272.0, 87.0, 22.0 ],
+									"style" : "",
+									"text" : "lightShow Vir1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-11",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 46.0, 30.0, 51.0, 22.0 ],
+									"style" : "",
+									"text" : "0 0 0 0."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-9",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 46.0, 67.0, 112.0, 22.0 ],
+									"style" : "",
+									"text" : "s Vir1-camAmbient"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"patching_rect" : [ 423.0, 235.0, 32.0, 22.0 ],
+									"style" : "",
+									"text" : "* 10"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "number",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 423.0, 200.0, 50.0, 22.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 0,
+									"patching_rect" : [ 374.0, 272.0, 68.0, 22.0 ],
+									"style" : "",
+									"text" : "strobo Vir1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-123",
+									"maxclass" : "slider",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 330.0, 117.0, 20.0, 140.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-121",
+									"maxclass" : "toggle",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 257.0, 223.0, 24.0, 24.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-119",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 0,
+									"patching_rect" : [ 260.0, 272.0, 90.0, 22.0 ],
+									"style" : "",
+									"text" : "headBang Vir1"
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-11", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-121", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-119", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-121", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-119", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-123", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-12", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-14", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-12", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 0 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 1 ],
+									"disabled" : 0,
+									"hidden" : 0,
+									"source" : [ "obj-8", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 596.0, 594.0, 99.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"style" : "",
+						"tags" : ""
+					}
+,
+					"style" : "",
+					"text" : "p antheil_sonate"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-40",
 					"maxclass" : "newobj",
@@ -72,9 +344,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -269,9 +541,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -823,9 +1095,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -1778,9 +2050,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -4309,9 +4581,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -4407,9 +4679,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 7,
-											"minor" : 3,
-											"revision" : 1,
-											"architecture" : "x64",
+											"minor" : 2,
+											"revision" : 5,
+											"architecture" : "x86",
 											"modernui" : 1
 										}
 ,
@@ -4821,9 +5093,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 7,
-											"minor" : 3,
-											"revision" : 1,
-											"architecture" : "x64",
+											"minor" : 2,
+											"revision" : 5,
+											"architecture" : "x86",
 											"modernui" : 1
 										}
 ,
@@ -5121,9 +5393,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 7,
-											"minor" : 3,
-											"revision" : 1,
-											"architecture" : "x64",
+											"minor" : 2,
+											"revision" : 5,
+											"architecture" : "x86",
 											"modernui" : 1
 										}
 ,
@@ -5340,9 +5612,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 7,
-											"minor" : 3,
-											"revision" : 1,
-											"architecture" : "x64",
+											"minor" : 2,
+											"revision" : 5,
+											"architecture" : "x86",
 											"modernui" : 1
 										}
 ,
@@ -6314,9 +6586,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 7,
-											"minor" : 3,
-											"revision" : 1,
-											"architecture" : "x64",
+											"minor" : 2,
+											"revision" : 5,
+											"architecture" : "x86",
 											"modernui" : 1
 										}
 ,
@@ -6962,9 +7234,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 7,
-											"minor" : 3,
-											"revision" : 1,
-											"architecture" : "x64",
+											"minor" : 2,
+											"revision" : 5,
+											"architecture" : "x86",
 											"modernui" : 1
 										}
 ,
@@ -7376,9 +7648,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 7,
-											"minor" : 3,
-											"revision" : 1,
-											"architecture" : "x64",
+											"minor" : 2,
+											"revision" : 5,
+											"architecture" : "x86",
 											"modernui" : 1
 										}
 ,
@@ -8820,9 +9092,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -9318,9 +9590,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -10461,13 +10733,13 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 3647.0, 413.0, 640.0, 480.0 ],
+						"rect" : [ 1238.0, 413.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -10771,9 +11043,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -12260,13 +12532,13 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 3,
-							"revision" : 1,
-							"architecture" : "x64",
+							"minor" : 2,
+							"revision" : 5,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 2594.0, 77.0, 1852.0, 929.0 ],
+						"rect" : [ 26.0, 85.0, 1852.0, 929.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -14430,309 +14702,346 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-5::obj-1::obj-27" : [ "swatch[4]", "swatch", 0 ],
 			"obj-1::obj-17::obj-7" : [ "swatch[15]", "swatch", 0 ],
-			"obj-1::obj-1::obj-9" : [ "swatch[13]", "swatch", 0 ],
+			"obj-5::obj-1::obj-9" : [ "swatch[12]", "swatch", 0 ],
+			"obj-1::obj-1::obj-27" : [ "swatch[17]", "swatch", 0 ],
 			"obj-5::obj-17::obj-7" : [ "swatch[7]", "swatch", 0 ],
 			"obj-6::obj-17::obj-7" : [ "swatch[3]", "swatch", 0 ],
-			"obj-1::obj-1::obj-27" : [ "swatch[12]", "swatch", 0 ],
-			"obj-6::obj-1::obj-27" : [ "swatch[1]", "swatch", 0 ],
-			"obj-4::obj-1::obj-27" : [ "swatch[8]", "swatch", 0 ],
-			"obj-5::obj-1::obj-9" : [ "swatch[5]", "swatch", 0 ],
-			"obj-4::obj-17::obj-7" : [ "swatch[11]", "swatch", 0 ],
-			"obj-5::obj-17::obj-38" : [ "swatch[6]", "swatch", 0 ],
+			"obj-46::obj-12::obj-17" : [ "slider", "slider", 0 ],
 			"obj-6::obj-1::obj-9" : [ "swatch", "swatch", 0 ],
-			"obj-4::obj-1::obj-9" : [ "swatch[9]", "swatch", 0 ],
-			"obj-6::obj-17::obj-38" : [ "swatch[2]", "swatch", 0 ],
+			"obj-4::obj-17::obj-38" : [ "swatch[10]", "swatch", 0 ],
+			"obj-5::obj-17::obj-38" : [ "swatch[6]", "swatch", 0 ],
 			"obj-1::obj-17::obj-38" : [ "swatch[14]", "swatch", 0 ],
-			"obj-4::obj-17::obj-38" : [ "swatch[10]", "swatch", 0 ]
+			"obj-4::obj-17::obj-7" : [ "swatch[11]", "swatch", 0 ],
+			"obj-1::obj-1::obj-9" : [ "swatch[4]", "swatch", 0 ],
+			"obj-4::obj-1::obj-27" : [ "swatch[13]", "swatch", 0 ],
+			"obj-5::obj-1::obj-27" : [ "swatch[8]", "swatch", 0 ],
+			"obj-6::obj-1::obj-27" : [ "swatch[1]", "swatch", 0 ],
+			"obj-4::obj-1::obj-9" : [ "swatch[16]", "swatch", 0 ],
+			"obj-6::obj-17::obj-38" : [ "swatch[2]", "swatch", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "VirtualBot.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "bodyPart.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-rotate.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-constraint.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-offset.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-brown.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-show.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "unspace.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-relativeRotation.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "camera.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "xySlider.png",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/media",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/media",
 				"type" : "PNG ",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-camFrom.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-camAt.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-camRoll.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-camDOF.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-camAmbient.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-camSpotlight.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-camSpotPower.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "spotlights.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-spot1pos.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-spot2pos.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-spot1color.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-spot2color.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-spot1power.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-spot2power.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "images.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-background.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-foreground.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "textmessage.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-textMessage.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "metaController.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "randomRotateSub.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "randomRotate.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "randomOffsetSub.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "randomOffset.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "rangedRandom.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "botCopy.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "presetEditor.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "sendTo.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "writeToDict.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "sendBrownWithSustain.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "subSend.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "midiinput.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "parser.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "toBcr.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "realBot.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "realBodyPart.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "c-kinect.maxpat",
-				"bootpath" : "~/Source/Repos/pianola/Max-examples/VirtualBot-Max/patchers",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "headBang.maxpat",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "strobo.maxpat",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "lightShow.maxpat",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "lightFlash.maxpat",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "spotlightFlash.maxpat",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "spotlightFlash2.maxpat",
+				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
