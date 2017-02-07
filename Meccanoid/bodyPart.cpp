@@ -14,7 +14,7 @@ void Meccanoid::BodyPart::init(const VecI & ID, AdaHat ^ hat)
   hat->setPWM(ID.x, 127, 0);
   hat->setPWM(ID.y, 127, 0);
 
-  iOrn.set({ 128, 128 }, 0);
+  iOrn.set({ 0, 0 }, 0);
   iRelative.set({ 0,0 }, 0);
   brownFactor = 0;
   brownSpeed = 0;

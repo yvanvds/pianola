@@ -24,6 +24,7 @@ void BodyPart::init(BODYPART id) {
   _limitFirstMin = _limitFirstMax = _limitSecondMin = _limitSecondMax = 127;
   _constraintFirstMin = _constraintFirstMax = _constraintSecondMin = _constraintSecondMax = 127;
   _offsetFirst = _offsetSecond = 0;
+  _first = _second = ORN::NONE;
 }
 
 void BodyPart::readConfig(XmlElement * elm)

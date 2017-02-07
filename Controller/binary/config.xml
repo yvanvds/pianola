@@ -4,19 +4,18 @@
 			<part name="head">
 				<servo first="X" second="Y" />
 			 	<reverse first="true" second="false" />
-			
 			 	<firstConstraint min="127" max="127" />
 			 	<secondConstraint min="127" max="127" />
-				<firstLimit min="80" max="80" />
-				<secondLimit min="80" max="80" />
+				<firstLimit min="127" max="127" />
+				<secondLimit min="127" max="127" />
 
 			</part>
 			<part name="armRightUpper">
 			 	<servo first="Y" second="X" />
 			 	<reverse first="true" second="false" />
 				<offset first="0" second="0" />
-				<firstLimit min="-80" max="80" />
-				<secondLimit min="-120" max="120" />
+				<firstLimit min="127" max="127" />
+				<secondLimit min="127" max="127" />
 			</part>
 			<part name="armRightLower">
 			 	<servo first="X" />
@@ -27,8 +26,8 @@
 			<part name="armLeftUpper">
 			 	<servo first="Y" second="X" />
 			 	<reverse first="true" second="true" />
-				<firstLimit min="-80" max="80" />
-				<secondLimit min="-120" max="120" />
+				<firstLimit min="127" max="127" />
+				<secondLimit min="127" max="127" />
 			</part>
 			<part name="armLeftLower">
 			 	<servo first="X" />

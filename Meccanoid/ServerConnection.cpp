@@ -180,6 +180,7 @@ void Meccanoid::ServerConnection::Parse(DatagramSocketMessageReceivedEventArgs ^
         int x = args->GetDataReader()->ReadInt32();
         int y = args->GetDataReader()->ReadInt32();
         hat->setOffset(part, x, y);
+        break;
       }
 
       case MESSAGE::CONSTRAIN: {
