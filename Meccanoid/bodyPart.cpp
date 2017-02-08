@@ -37,22 +37,22 @@ void Meccanoid::BodyPart::setOrn(int x, int y, float time)
 {
   x -= 127;  
   if (x < 0) {
-    if (x < -limitMin.x) x = -limitMin.x;
+    //if (x < -limitMin.x) x = -limitMin.x;
     x = (ornMin.x == 0 ? 0 : x / (127.f / ornMin.x) * constraintMultiplier);
   }
   else {
-    if (x > limitMax.x) x = limitMax.x;
+    //if (x > limitMax.x) x = limitMax.x;
     x = (ornMax.x == 0 ? 0 : x / (127.f / ornMax.x) * constraintMultiplier);
   }
   x += 127;
 
   y -= 127;  
   if (y < 0) {
-    if (y < -limitMin.y) y = -limitMin.y;
+    //if (y < -limitMin.y) y = -limitMin.y;
     y = (ornMin.y == 0 ? 0 : y / (127.f / ornMin.y) * constraintMultiplier);
   }
   else {
-    if (y > limitMax.y) y = limitMax.y;
+    //if (y > limitMax.y) y = limitMax.y;
     y = (ornMax.y == 0 ? 0 : y / (127.f / ornMax.y) * constraintMultiplier);
   }
   y += 127;
@@ -137,8 +137,12 @@ void Meccanoid::BodyPart::update(float delta)
   x += 127; y += 127;
 
   // convert to PWM value
-  x = 150 + (x / 256.f * 450);
-  y = 150 + (y / 256.f * 450);
+  x = -75 + (x / 256.f * 900);
+  y = -75 + (y / 256.f * 900);
+
+  // clamp to absolute hardware limits
+  x < 150 ? x = 150 : x > 600 ? x = 600 : x;
+  y < 150 ? y = 150 : y > 600 ? y = 600 : y;
 
   hat->setPWM(ID.x, 0, x);
   hat->setPWM(ID.y, 0, y);
