@@ -176,10 +176,14 @@ void Meccanoid::ServerConnection::Parse(DatagramSocketMessageReceivedEventArgs ^
 
       case MESSAGE::JOINTOFFSET: {
         // warning: in this context, the offset is a rotation offset
-        BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
-        int x = args->GetDataReader()->ReadInt32();
-        int y = args->GetDataReader()->ReadInt32();
-        hat->setOffset(part, x, y);
+        int test = args->GetDataReader()->ReadByte();
+        //if (test == 6) {
+          BODYPART part = (BODYPART)test;
+          int x = args->GetDataReader()->ReadInt32();
+          int y = args->GetDataReader()->ReadInt32();
+          hat->setOffset(part, x, y);
+        //}
+        
         break;
       }
 

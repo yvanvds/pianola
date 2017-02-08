@@ -6,21 +6,21 @@
 			 	<reverse first="true" second="false" />
 			 	<firstConstraint min="127" max="127" />
 			 	<secondConstraint min="127" max="127" />
-				<firstLimit min="127" max="127" />
+				<firstLimit min="60" max="60" />
 				<secondLimit min="127" max="127" />
-
+				<offset first="-5" second="0" />
 			</part>
 			<part name="armRightUpper">
 			 	<servo first="Y" second="X" />
 			 	<reverse first="true" second="false" />
-				<offset first="0" second="0" />
+				<offset first="20" second="-25" />
 				<firstLimit min="127" max="127" />
 				<secondLimit min="127" max="127" />
 			</part>
 			<part name="armRightLower">
 			 	<servo first="X" />
 			 	<reverse first="true" />
-				<offset first="-127" />
+				<offset first="30" second="0" />
 			</part>
 
 			<part name="armLeftUpper">
@@ -28,27 +28,33 @@
 			 	<reverse first="true" second="true" />
 				<firstLimit min="127" max="127" />
 				<secondLimit min="127" max="127" />
+				<offset first="-35" second="-25" />
 			</part>
 			<part name="armLeftLower">
 			 	<servo first="X" />
 			 	<reverse first="true" />
+				<offset first="30" />
 			</part>
 
 			<part name="legRightUpper">
 			 	<servo first="x" second="y"/>
 			 	<reverse first="false" />
+				<offset first="-5" second="-30" />
 			</part>
 			<part name="legRightLower">
 			 	<servo first="x" />
 			 	<reverse first="true" />
+				<offset first="-25" />
 			</part>
 			<part name="legLeftUpper">
 			 	<servo first="x" second="y"/>
 			 	<reverse first="false" second="true"/>
+				<offset first="5" second="30" />
 			</part>
 			<part name="legLeftLower">
 			 	<servo first="x" />
 			 	<reverse first="false" />
+				<offset first="35" />
 			</part>
 		</igor>
 	</robots>

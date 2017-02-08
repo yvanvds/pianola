@@ -71,6 +71,7 @@ void MeccaBox::update() {
 
 void MeccaBox::buttonClicked(Button * buttonThatWasClicked) {
   if (buttonThatWasClicked == initButton) {
+    Robots().reloadConfig();
     meccaPtr->initialize();
   }
 }

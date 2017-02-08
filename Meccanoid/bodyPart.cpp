@@ -130,10 +130,10 @@ void Meccanoid::BodyPart::update(float delta)
   float y = offset.y + orn.y + relative.y + brown.y;
 
   x -= 127; y -= 127;
-  if (x < -limitMin.x) x = -limitMin.x;
-  if (x > limitMax.x) x = limitMax.x;
-  if (y < -limitMin.y) y = -limitMin.y;
-  if (y > limitMax.y) y = limitMax.y;
+  if (x < -limitMin.x + offset.x) x = -limitMin.x + offset.x;
+  if (x > limitMax.x + offset.x) x = limitMax.x + offset.x;
+  if (y < -limitMin.y + offset.y) y = -limitMin.y + offset.y;
+  if (y > limitMax.y + offset.y) y = limitMax.y + offset.y;
   x += 127; y += 127;
 
   // convert to PWM value
