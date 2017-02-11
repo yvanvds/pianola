@@ -2,7 +2,7 @@
 	"name" : "Pianola",
 	"version" : 1,
 	"creationdate" : -737300408,
-	"modificationdate" : -725805369,
+	"modificationdate" : -725446981,
 	"viewrect" : [ 485.0, 322.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -256,12 +256,12 @@
 				"local" : 1
 			}
 ,
-			"runningAverage.maxpat" : 			{
+			"strobo.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"strobo.maxpat" : 			{
+			"lightShow.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -281,7 +281,12 @@
 				"local" : 1
 			}
 ,
-			"lightShow.maxpat" : 			{
+			"runningAverage.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"apc40.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
