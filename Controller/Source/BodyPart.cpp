@@ -189,19 +189,19 @@ void BodyPart::writeBrown(MemoryOutputStream & out, const OSCMessage & message)
 void BodyPart::writeConstraints(MemoryOutputStream & out) {
   out.writeByte((unsigned char)MESSAGE::SETCONSTRAINTS);
   out.writeByte((unsigned char)_id);
-  out.writeByte((unsigned char)_constraintFirstMin);
-  out.writeByte((unsigned char)_constraintFirstMax);
-  out.writeByte((unsigned char)_constraintSecondMin);
-  out.writeByte((unsigned char)_constraintSecondMax);
+  out.writeByte((unsigned char)(_reverseFirst ? _constraintFirstMax : _constraintFirstMin));
+  out.writeByte((unsigned char)(_reverseFirst ? _constraintFirstMin : _constraintFirstMax));
+  out.writeByte((unsigned char)(_reverseSecond ? _constraintSecondMax : _constraintSecondMin));
+  out.writeByte((unsigned char)(_reverseSecond ? _constraintSecondMin : _constraintSecondMax));
 }
 
 void BodyPart::writeLimits(MemoryOutputStream & out) {
   out.writeByte((unsigned char)MESSAGE::SETLIMITS);
   out.writeByte((unsigned char)_id);
-  out.writeByte((unsigned char)_limitFirstMin);
-  out.writeByte((unsigned char)_limitFirstMax);
-  out.writeByte((unsigned char)_limitSecondMin);
-  out.writeByte((unsigned char)_limitSecondMax);
+  out.writeByte((unsigned char)(_reverseFirst ? _limitFirstMax : _limitFirstMin));
+  out.writeByte((unsigned char)(_reverseFirst ? _limitFirstMin : _limitFirstMax));
+  out.writeByte((unsigned char)(_reverseFirst ? _limitSecondMax : _limitSecondMin));
+  out.writeByte((unsigned char)(_reverseFirst ? _limitSecondMin : _limitSecondMax));
 }
 
 void BodyPart::writeOffset(MemoryOutputStream & out)

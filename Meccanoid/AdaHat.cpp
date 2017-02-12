@@ -27,7 +27,7 @@ void Meccanoid::AdaHat::reset() {
   for (int i = 0; i < (int)BODYPART::INVALID; i++) {
     switch ((BODYPART)i) {
     case BODYPART::ARMLU: setRotate((BODYPART)i, 127, 182, 0); break;
-    case BODYPART::ARMRU: setRotate((BODYPART)i, 127, 182, 0); break;
+    case BODYPART::ARMRU: setRotate((BODYPART)i, 127, 72, 0); break;
     default: setRotate((BODYPART)i, 127, 127, 0); break;
     }
     
