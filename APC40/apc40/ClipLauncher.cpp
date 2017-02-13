@@ -12,8 +12,8 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
     return T;
   }
 
-  T->x = atom_getlong(argv);
-  T->y = atom_getlong(argv + 1);
+  T->x = (int)atom_getlong(argv);
+  T->y = (int)atom_getlong(argv + 1);
   T->intOut = intout((t_object *)T);
 
   clipLaunchers.push_back(T);

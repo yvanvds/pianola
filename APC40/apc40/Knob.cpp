@@ -22,7 +22,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
         return T;
       }
       else {
-        int v = atom_getlong(argv + 1);
+        int v = (int)atom_getlong(argv + 1);
         switch (v) {
           case 1: T->ID = K_TRACK1; break;
           case 2: T->ID = K_TRACK2; break;
@@ -41,7 +41,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
         return T;
       }
       else {
-        int v = atom_getlong(argv + 1);
+        int v = (int)atom_getlong(argv + 1);
         switch (v) {
         case 1: T->ID = K_DEVICE1; break;
         case 2: T->ID = K_DEVICE2; break;

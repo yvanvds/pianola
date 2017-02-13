@@ -1,9 +1,9 @@
 {
 	"name" : "Pianola",
 	"version" : 1,
-	"creationdate" : -737300408,
-	"modificationdate" : -725446981,
-	"viewrect" : [ 485.0, 322.0, 300.0, 500.0 ],
+	"creationdate" : -737300529,
+	"modificationdate" : 3569742322,
+	"viewrect" : [ 2752.0, 276.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -286,7 +286,7 @@
 				"local" : 1
 			}
 ,
-			"apc40.maxpat" : 			{
+			"apc40base.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -294,6 +294,10 @@
 		}
 ,
 		"media" : 		{
+
+		}
+,
+		"externals" : 		{
 
 		}
 

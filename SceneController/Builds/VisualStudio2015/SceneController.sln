@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2015
+Project("{CE63AE3A-9058-9346-142D-FF68EF685ADF}") = "SceneController", "SceneController.vcxproj", "{612B60FB-FFFC-0318-77CA-00CD83F365D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{612B60FB-FFFC-0318-77CA-00CD83F365D1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{612B60FB-FFFC-0318-77CA-00CD83F365D1}.Debug|Win32.Build.0 = Debug|Win32
+		{612B60FB-FFFC-0318-77CA-00CD83F365D1}.Release|Win32.ActiveCfg = Release|Win32
+		{612B60FB-FFFC-0318-77CA-00CD83F365D1}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

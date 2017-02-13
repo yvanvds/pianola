@@ -20,7 +20,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
     else object_post((t_object *)T, "Unknown Slider name");
   }
   else {
-    int i = atom_getlong(argv);
+    int i = (int)atom_getlong(argv);
     switch (i) {
       case 1: T->ID = S_1; break;
       case 2: T->ID = S_2; break;

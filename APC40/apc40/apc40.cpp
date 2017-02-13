@@ -203,7 +203,7 @@ void CLASSMETHOD(KnobStyle)(IMPORT_T, t_symbol *s, long argc, t_atom *argv)
 
   KNOB K_ID = K_INVALID;
   std::string name; name = atom_getsym(argv)->s_name;
-  int id = atom_getlong(argv + 1);
+  int id = (int)atom_getlong(argv + 1);
   std::string style; style = atom_getsym(argv + 2)->s_name;
   
   switch (id) {

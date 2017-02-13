@@ -97,12 +97,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\pianola\max-sdk-7.1.0\source\c74support\max-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\max-sdk-7.1.0\source\c74support\max-includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <PreprocessorDefinitions>_DEBUG;WIN_VERSION;WIN32;_WINDOWS;_USRDLL;WIN_EXT_VERSION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\pianola\max-sdk-7.1.0\source\c74support\msp-includes\x64;D:\pianola\max-sdk-7.1.0\source\c74support\max-includes\x64;D:\pianola\max-sdk-7.1.0\source\c74support\jit-includes\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\max-sdk-7.1.0\source\c74support\msp-includes\x64;..\..\max-sdk-7.1.0\source\c74support\max-includes\x64;..\..\max-sdk-7.1.0\source\c74support\jit-includes\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MaxAPI.lib;MaxAudio.lib;jitlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <SubSystem>Windows</SubSystem>
