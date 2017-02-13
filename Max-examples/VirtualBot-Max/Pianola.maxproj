@@ -2,8 +2,8 @@
 	"name" : "Pianola",
 	"version" : 1,
 	"creationdate" : -737300529,
-	"modificationdate" : 3569742322,
-	"viewrect" : [ 2752.0, 276.0, 300.0, 500.0 ],
+	"modificationdate" : -725098589,
+	"viewrect" : [ 1612.0, 276.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -290,10 +290,169 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"insect.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
 
 		}
 ,
 		"media" : 		{
+			"001-ins-I.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"002-ins-can.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"003-ins-as.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"004-ins-an.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"005-ins-insect.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"006-ins-can.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"007ins-wait.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"008-ins-am.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"009-ins-somebody.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"010-ins-who.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"011-ins-is.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"012-ins-waiting.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"013ins-all.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"014-ins-my.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"015-ins-life.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"016-ins-it.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"017-ins-very.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"018-important.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"019-ins-to.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"020-ins-and.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"021-ins-know.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"022-ins-how.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"023-ins-not.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"024-ins-be.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"025-Rins-bored.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"026-ins-youre.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"027ins-annoyed.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"028-ins-maybe.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"029-ins-long.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"030-ins-but.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"031-0ins-am.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
 
 		}
 ,
