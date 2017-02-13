@@ -10,10 +10,13 @@ void knobManager::add(knob * obj)
 void knobManager::remove(knob * obj)
 {
   std::vector<knob*> & cur = ki[obj->ID].knobs;
-  for (auto it = cur.begin(); it != cur.end(); it++) {
-    if (*it == obj) {
-      cur.erase(it);
+  for (std::vector<knob*>::size_type i = 0; i < cur.size(); ) {
+    if (cur[i] == obj) {
+      cur.erase(cur.begin() + i);
       return;
+    }
+    else {
+      i++;
     }
   }
 }

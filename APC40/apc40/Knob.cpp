@@ -74,3 +74,57 @@ void CLASSMETHOD(Free)(IMPORT_T) {
 void CLASSMETHOD(Send)(IMPORT_T, long n) {
   outlet_int(T->intOut, n);
 }
+
+int GetKnobCTRL(KNOB ID) {
+  switch (ID) {
+    case K_DEVICE1: return 0x10; break;
+    case K_DEVICE2: return 0x11; break;
+    case K_DEVICE3: return 0x12; break;
+    case K_DEVICE4: return 0x13; break;
+    case K_DEVICE5: return 0x14; break;
+    case K_DEVICE6: return 0x15; break;
+    case K_DEVICE7: return 0x16; break;
+    case K_DEVICE8: return 0x17; break;
+    case K_TRACK1 : return 0x30; break;
+    case K_TRACK2 : return 0x31; break;
+    case K_TRACK3 : return 0x32; break;
+    case K_TRACK4 : return 0x33; break;
+    case K_TRACK5 : return 0x34; break;
+    case K_TRACK6 : return 0x35; break;
+    case K_TRACK7 : return 0x36; break;
+    case K_TRACK8 : return 0x37; break;
+  }
+  return 0x0;
+}
+
+int GetKnobLedCTRL(KNOB ID) {
+  switch (ID) {
+    case K_DEVICE1: return 0x18; break;
+    case K_DEVICE2: return 0x19; break;
+    case K_DEVICE3: return 0x1A; break;
+    case K_DEVICE4: return 0x1B; break;
+    case K_DEVICE5: return 0x1C; break;
+    case K_DEVICE6: return 0x1D; break;
+    case K_DEVICE7: return 0x1E; break;
+    case K_DEVICE8: return 0x1F; break;
+    case K_TRACK1: return 0x38; break;
+    case K_TRACK2: return 0x39; break;
+    case K_TRACK3: return 0x3A; break;
+    case K_TRACK4: return 0x3B; break;
+    case K_TRACK5: return 0x3C; break;
+    case K_TRACK6: return 0x3D; break;
+    case K_TRACK7: return 0x3E; break;
+    case K_TRACK8: return 0x3F; break;
+  }
+  return 0x0;
+}
+
+int GetKnobStyleCTRL(KNOB_STYLE style) {
+  switch (style) {
+  case KS_OFF   : return 0;
+  case KS_SINGLE: return 1;
+  case KS_VOLUME: return 2;
+  case KS_PAN   : return 3;
+  default       : return 0;
+  }
+}

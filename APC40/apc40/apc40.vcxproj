@@ -137,6 +137,8 @@
   <ItemGroup>
     <ClCompile Include="apc40.cpp" />
     <ClCompile Include="apcMemory.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonManager.cpp" />
     <ClCompile Include="ClipLauncher.cpp" />
     <ClCompile Include="dllmain_win.c" />
     <ClCompile Include="Knob.cpp" />
@@ -147,6 +149,8 @@
   <ItemGroup>
     <ClInclude Include="apc40.h" />
     <ClInclude Include="apcMemory.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonManager.h" />
     <ClInclude Include="ClipLauncher.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="Knob.h" />

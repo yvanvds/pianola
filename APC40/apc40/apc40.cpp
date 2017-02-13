@@ -223,7 +223,13 @@ void CLASSMETHOD(KnobStyle)(IMPORT_T, t_symbol *s, long argc, t_atom *argv)
   else if (style == "volume") S_ID = KS_VOLUME;
   else if (style == "pan") S_ID = KS_PAN;
 
-  KnobManager.setStyle(K_ID, S_ID);
+  if (K_ID != K_INVALID && S_ID != S_INVALID) {
+    KnobManager.setStyle(K_ID, S_ID);
+    CLASSMETHOD(SendCTRL)(T, 1, GetKnobLedCTRL(K_ID), GetKnobStyleCTRL(S_ID));
+  }
+  else {
+    post("Invalid knobstyle message");
+  }
 }
 
 void CLASSMETHOD(HandleNoteOn)(IMPORT_T) {
@@ -308,4 +314,10 @@ void CLASSMETHOD(SendNoteOn)(IMPORT_T, int channel, int note, int velocity) {
   outlet_int(T->intOut, 143 + channel);
   outlet_int(T->intOut, note);
   outlet_int(T->intOut, velocity);
+}
+
+void CLASSMETHOD(SendCTRL)(IMPORT_T, int channel, int ctrl, int value) {
+  outlet_int(T->intOut, 175 + channel);
+  outlet_int(T->intOut, ctrl);
+  outlet_int(T->intOut, value);
 }

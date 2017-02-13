@@ -38,3 +38,4 @@ void CLASSMETHOD(HandleNoteOn)(IMPORT_T);
 void CLASSMETHOD(HandleCTRL)(IMPORT_T);
 
 void CLASSMETHOD(SendNoteOn)(IMPORT_T, int channel, int note, int velocity);
+void CLASSMETHOD(SendCTRL)(IMPORT_T, int channel, int ctrl, int value);
