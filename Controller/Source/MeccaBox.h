@@ -30,6 +30,7 @@ public:
 private:
   ScopedPointer<Drawable> image;
   ScopedPointer<Label> nameLabel;
+  ScopedPointer<Label> bufferSizeLabel;
   ScopedPointer<Label> ipLabel;
   ScopedPointer<ImageButton> initButton;
 

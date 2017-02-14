@@ -361,6 +361,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Fifo.cpp">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Frame.cpp">
       <Filter>Pianola Controller\Source</Filter>
     </ClCompile>
@@ -2124,6 +2127,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Fifo.h">
+      <Filter>Pianola Controller\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Frame.h">
       <Filter>Pianola Controller\Source</Filter>
     </ClInclude>

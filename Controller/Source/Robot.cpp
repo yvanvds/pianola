@@ -22,6 +22,7 @@ Robot::Robot() {
   lastSeen = 60;
   port = 0;
   VecToRot = true;
+  bufferSize = 0;
 }
 
 String Robot::getName() {
@@ -33,7 +34,7 @@ String Robot::getIp() {
 }
 
 int Robot::getPort() {
-	return port;
+	return port.get();
 }
 
 Robot & Robot::setName(const String & value) {
@@ -42,6 +43,7 @@ Robot & Robot::setName(const String & value) {
 }
 
 Robot & Robot::setIp(const String & value) {
+  const ScopedWriteLock l(lock);
   ipAddress = value;
   disconnect();
   connected = connect(ipAddress, OSC_PORT);
@@ -67,7 +69,8 @@ bool Robot::send(const OSCMessage & message) {
 bool Robot::send(const void * sourceBuffer, int buffersize)
 {
   if (socket != nullptr) {
-    socket->write(ipAddress, port != 0 ? port : MESSAGE_PORT, sourceBuffer, buffersize);
+    const ScopedReadLock l(lock);
+    socket->write(ipAddress, port.get() != 0 ? port.get() : MESSAGE_PORT, sourceBuffer, buffersize);
     return true;
   }
   return false;
@@ -82,10 +85,9 @@ void Robot::ConvertVecToRotation(Vec & coord, BODYPART part)
   coord.z = RadToDeg(j.yaw) / 360 * 255;
 }
 
-Robot & Robot::update() {
+void Robot::update() {
   lastSeen++;
   connected =  (lastSeen < 30);
-  return *this;
 }
 
 Robot & Robot::resetLastSeen() {

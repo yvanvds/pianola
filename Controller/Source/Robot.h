@@ -23,10 +23,11 @@ public:
   String getName(); Robot & setName(const String & value);
   String getIp  (); Robot & setIp  (const String & value);
   int    getPort(); Robot & setPort(      int      value);
+  int    getBufferSize() { return bufferSize; }
   
   Robot & resetLastSeen();
   int getLastSeen() { return lastSeen; }
-  Robot & update();
+  virtual void update();
   bool isConnected() { return connected; }
   
   void assignSocket(DatagramSocket * socket);
@@ -38,12 +39,15 @@ public:
   void ConvertVecToRotation(Vec & coord, BODYPART part);
 
 protected:
+  ReadWriteLock lock;
+
   String name;
   String ipAddress;
-  int port;
+  Atomic<int> port;
   bool connected;
   bool VecToRot;
   int lastSeen;
+  int bufferSize;
   DatagramSocket * socket;
 };
 

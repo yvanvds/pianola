@@ -13,6 +13,8 @@
       <FILE id="uDGb9y" name="led_on.png" compile="0" resource="1" file="Resources/led_on.png"/>
     </GROUP>
     <GROUP id="{0FF38839-740E-0A3A-E0F4-39D35F09ABFE}" name="Source">
+      <FILE id="Wweikc" name="Fifo.cpp" compile="1" resource="0" file="Source/Fifo.cpp"/>
+      <FILE id="mnszhG" name="Fifo.h" compile="0" resource="0" file="Source/Fifo.h"/>
       <FILE id="hq3lEf" name="Frame.cpp" compile="1" resource="0" file="Source/Frame.cpp"/>
       <FILE id="YrJE8F" name="Frame.h" compile="0" resource="0" file="Source/Frame.h"/>
       <FILE id="gc38Vu" name="KinectPlayer.cpp" compile="1" resource="0"
