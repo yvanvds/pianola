@@ -21,6 +21,7 @@ Meccanoid::Meccanoid() {
   for (unsigned int i = 0; i < (unsigned int)BODYPART::INVALID; i++) {
     part[i].init((BODYPART)i);
   }
+  startTimer(1);
 }
 
 void Meccanoid::handleMessage(const OSCMessage & message) {
@@ -35,9 +36,11 @@ void Meccanoid::handleMessage(const OSCMessage & message) {
       if (!part.valid()) {
         ToLog("Invalid body part: " + message[2].getString());
       } else {
-        MemoryOutputStream out;
-        part.writeOrn(out, message);
-        send(out.getData(), out.getDataSize());
+        MemoryOutputStream * out = messageBuffer.getWriter();
+        if (out != nullptr) {
+          part.writeOrn(*out, message);
+          messageBuffer.writeDone();
+        }
       }
     }
     return; // message is handled
@@ -53,9 +56,11 @@ void Meccanoid::handleMessage(const OSCMessage & message) {
         ToLog("Invalid body part: " + message[2].getString());
       }
       else {
-        MemoryOutputStream out;
-        part.writeRelOrn(out, message);
-        send(out.getData(), out.getDataSize());
+        MemoryOutputStream * out = messageBuffer.getWriter();
+        if (out != nullptr) {
+          part.writeRelOrn(*out, message);
+          messageBuffer.writeDone();
+        }
       }
     }
     return; // message is handled
@@ -83,9 +88,11 @@ void Meccanoid::handleMessage(const OSCMessage & message) {
         ToLog("Invalid body part: " + message[2].getString());
       }
       else {
-        MemoryOutputStream out;
-        part.writeConstraint(out, message);
-        send(out.getData(), out.getDataSize());
+        MemoryOutputStream * out = messageBuffer.getWriter();
+        if (out != nullptr) {
+          part.writeConstraint(*out, message);
+          messageBuffer.writeDone();
+        }
       }
     }
     return; // message is handled
@@ -101,9 +108,11 @@ void Meccanoid::handleMessage(const OSCMessage & message) {
         ToLog("Invalid body part: " + message[2].getString());
       }
       else {
-        MemoryOutputStream out;
-        part.writeBrown(out, message);
-        send(out.getData(), out.getDataSize());
+        MemoryOutputStream * out = messageBuffer.getWriter();
+        if (out != nullptr) {
+          part.writeBrown(*out, message);
+          messageBuffer.writeDone();
+        }
       }
     }
     return; // message is handled
@@ -114,20 +123,20 @@ void Meccanoid::handleMessage(const OSCMessage & message) {
       ToLog("Invalid Text Message");
     }
     else {
-      MemoryOutputStream out;
-      out.writeByte((unsigned char)MESSAGE::SPEAK);
+      MemoryOutputStream * out = messageBuffer.getWriter();
+      if (out != nullptr) {
+        out->writeByte((unsigned char)MESSAGE::SPEAK);
 
-      // write foreground ID and alpha
-      String msg = message[2].getString();
-      const char * bytes = msg.getCharPointer();
-      int size = msg.getNumBytesAsUTF8();
-      out.writeIntBigEndian(size);
-      for (int i = 0; i < size; i++) {
-        out.writeByte(bytes[i]);
+        // write foreground ID and alpha
+        String msg = message[2].getString();
+        const char * bytes = msg.getCharPointer();
+        int size = msg.getNumBytesAsUTF8();
+        out->writeIntBigEndian(size);
+        for (int i = 0; i < size; i++) {
+          out->writeByte(bytes[i]);
+        }
+        messageBuffer.writeDone();
       }
-
-      // send it
-      send(out.getData(), out.getDataSize());
     }
     return;
   }
@@ -168,6 +177,12 @@ void Meccanoid::initialize() {
 
 }
 
+void Meccanoid::update()
+{
+  Robot::update();
+  bufferSize = messageBuffer.size();
+}
+
 Servo * Meccanoid::getServo(const String & name)
 {
   for (int i = 0; i < SERVO_COUNT; i++) {
@@ -196,6 +211,15 @@ void Meccanoid::resetServos()
 BodyPart & Meccanoid::getBodyPart(BODYPART part)
 {
    return this->part[(unsigned int)part];
+}
+
+void Meccanoid::hiResTimerCallback()
+{
+  MemoryOutputStream * out = messageBuffer.getReader();
+  if (out != nullptr) {
+    send(out->getData(), out->getDataSize());
+    messageBuffer.readDone();
+  }
 }
 
 BodyPart & Meccanoid::getBodyPart(const String & name) {

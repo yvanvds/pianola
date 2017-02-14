@@ -17,15 +17,17 @@
 #include "Defines.h"
 #include "../../Shared/Messages.h"
 #include "BodyPart.h"
+#include "Fifo.h"
 
 
-class Meccanoid : public Robot {
+class Meccanoid : public Robot, private HighResolutionTimer {
 public:
   Meccanoid();
 
   virtual void handleMessage(const OSCMessage & message);
 
   void initialize();
+  virtual void update();
 
   Servo * getServo(const    String & name);
   Servo * getServo(unsigned int      ID  );
@@ -36,10 +38,13 @@ public:
   BodyPart & getBodyPart(BODYPART part);
 
 private:
-	
+  void hiResTimerCallback() override;
+
   Servo servo[SERVO_COUNT];
   
   BodyPart part[(unsigned int)BODYPART::NUM];
+
+  Fifo messageBuffer;
 };
 
 

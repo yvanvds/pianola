@@ -17,6 +17,7 @@ MeccaBox::MeccaBox(Meccanoid * ptr)
   : image(nullptr)
   , nameLabel(new Label)
   , ipLabel(new Label)
+  , bufferSizeLabel(new Label)
   , initButton(nullptr)
   , meccaPtr(ptr)
 {
@@ -24,6 +25,9 @@ MeccaBox::MeccaBox(Meccanoid * ptr)
 
   nameLabel->setText(ptr->getName(), dontSendNotification);
   this->addAndMakeVisible(nameLabel);
+
+  bufferSizeLabel->setText(String("BS: ") + String(ptr->getBufferSize()), dontSendNotification);
+  this->addAndMakeVisible(bufferSizeLabel);
 
   ipLabel->setText(String("IP: ") + ptr->getIp(), dontSendNotification);
   this->addAndMakeVisible(ipLabel);
@@ -42,6 +46,7 @@ MeccaBox::MeccaBox(Meccanoid * ptr)
 void MeccaBox::resized() {
   nameLabel->setBounds(60, 5, 200, 40);
   ipLabel->setBounds(60, 25, 200, 40);
+  bufferSizeLabel->setBounds(200, 5, 100, 40);
   initButton->setBounds(275, 5, 20, 20);
 }
 
@@ -66,6 +71,8 @@ void MeccaBox::update() {
   int lastSeen = meccaPtr->getLastSeen();
   nameLabel->setText(meccaPtr->getName() + " (" + String(lastSeen) + ")", dontSendNotification);
   ipLabel->setText(String("IP: ") + meccaPtr->getIp(), dontSendNotification);
+  bufferSizeLabel->setText(String("BS: ") + String(meccaPtr->getBufferSize()), dontSendNotification);
+
   triggerAsyncUpdate();
 }
 
