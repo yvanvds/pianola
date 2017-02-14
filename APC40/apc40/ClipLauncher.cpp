@@ -8,7 +8,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
   DECLARE_T;
 
   if (argc < 2) {
-    object_post((t_object *)T, "I need two arguments (row and column).");
+    object_post((t_object *)T, "I need two arguments (column and row).");
     return T;
   }
 

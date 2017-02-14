@@ -22,7 +22,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
         return T;
       }
       else {
-        int v = atom_getlong(argv + 1);
+        int v = (int)atom_getlong(argv + 1);
         switch (v) {
         case 1: T->ID = B_SCENE1; break;
         case 2: T->ID = B_SCENE2; break;
@@ -59,7 +59,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
           else T->ID = B_INVALID;
         }
         else {
-          int v = atom_getlong(argv + 1);
+          int v = (int)atom_getlong(argv + 1);
           switch (v) {
           case 1: T->ID = B_TRACK1; break;
           case 2: T->ID = B_TRACK2; break;
@@ -80,7 +80,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
         return T;
       }
       else {
-        int v = atom_getlong(argv + 1);
+        int v = (int)atom_getlong(argv + 1);
         switch (v) {
         case 1: T->ID = B_ACT1; break;
         case 2: T->ID = B_ACT2; break;
@@ -100,7 +100,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
         return T;
       }
       else {
-        int v = atom_getlong(argv + 1);
+        int v = (int)atom_getlong(argv + 1);
         switch (v) {
         case 1: T->ID = B_SOLO1; break;
         case 2: T->ID = B_SOLO2; break;
@@ -119,7 +119,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
         T->ID = B_REC;
       }
       else {
-        int v = atom_getlong(argv + 1);
+        int v = (int)atom_getlong(argv + 1);
         switch (v) {
         case 1: T->ID = B_REC1; break;
         case 2: T->ID = B_REC2; break;
@@ -297,6 +297,6 @@ int ButtonToNote(BUTTON b) {
     case B_PLAY        : return 0x5B;
     case B_STOP        : return 0x5C;
     case B_REC         : return 0x5D;
-    case B_INVALID     : return 0x00;
+    default            : return 0x00;
   }
 }
