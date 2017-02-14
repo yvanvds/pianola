@@ -38,46 +38,6 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"args" : [ "#1" ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-19",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "textmessage.maxpat",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"offset" : [ -8.0, -10.0 ],
-					"patching_rect" : [ 930.0, 15.5, 240.0, 94.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "#1", "HandLeft" ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-14",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "realBodyPart.maxpat",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"offset" : [ -212.5, -132.0 ],
-					"patching_rect" : [ 1068.0, 475.0, 327.0, 134.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"args" : [ "#1", "ArmLeftLower" ],
 					"bgmode" : 0,
 					"border" : 0,
@@ -152,26 +112,6 @@
 					"numoutlets" : 0,
 					"offset" : [ -212.5, -132.0 ],
 					"patching_rect" : [ 708.0, 555.5, 327.0, 134.0 ],
-					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"args" : [ "#1", "HandRight" ],
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-8",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "realBodyPart.maxpat",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"offset" : [ -212.5, -132.0 ],
-					"patching_rect" : [ 22.0, 475.0, 327.0, 134.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -352,6 +292,12 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "pass.maxpat",
+				"bootpath" : "C74:/packages/RTC-lib_71-Win/patchers/Toolbox",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "c-constraint.maxpat",
 				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
@@ -371,18 +317,6 @@
 			}
 , 			{
 				"name" : "c-relativeRotation.maxpat",
-				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "textmessage.maxpat",
-				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "c-textmessage.maxpat",
 				"bootpath" : "D:/pianola/Max-examples/VirtualBot-Max/patchers",
 				"type" : "JSON",
 				"implicit" : 1
