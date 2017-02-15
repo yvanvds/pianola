@@ -1,9 +1,9 @@
 {
 	"name" : "Pianola",
 	"version" : 1,
-	"creationdate" : -737300529,
-	"modificationdate" : -725098589,
-	"viewrect" : [ 1612.0, 276.0, 300.0, 500.0 ],
+	"creationdate" : -737300771,
+	"modificationdate" : 3570011577,
+	"viewrect" : [ 2568.0, 276.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -251,6 +251,21 @@
 				"local" : 1
 			}
 ,
+			"apc40base.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"insect.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"ManualRotAPC.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"headBang.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -282,16 +297,6 @@
 			}
 ,
 			"runningAverage.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"apc40base.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"insect.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -450,6 +455,51 @@
 			}
 ,
 			"031-0ins-am.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"001-Debussy-jouissance.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"002-Debussy-floating.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"003-Debussy-Theory.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"004-Debussy-Pleasure.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"005-Debussy-Pleasure3.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"006-Debussy-Love.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"007-Debussy-Lovebetter.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"008-Debussy-same-misic.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"009-Debussy-Humblement.wav" : 			{
 				"kind" : "audiofile",
 				"local" : 1
 			}
