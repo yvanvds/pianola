@@ -19,6 +19,7 @@ robots & Robots() {
 
 robots::robots() {
   reloadConfig();
+  startTimer(1);
 }
 
 void robots::reloadConfig()
@@ -50,6 +51,17 @@ void robots::reloadConfig()
 	  }
 
     child = child->getNextElement();
+  }
+}
+
+void robots::hiResTimerCallback()
+{
+  for (int i = 0; i < meccanoids.size(); i++) {
+    meccanoids[i]->timerCallback();
+  }
+
+  for (int i = 0; i < virtualbots.size(); i++) {
+    virtualbots[i]->timerCallback();
   }
 }
 

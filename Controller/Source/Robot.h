@@ -14,6 +14,7 @@
 #include "JuceHeader.h"
 #include "Vector.h"
 #include "../../Shared/Messages.h"
+#include "Fifo.h"
 
 class Robot : OSCSender {
 public:
@@ -38,7 +39,11 @@ public:
 
   void ConvertVecToRotation(Vec & coord, BODYPART part);
 
+  void timerCallback();
+
 protected:
+  
+
   ReadWriteLock lock;
 
   String name;
@@ -49,6 +54,8 @@ protected:
   int lastSeen;
   int bufferSize;
   DatagramSocket * socket;
+
+  Fifo messageBuffer;
 };
 
 

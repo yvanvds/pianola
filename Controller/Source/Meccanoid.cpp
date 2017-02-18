@@ -21,7 +21,6 @@ Meccanoid::Meccanoid() {
   for (unsigned int i = 0; i < (unsigned int)BODYPART::INVALID; i++) {
     part[i].init((BODYPART)i);
   }
-  startTimer(1);
 }
 
 void Meccanoid::handleMessage(const OSCMessage & message) {
@@ -177,11 +176,6 @@ void Meccanoid::initialize() {
 
 }
 
-void Meccanoid::update()
-{
-  Robot::update();
-  bufferSize = messageBuffer.size();
-}
 
 Servo * Meccanoid::getServo(const String & name)
 {
@@ -211,15 +205,6 @@ void Meccanoid::resetServos()
 BodyPart & Meccanoid::getBodyPart(BODYPART part)
 {
    return this->part[(unsigned int)part];
-}
-
-void Meccanoid::hiResTimerCallback()
-{
-  MemoryOutputStream * out = messageBuffer.getReader();
-  if (out != nullptr) {
-    send(out->getData(), out->getDataSize());
-    messageBuffer.readDone();
-  }
 }
 
 BodyPart & Meccanoid::getBodyPart(const String & name) {

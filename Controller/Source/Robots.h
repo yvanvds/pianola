@@ -15,7 +15,7 @@
 #include "virtualBot.h"
 #include "JuceHeader.h"
 
-class robots {
+class robots : private HighResolutionTimer {
 public:
   robots();
   Meccanoid * getMeccanoid(      int      idx );
@@ -36,6 +36,8 @@ public:
   void reloadConfig();
 
 private:
+  void hiResTimerCallback() override;
+
   void loadRobots  (XmlElement * content);
   void loadVirtuals(XmlElement * content);
 

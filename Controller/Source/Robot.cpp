@@ -88,6 +88,15 @@ void Robot::ConvertVecToRotation(Vec & coord, BODYPART part)
 void Robot::update() {
   lastSeen++;
   connected =  (lastSeen < 30);
+  bufferSize = messageBuffer.size();
+}
+
+void Robot::timerCallback() {
+  MemoryOutputStream * out = messageBuffer.getReader();
+  if (out != nullptr) {
+    send(out->getData(), out->getDataSize());
+    messageBuffer.readDone();
+  }
 }
 
 Robot & Robot::resetLastSeen() {
