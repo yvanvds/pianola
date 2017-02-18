@@ -1,6 +1,7 @@
 #include "ClipLauncher.h"
 #include "Slider.h"
 #include "KnobManager.h"
+#include "ButtonManager.h"
 #include "apc40.h"
 #include <string>
 
@@ -50,6 +51,8 @@ void CLASSMETHOD(Reset)(IMPORT_T) {
   outlet_int(T->intOut, 247);
 }
 
+
+
 void CLASSMETHOD(inletInt)(IMPORT_T, long n) {
   if (T->curMessage == M_NONE) {
     if (n >= 144 && n < 161) {
@@ -94,6 +97,7 @@ void CLASSMETHOD(inletInt)(IMPORT_T, long n) {
     }
     if (T->curStep == 1) {
       T->curVal2 = n;
+      CLASSMETHOD(HandleNoteOff)(T);
       T->curMessage = M_NONE;
       return;
     }
@@ -119,7 +123,7 @@ void CLASSMETHOD(inletInt)(IMPORT_T, long n) {
 void CLASSMETHOD(ClipLed)(IMPORT_T, t_symbol *s, long argc, t_atom *argv)
 {
   if (argc != 3) {
-    post("Clip Led messages must have 3 parts: column - row - color");
+    post("Clip Led messages must have 3 integers: column - row - mode");
     return;
   }
 
@@ -172,6 +176,69 @@ void CLASSMETHOD(ClipLed)(IMPORT_T, t_symbol *s, long argc, t_atom *argv)
   }
 }
 
+void CLASSMETHOD(ClipMode)(IMPORT_T, t_symbol *s, long argc, t_atom *argv)
+{
+  if (argc != 3) {
+    post("Clip Led messages must have 3 parts: column - row - mode");
+    return;
+  }
+
+  int row, column;
+  CLIP_LED cl = CL_INVALID;
+
+  if (atom_gettype(argv) == A_LONG) {
+    column = (int)atom_getlong(argv);
+  }
+  else {
+    post("First argument is not an integer.");
+    return;
+  }
+
+  if (atom_gettype(argv + 1) == A_LONG) {
+    row = (int)atom_getlong(argv + 1);
+  }
+  else {
+    post("Second argument is not an integer.");
+    return;
+  }
+
+  if (row < 1 || row > CLIPROWS || column < 1 || column > CLIPCOLUMNS) {
+    post("Element is not in range.");
+    return;
+  }
+
+  // set array offset
+  row--; column--;
+
+  if (atom_gettype(argv + 2) == A_LONG) {
+    int mode = (int)atom_getlong(argv + 2);
+    switch (mode) {
+      case 0: T->memory.setClipMode(column, row, CM_OFF); break;
+      case 1: T->memory.setClipMode(column, row, CM_SINGLE_ORANGE_GREEN); break;
+      case 2: T->memory.setClipMode(column, row, CM_SINGLE_ORANGE_RED); break;
+      case 3: T->memory.setClipMode(column, row, CM_TOGGLE_ORANGE_GREEN); break;
+      case 4: T->memory.setClipMode(column, row, CM_TOGGLE_ORANGE_RED); break;
+      case 5: T->memory.setClipMode(column, row, CM_CUSTOM); break;
+      default: {
+        post("Third argument is not a valid integer");
+        return;
+      }
+    }
+
+  }
+  else {
+    post("Third argument is not an integer");
+    return;
+  }
+
+  // send led color to apc
+  {
+    CLASSMETHOD(SendNoteOn)(T, column + 1, row + 53, (int)T->memory.getClipLed(column, row));
+  }
+}
+
+
+
 void CLASSMETHOD(ClipRow)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
   if (argc != 9) {
     post("ClipRow messages must have nine numbers");
@@ -189,8 +256,8 @@ void CLASSMETHOD(ClipRow)(IMPORT_T, t_symbol * s, long argc, t_atom *argv) {
 
   for (int i = 0; i < 8; i++) {
     int value = (int)atom_getlong(argv + 1 + i);
-    T->memory.setClipLed(i, row - 1, (CLIP_LED)value);
-    CLASSMETHOD(SendNoteOn)(T, i + 1, 53 + row - 1, value);
+    T->memory.setClipMode(i, row - 1, (CLIP_MODE)value);
+    CLASSMETHOD(SendNoteOn)(T, i + 1, 53 + row - 1, T->memory.getClipLed(i, row - 1));
   }
 }
 
@@ -240,9 +307,21 @@ void CLASSMETHOD(HandleNoteOn)(IMPORT_T) {
     int column = T->curChannel - 1;
     int outputvalue = 0;
 
-    switch (T->memory.getClipLed(column, row)) {
-      case CL_GREEN: T->memory.setClipLed(column, row, CL_ORANGE); outputvalue = 0; break;
-      case CL_ORANGE: T->memory.setClipLed(column, row, CL_GREEN); outputvalue = 1; break;
+    switch (T->memory.getClipMode(column, row)) {
+      case CM_SINGLE_ORANGE_GREEN: {
+        T->memory.setClipLed(column, row, CL_GREEN);
+        outputvalue = 1;
+        break;
+      }
+      case CM_SINGLE_ORANGE_RED: {
+        T->memory.setClipLed(column, row, CL_RED);
+        outputvalue = 1;
+      }
+      case CM_TOGGLE_ORANGE_RED:
+      case CM_TOGGLE_ORANGE_GREEN: {
+        outputvalue = T->memory.toggle(column, row) ? 1 : 0;
+        break;
+      }
     }
 
     // send led color
@@ -255,6 +334,44 @@ void CLASSMETHOD(HandleNoteOn)(IMPORT_T) {
       }
     }
     return;
+  }
+
+  // try another note event
+  BUTTON b = NoteToButton(T->curVal1);
+  if (b != B_INVALID) {
+    if (b == B_STOP1 || b == B_TRACK1
+      || b == B_ACT1 || b == B_SOLO1
+      || b == B_REC1) b = (BUTTON)(b + (T->curChannel - 1));
+
+    ButtonManager.setValue(b, T->curVal2);
+  }
+}
+
+void CLASSMETHOD(HandleNoteOff)(IMPORT_T) {
+  if (T->curVal1 >= 53 && T->curVal1 < 58) {
+    // clip launch button
+
+    int row = T->curVal1 - 53;
+    int column = T->curChannel - 1;
+    int outputvalue = 0;
+
+    switch (T->memory.getClipMode(column, row)) {
+      case CM_SINGLE_ORANGE_RED:
+      case CM_SINGLE_ORANGE_GREEN: {
+        T->memory.setClipLed(column, row, CL_ORANGE);
+        // send led color
+        CLASSMETHOD(SendNoteOn)(T, T->curChannel, T->curVal1, (int)T->memory.getClipLed(column, row));
+
+        // send to outputs
+        for (int i = 0; i < clipLaunchers.size(); i++) {
+          if (clipLaunchers[i]->x == column + 1 && clipLaunchers[i]->y == row + 1) {
+            clipLauncherSend(clipLaunchers[i], outputvalue);
+          }
+        }
+      }
+      break;
+    }
+
   }
 }
 

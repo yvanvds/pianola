@@ -8,6 +8,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
   DECLARE_T;
 
   T->ID = B_INVALID;
+  T->active = true;
 
   if (argc < 1) {
     object_post((t_object *)T, "I need a knob name as first argument");
@@ -222,7 +223,13 @@ void CLASSMETHOD(Free)(IMPORT_T) {
 }
 
 void CLASSMETHOD(Send)(IMPORT_T, long n) {
+  if (!T->active) return;
   outlet_int(T->intOut, n);
+}
+
+void CLASSMETHOD(Toggle)(IMPORT_T, long n) {
+  if (n == 0) T->active = false;
+  else T->active = true;
 }
 
 int ButtonToNote(BUTTON b) {
@@ -298,5 +305,46 @@ int ButtonToNote(BUTTON b) {
     case B_STOP        : return 0x5C;
     case B_REC         : return 0x5D;
     default            : return 0x00;
+  }
+}
+
+BUTTON NoteToButton(int i) {
+  switch (i) {
+  case 0x52: return B_SCENE1;
+  case 0x53: return B_SCENE2;
+  case 0x54: return B_SCENE3;
+  case 0x55: return B_SCENE4;
+  case 0x56: return B_SCENE5;
+  case 0x34: return B_STOP1;
+  case 0x51: return B_STOPALL;
+  case 0x33: return B_TRACK1;
+  case 0x50: return B_TRACKM;
+  case 0x32: return B_ACT1;
+  case 0x31: return B_SOLO1;
+  case 0x30: return B_REC1;
+  case 0x57: return B_PAN;
+  case 0x58: return B_SENDA;
+  case 0x59: return B_SENDB;
+  case 0x5A: return B_SENDC;
+  case 0x62: return B_SHIFT;
+  case 0x5E: return B_SELECT_UP;
+  case 0x5F: return B_SELECT_DOWN;
+  case 0x61: return B_SELECT_LEFT;
+  case 0x60: return B_SELECT_RIGHT;
+  case 0x63: return B_TAP;
+  case 0x65: return B_NUDGE_MIN;
+  case 0x64: return B_NUDGE_PLUS;
+  case 0x3A: return B_CLIP;
+  case 0x3B: return B_DEVICE;
+  case 0x3C: return B_ARROW_LEFT;
+  case 0x3D: return B_ARROW_RIGHT;
+  case 0x3E: return B_DETAIL;
+  case 0x3F: return B_QUANTIZE;
+  case 0x40: return B_OVERDUB;
+  case 0x41: return  B_METRONOME;
+  case 0x5B: return B_PLAY;
+  case 0x5C: return B_STOP;
+  case 0x5D: return B_REC;
+  default: return B_INVALID;
   }
 }

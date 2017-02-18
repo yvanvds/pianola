@@ -1,3 +1,5 @@
+#include "apc40.h"
+
 #include "Knob.h"
 #include <string>
 #include "KnobManager.h"
@@ -8,6 +10,8 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
   DECLARE_T;
 
   T->ID = K_INVALID;
+  T->active = true;
+
   if (argc < 1) {
     object_post((t_object *)T, "I need a knob name as first argument");
     return T;
@@ -71,7 +75,22 @@ void CLASSMETHOD(Free)(IMPORT_T) {
   KnobManager.remove(T);
 }
 
+void CLASSMETHOD(Toggle)(IMPORT_T, long n) {
+  if (n == 0) T->active = false;
+  else T->active = true;
+}
+
+void CLASSMETHOD(inletInt)(IMPORT_T, long n) {
+  if (!T->active) return;
+  if (APC40 != nullptr) {
+    if (n < 0) n = 0;
+    if (n > 127) n = 127;
+    apc40SendCTRL(APC40, 1, GetKnobCTRL(T->ID), n);
+  }
+}
+
 void CLASSMETHOD(Send)(IMPORT_T, long n) {
+  if (!T->active) return;
   outlet_int(T->intOut, n);
 }
 

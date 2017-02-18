@@ -8,6 +8,7 @@
 
 CREATESTRUCT(
   int x; int y;
+  bool active;
 
   // outlet
   void * intOut;
@@ -15,6 +16,7 @@ CREATESTRUCT(
 
 void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv);
 void CLASSMETHOD(Free)(IMPORT_T);
+void CLASSMETHOD(Toggle)(IMPORT_T, long n);
 
 // outlet
 void CLASSMETHOD(Send)(IMPORT_T, long n);

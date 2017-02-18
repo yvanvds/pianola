@@ -7,6 +7,7 @@ CREATECLASSPTR;
 
 void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
   DECLARE_T;
+  T->active = true;
 
   if (argc < 1) {
     object_post((t_object *)T, "I need a slider name as first argument");
@@ -51,5 +52,11 @@ void CLASSMETHOD(Free)(IMPORT_T) {
 }
 
 void CLASSMETHOD(Send)(IMPORT_T, long n) {
+  if(!T->active) return;
   outlet_int(T->intOut, n);
+}
+
+void CLASSMETHOD(Toggle)(IMPORT_T, long n) {
+  if (n == 0) T->active = false;
+  else T->active = true;
 }
