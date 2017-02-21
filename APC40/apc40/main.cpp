@@ -30,6 +30,7 @@ void C74_EXPORT ext_main(void * r) {
     #define ClassName clipLauncher
     SETUP("apcClip", CLASSMETHOD(New), CLASSMETHOD(Free));
     class_addmethod(CLASS, (method)CLASSMETHOD(Toggle), "toggle", A_LONG, 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(Set), "set", A_LONG, 0);
     REGISTER_BOX;
   }
 
@@ -59,5 +60,5 @@ void C74_EXPORT ext_main(void * r) {
   }
 
 
-  post("APC DLL loaded (version 4)");
+  post("APC DLL loaded (version 5)");
 }

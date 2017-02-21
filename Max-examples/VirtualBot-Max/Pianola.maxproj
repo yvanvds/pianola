@@ -1,9 +1,9 @@
 {
 	"name" : "Pianola",
 	"version" : 1,
-	"creationdate" : -737300771,
-	"modificationdate" : 3570011577,
-	"viewrect" : [ 2568.0, 276.0, 300.0, 500.0 ],
+	"creationdate" : -737301013,
+	"modificationdate" : 3570539028,
+	"viewrect" : [ 2629.0, 31.0, 300.0, 974.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -211,16 +211,6 @@
 				"local" : 1
 			}
 ,
-			"sendBrownWithSustain.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"subSend.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"midiinput.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -266,6 +256,16 @@
 				"local" : 1
 			}
 ,
+			"sendBrownWithSustain.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"subSend.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"headBang.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -300,10 +300,70 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"examples.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
 
 		}
 ,
 		"media" : 		{
+			"dhk_001.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_003.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_004.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_005.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_006.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_007.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_008.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_009.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_010.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_011.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"dhk_012.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
 			"001-ins-I.wav" : 			{
 				"kind" : "audiofile",
 				"local" : 1

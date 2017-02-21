@@ -1,4 +1,6 @@
+#include "apc40.h"
 #include "ClipLauncher.h"
+
 
 std::vector<clipLauncher*> clipLaunchers;
 
@@ -6,7 +8,7 @@ CREATECLASSPTR;
 
 void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
   DECLARE_T;
-  T->active = false;
+  T->active = true;
 
   if (argc < 2) {
     object_post((t_object *)T, "I need two arguments (column and row).");
@@ -38,4 +40,11 @@ void CLASSMETHOD(Send)(IMPORT_T, long n) {
 void CLASSMETHOD(Toggle)(IMPORT_T, long n) {
   if (n == 0) T->active = false;
   else T->active = true;
+}
+
+void CLASSMETHOD(Set)(IMPORT_T, long n)
+{
+  
+  APC40->memory.setClipLed(T->x, T->y, (CLIP_LED)n);
+  apc40SendNoteOn(APC40, T->x, T->y + 52, n);
 }
