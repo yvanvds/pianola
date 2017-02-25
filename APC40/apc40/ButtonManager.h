@@ -4,14 +4,24 @@
 
 class buttonManager {
 public:
+  buttonManager();
+
   void add(button * obj);
   void remove(button * obj);
 
-  void setValue(BUTTON target, int value);
+  void setValue(BUTTON target, bool value);
+  void setActive(BUTTON target, bool value);
+  int getValue(BUTTON target);
+  void trigger(BUTTON target);
+
+  bool isToggle(BUTTON target);
+  void allOff();
 
 private:
   struct buttonInfo {
-    int currentValue;
+    bool value;
+    bool toggle;
+    bool active;
     std::vector<button*> buttons;
   };
 

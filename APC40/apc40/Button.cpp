@@ -1,3 +1,4 @@
+#include "apc40.h"
 #include "Button.h"
 #include <String>
 #include "ButtonManager.h"
@@ -200,7 +201,22 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
     else if (s == "device") {
       T->ID = B_DEVICE;
     } 
-    else if (s == "midi" || s == "metronome") {
+    else if (s == "left") {
+      T->ID = B_ARROW_LEFT;
+    }
+    else if (s == "right") {
+      T->ID = B_ARROW_RIGHT;
+    }
+    else if (s == "detail") {
+      T->ID = B_DETAIL;
+    }
+    else if (s == "quantize") {
+      T->ID = B_QUANTIZE;
+    }
+    else if (s == "midi") {
+      T->ID = B_OVERDUB;
+    }
+    else if (s == "metronome") {
       T->ID = B_METRONOME;
     }
     else if (s == "play") {
@@ -208,7 +224,7 @@ void * CLASSMETHOD(New)(t_symbol * s, long argc, t_atom *argv) {
     } 
   }
 
-  if (T->ID == K_INVALID) {
+  if (T->ID == B_INVALID) {
     object_post((t_object *)T, "Unknown Button");
     return T;
   }
@@ -230,6 +246,64 @@ void CLASSMETHOD(Send)(IMPORT_T, long n) {
 void CLASSMETHOD(Toggle)(IMPORT_T, long n) {
   if (n == 0) T->active = false;
   else T->active = true;
+}
+
+void CLASSMETHOD(SetState)(IMPORT_T, long n)
+{
+  if (T->ID == B_INVALID) return;
+  ButtonManager.setValue(T->ID, n == 0 ? false : true);
+  int note = ButtonToNote(T->ID);
+  int channel = ButtonToChannel(T->ID);
+  int value = ButtonManager.getValue(T->ID);
+  apc40SendNoteOn(APC40, channel, note, value);
+}
+
+
+int ButtonToChannel(BUTTON b) {
+  switch (b) {
+  case B_STOP1: return 1;
+  case B_STOP2: return 2;
+  case B_STOP3: return 3;
+  case B_STOP4: return 4;
+  case B_STOP5: return 5;
+  case B_STOP6: return 6;
+  case B_STOP7: return 7;
+  case B_STOP8: return 8;
+  case B_TRACK1: return 1;
+  case B_TRACK2: return 2;
+  case B_TRACK3: return 3;
+  case B_TRACK4: return 4;
+  case B_TRACK5: return 5;
+  case B_TRACK6: return 6;
+  case B_TRACK7: return 7;
+  case B_TRACK8: return 8;
+  case B_TRACKM: return 1;
+  case B_ACT1: return 1;
+  case B_ACT2: return 2;
+  case B_ACT3: return 3;
+  case B_ACT4: return 4;
+  case B_ACT5: return 5;
+  case B_ACT6: return 6;
+  case B_ACT7: return 7;
+  case B_ACT8: return 8;
+  case B_SOLO1: return 1;
+  case B_SOLO2: return 2;
+  case B_SOLO3: return 3;
+  case B_SOLO4: return 4;
+  case B_SOLO5: return 5;
+  case B_SOLO6: return 6;
+  case B_SOLO7: return 7;
+  case B_SOLO8: return 8;
+  case B_REC1: return 1;
+  case B_REC2: return 2;
+  case B_REC3: return 3;
+  case B_REC4: return 4;
+  case B_REC5: return 5;
+  case B_REC6: return 6;
+  case B_REC7: return 7;
+  case B_REC8: return 8;
+  default: return 1;
+  }
 }
 
 int ButtonToNote(BUTTON b) {

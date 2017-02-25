@@ -148,6 +148,14 @@ void Meccanoid::ServerConnection::Parse(DatagramSocketMessageReceivedEventArgs ^
         break;
       }
 
+      case MESSAGE::SYSTEM: {
+        byte message = args->GetDataReader()->ReadByte();
+        if (message == 0) {
+
+        }
+        break;
+      }
+
       case MESSAGE::BROWN: {
         BODYPART part = (BODYPART)args->GetDataReader()->ReadByte();
         byte factor = args->GetDataReader()->ReadByte();

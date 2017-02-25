@@ -22,6 +22,7 @@ void C74_EXPORT ext_main(void * r) {
     class_addmethod(CLASS, (method)CLASSMETHOD(ClipMode), "clipmode", A_GIMME, 0);
     class_addmethod(CLASS, (method)CLASSMETHOD(ClipRow), "cliprow", A_GIMME, 0);
     class_addmethod(CLASS, (method)CLASSMETHOD(KnobStyle), "knobstyle", A_GIMME, 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(ActivateButton), "activate", A_GIMME, 0);
     REGISTER_BOX;
   }
 
@@ -47,6 +48,7 @@ void C74_EXPORT ext_main(void * r) {
     #define ClassName button
     SETUP("apcButton", CLASSMETHOD(New), CLASSMETHOD(Free));
     class_addmethod(CLASS, (method)CLASSMETHOD(Toggle), "toggle", A_LONG, 0);
+    class_addmethod(CLASS, (method)CLASSMETHOD(SetState), "set", A_LONG, 0);
     REGISTER_BOX;
   }
 

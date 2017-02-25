@@ -49,6 +49,8 @@ void CLASSMETHOD(Reset)(IMPORT_T) {
   outlet_int(T->intOut, 0);
   outlet_int(T->intOut, 0);
   outlet_int(T->intOut, 247);
+
+  ButtonManager.allOff();
 }
 
 
@@ -299,6 +301,80 @@ void CLASSMETHOD(KnobStyle)(IMPORT_T, t_symbol *s, long argc, t_atom *argv)
   }
 }
 
+void CLASSMETHOD(ActivateButton)(IMPORT_T, t_symbol *s, long argc, t_atom *argv)
+{
+  if (argc < 2) {
+    object_post((t_object *)T, "ActivateButton needs 2 arguments");
+    return;
+  }
+
+  if (argv->a_type == A_SYM) {
+    std::string s; s = atom_getsym(argv)->s_name;
+    BUTTON b = B_INVALID;
+    if (s == "scene1") b = B_SCENE1;
+    else if (s == "scene2") b = B_SCENE2;
+    else if (s == "scene3") b = B_SCENE3;
+    else if (s == "scene4") b = B_SCENE4;
+    else if (s == "scene5") b = B_SCENE5;
+    else if (s == "stop") b = B_STOP;
+    else if (s == "stopall") b = B_STOPALL;
+    else if (s == "track1") b = B_TRACK1;
+    else if (s == "track2") b = B_TRACK2;
+    else if (s == "track3") b = B_TRACK3;
+    else if (s == "track4") b = B_TRACK4;
+    else if (s == "track5") b = B_TRACK5;
+    else if (s == "track6") b = B_TRACK6;
+    else if (s == "track7") b = B_TRACK7;
+    else if (s == "track8") b = B_TRACK8;
+    else if (s == "activator1") b = B_ACT1;
+    else if (s == "activator2") b = B_ACT2;
+    else if (s == "activator3") b = B_ACT3;
+    else if (s == "activator4") b = B_ACT4;
+    else if (s == "activator5") b = B_ACT5;
+    else if (s == "activator6") b = B_ACT6;
+    else if (s == "activator7") b = B_ACT7;
+    else if (s == "activator8") b = B_ACT8;
+    else if (s == "solo1") b = B_SOLO1;
+    else if (s == "solo2") b = B_SOLO2;
+    else if (s == "solo3") b = B_SOLO3;
+    else if (s == "solo4") b = B_SOLO4;
+    else if (s == "solo5") b = B_SOLO5;
+    else if (s == "solo6") b = B_SOLO6;
+    else if (s == "solo7") b = B_SOLO7;
+    else if (s == "solo8") b = B_SOLO8;
+    else if (s == "record1") b = B_REC1;
+    else if (s == "record2") b = B_REC2;
+    else if (s == "record3") b = B_REC3;
+    else if (s == "record4") b = B_REC4;
+    else if (s == "record5") b = B_REC5;
+    else if (s == "record6") b = B_REC6;
+    else if (s == "record7") b = B_REC7;
+    else if (s == "record8") b = B_REC8;
+    else if (s == "pan") b = B_PAN;
+    else if (s == "senda") b = B_SENDA;
+    else if (s == "sendb") b = B_SENDB;
+    else if (s == "sendc") b = B_SENDC;
+    else if (s == "clip") b = B_CLIP;
+    else if (s == "device") b = B_DEVICE;
+    else if (s == "left") b = B_ARROW_LEFT;
+    else if (s == "right") b = B_ARROW_RIGHT;
+    else if (s == "detail") b = B_DETAIL;
+    else if (s == "quantize") b = B_QUANTIZE;
+    else if (s == "midi") b = B_OVERDUB;
+    else if (s == "metronome") b = B_METRONOME;
+
+    if (b != B_INVALID) {
+      post("Invalid activate name");
+      return;
+    }
+    else {
+      ButtonManager.setActive(b, (int)atom_getlong(argv + 1));
+    }
+
+
+  }
+}
+
 void CLASSMETHOD(HandleNoteOn)(IMPORT_T) {
   if (T->curVal1 >= 53 && T->curVal1 < 58) {
     // clip launch button
@@ -341,9 +417,26 @@ void CLASSMETHOD(HandleNoteOn)(IMPORT_T) {
   if (b != B_INVALID) {
     if (b == B_STOP1 || b == B_TRACK1
       || b == B_ACT1 || b == B_SOLO1
-      || b == B_REC1) b = (BUTTON)(b + (T->curChannel - 1));
+      || b == B_REC1) {
 
-    ButtonManager.setValue(b, T->curVal2);
+      b = (BUTTON)(b + (T->curChannel - 1));
+      ButtonManager.trigger(b);
+      
+      // send led color
+      int value = ButtonManager.getValue(b);
+      CLASSMETHOD(SendNoteOn)(T, T->curChannel, T->curVal1, value);
+
+    }
+    else if (ButtonManager.isToggle(b)) {
+      ButtonManager.trigger(b);
+
+      // send led color
+      int value = ButtonManager.getValue(b);
+      CLASSMETHOD(SendNoteOn)(T, T->curChannel, T->curVal1, value);
+    }
+    else {
+      ButtonManager.trigger(b);
+    }
   }
 }
 

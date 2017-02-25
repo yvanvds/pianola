@@ -32,6 +32,7 @@ enum class MESSAGE : unsigned char {
   SETLIMITS,
   SPEAK,
   KINECTROTATE,
+  SYSTEM,
 };
 
 enum class BODYPART : unsigned char {

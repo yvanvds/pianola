@@ -33,6 +33,7 @@ void CLASSMETHOD(ClipLed)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
 void CLASSMETHOD(ClipMode)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
 void CLASSMETHOD(ClipRow)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
 void CLASSMETHOD(KnobStyle)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
+void CLASSMETHOD(ActivateButton)(IMPORT_T, t_symbol * s, long argc, t_atom *argv);
 
 // internal messages
 void CLASSMETHOD(HandleNoteOn)(IMPORT_T);
