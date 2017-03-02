@@ -1,0 +1,144 @@
+{
+	"insect-i" : 	{
+		"HeadRotate" : [ -11, 20, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -3, 63, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 53, 0, 0, 1.0 ],
+		"ArmRightUpperRotate" : [ 18, 2, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 49, 0, 0, 1.0 ],
+		"LegRightUpperRotate" : [ 26, 50, 0, 1.0 ],
+		"LegRightLowerRotate" : [ -33, 0, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ -3, 42, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ -64, 0, 0, 1.0 ]
+	}
+,
+	"insect-can" : 	{
+		"HeadRotate" : [ 1, 14, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ 4, 31, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 35, 0, 0, 1.0 ],
+		"ArmRightUpperRotate" : [ -43, 35, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 27, 0, 0, 1.0 ],
+		"LegRightUpperRotate" : [ 0, 24, 0, 1.0 ],
+		"LegRightLowerRotate" : [ 4, 0, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ -15, 0, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 28, 18, 0, 1.0 ]
+	}
+,
+	"insect-wait" : 	{
+		"ArmRightUpperRotate" : [ -11, 25, 0, 1.0 ],
+		"HeadRotate" : [ -8, 23, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 56, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -12, -7, 0, 1.0 ],
+		"LegRightUpperRotate" : [ -12, -3, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 13, 19, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ 1, 0, 0, 1.0 ]
+	}
+,
+	"insect-as" : 	{
+		"HeadRotate" : [ -11, 4, 0, 1.0 ],
+		"ArmRightUpperRotate" : [ -43, 33, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 32, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -34, 59, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 18, 0, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 23, 7, 0, 1.0 ],
+		"LegRightUpperRotate" : [ 19, 9, 0, 1.0 ],
+		"LegRightLowerRotate" : [ -6, 0, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ -21, 0, 0, 1.0 ]
+	}
+,
+	"insect-an" : 	{
+		"ArmRightUpperRotate" : [ -43, 63, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -34, 38, 0, 1.0 ]
+	}
+,
+	"insect-insect1" : 	{
+		"ArmRightUpperRotate" : [ 17, 35, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 63, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -37, -64, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 63, 0, 0, 1.0 ],
+		"LegRightUpperRotate" : [ 63, 63, 0, 1.0 ],
+		"LegRightLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 63, 63, 0, 1.0 ],
+		"HeadRotate" : [ -26, 19, 0, 1.0 ]
+	}
+,
+	"insect-insect2" : 	{
+		"LegRightUpperRotate" : [ -14, 63, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 39, 63, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ 38, 0, 0, 1.0 ],
+		"LegRightLowerRotate" : [ -39, 0, 0, 1.0 ],
+		"ArmRightUpperRotate" : [ -2, 54, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 40, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -33, 63, 0, 1.0 ],
+		"HeadRotate" : [ 12, -28, 0, 1.0 ]
+	}
+,
+	"insect-insect3" : 	{
+		"ArmRightUpperRotate" : [ -24, 29, 0, 1.0 ],
+		"HeadRotate" : [ 39, -28, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 63, 0, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -22, 21, 0, 1.0 ],
+		"LegRightUpperRotate" : [ 18, 24, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 21, 31, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ -64, 0, 0, 1.0 ]
+	}
+,
+	"insect-insect4" : 	{
+		"LegRightUpperRotate" : [ 63, 30, 0, 1.0 ],
+		"LegRightLowerRotate" : [ 14, 0, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ 4, 0, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 36, 53, 0, 1.0 ],
+		"ArmRightUpperRotate" : [ 9, -12, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 63, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ 6, 0, 0, 1.0 ],
+		"HeadRotate" : [ 8, 28, 0, 1.0 ]
+	}
+,
+	"insect-insect5" : 	{
+		"ArmRightUpperRotate" : [ -7, 45, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 63, 0, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 57, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -12, 63, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ -14, 62, 0, 1.0 ],
+		"LegRightUpperRotate" : [ -27, 33, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ 20, 0, 0, 1.0 ]
+	}
+,
+	"insect-insect6" : 	{
+		"HeadRotate" : [ -64, 30, 0, 1.0 ],
+		"ArmRightUpperRotate" : [ -31, 18, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -27, 40, 0, 1.0 ],
+		"LegRightUpperRotate" : [ 20, 33, 0, 1.0 ],
+		"LegRightLowerRotate" : [ 63, 0, 0, 1.0 ]
+	}
+,
+	"insect-insect7" : 	{
+		"LegRightUpperRotate" : [ -15, 39, 0, 1.0 ],
+		"LegRightLowerRotate" : [ 63, 0, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ 48, 62, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ 32, 0, 0, 1.0 ],
+		"ArmRightUpperRotate" : [ -31, 63, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 25, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -1, 7, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 63, 0, 0, 1.0 ],
+		"HeadRotate" : [ 63, 30, 0, 1.0 ]
+	}
+,
+	"insect-insect8" : 	{
+		"ArmRightUpperRotate" : [ -31, 63, 0, 1.0 ],
+		"HeadRotate" : [ 19, -31, 0, 1.0 ],
+		"ArmRightLowerRotate" : [ 56, 0, 0, 1.0 ],
+		"ArmLeftLowerRotate" : [ 18, 0, 0, 1.0 ],
+		"ArmLeftUpperRotate" : [ -25, 63, 0, 1.0 ],
+		"LegRightUpperRotate" : [ 4, 63, 0, 1.0 ],
+		"LegRightLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"LegLeftLowerRotate" : [ -64, 0, 0, 1.0 ],
+		"LegLeftUpperRotate" : [ -8, 63, 0, 1.0 ]
+	}
+
+}

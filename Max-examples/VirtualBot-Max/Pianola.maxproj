@@ -1,9 +1,9 @@
 {
 	"name" : "Pianola",
 	"version" : 1,
-	"creationdate" : -737301013,
-	"modificationdate" : 3570539028,
-	"viewrect" : [ 2629.0, 31.0, 300.0, 974.0 ],
+	"creationdate" : -737301255,
+	"modificationdate" : 3571248365,
+	"viewrect" : [ 1248.0, 40.0, 300.0, 974.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -241,17 +241,17 @@
 				"local" : 1
 			}
 ,
+			"ManualRotAPC.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"apc40base.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"insect.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"ManualRotAPC.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -309,6 +309,21 @@
 		}
 ,
 		"media" : 		{
+			"AlainStravinsky_03.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"Absurd.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"WhatsThat.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
 			"dhk_001.wav" : 			{
 				"kind" : "audiofile",
 				"local" : 1
@@ -560,6 +575,16 @@
 			}
 ,
 			"009-Debussy-Humblement.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"AlainStravinsky_01.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"AlainStravinsky_02.wav" : 			{
 				"kind" : "audiofile",
 				"local" : 1
 			}
