@@ -1545,7 +1545,7 @@
 								"box" : 								{
 									"autopopulate" : 1,
 									"id" : "obj-60",
-									"items" : [ "Microsoft GS Wavetable Synth", ",", "Akai APC40", ",", "VMidi 1", ",", "VMidi 2", ",", "VMidi 3", ",", "VMidi 4", ",", "iO4" ],
+									"items" : [ "Microsoft GS Wavetable Synth", ",", "3- AudioBox 1818VSL MIDI Out", ",", "VMidi 1", ",", "VMidi 2", ",", "VMidi 3", ",", "VMidi 4" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -2792,9 +2792,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 133.0, 269.0, 94.0, 22.0 ],
+					"patching_rect" : [ 133.0, 269.0, 210.0, 22.0 ],
 					"style" : "",
-					"text" : "midiin \"VMidi 3\""
+					"text" : "midiin \"3-AudioBox 1818VSL MIDI In\""
 				}
 
 			}

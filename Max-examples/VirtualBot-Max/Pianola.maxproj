@@ -1,9 +1,9 @@
 {
 	"name" : "Pianola",
 	"version" : 1,
-	"creationdate" : -737301255,
-	"modificationdate" : 3571248365,
-	"viewrect" : [ 1248.0, 40.0, 300.0, 974.0 ],
+	"creationdate" : -737301497,
+	"modificationdate" : 3571406394,
+	"viewrect" : [ 2968.0, 55.0, 300.0, 974.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -140,12 +140,12 @@
 				"local" : 1
 			}
 ,
-			"c-foreground.maxpat" : 			{
+			"textmessage.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"textmessage.maxpat" : 			{
+			"c-foreground.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -246,31 +246,6 @@
 				"local" : 1
 			}
 ,
-			"apc40base.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"insect.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"sendBrownWithSustain.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"subSend.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"headBang.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"strobo.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -296,6 +271,31 @@
 				"local" : 1
 			}
 ,
+			"apc40base.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"insect.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"sendBrownWithSustain.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"subSend.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"headBang.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"runningAverage.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -309,6 +309,31 @@
 		}
 ,
 		"media" : 		{
+			"introKuno.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"introIgor.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"introHugo.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"introClaude.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
+			"introBoycot.wav" : 			{
+				"kind" : "audiofile",
+				"local" : 1
+			}
+,
 			"AlainStravinsky_03.wav" : 			{
 				"kind" : "audiofile",
 				"local" : 1
