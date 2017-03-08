@@ -62,5 +62,5 @@ void C74_EXPORT ext_main(void * r) {
   }
 
 
-  post("APC DLL loaded (version 5)");
+  post("APC DLL loaded (version 6)");
 }

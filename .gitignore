@@ -224,3 +224,4 @@ pip-log.txt
 .mr.developer.cfg
 /Controller/Builds/VisualStudio2015/Pianola Controller.VC.VC.opendb
 *.opendb
+*.pkf
