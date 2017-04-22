@@ -1,8 +1,8 @@
 {
 	"name" : "Pianola",
 	"version" : 1,
-	"creationdate" : -737301497,
-	"modificationdate" : 3571406394,
+	"creationdate" : -737301618,
+	"modificationdate" : 3571937937,
 	"viewrect" : [ 2968.0, 55.0, 300.0, 974.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -140,12 +140,12 @@
 				"local" : 1
 			}
 ,
-			"textmessage.maxpat" : 			{
+			"c-foreground.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"c-foreground.maxpat" : 			{
+			"textmessage.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
